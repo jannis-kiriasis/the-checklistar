@@ -1,0 +1,1 @@
+web: gunicorn checklistar.wsgi
