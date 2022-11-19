@@ -47,3 +47,15 @@ class ProjectApprover(models.Model):
 
     def __str__(self):
         return f"Project: {self.project} | Approver: {self.approver} | Department: {self.approver_department}"
+
+# UserProfile model: stores user information that aren't in User model
+
+class UserProfile(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.PROTECT, related_name='users'
+    )
+    department = models.CharField(max_length=80)
+
+    def __str__(self):
+        return f"Employee: {self.user} | Department: {self.department}"
+    
