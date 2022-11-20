@@ -50,6 +50,7 @@ class ProjectApprover(models.Model):
 
 # UserProfile model: stores user information that aren't in User model
 
+
 class UserProfile(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.PROTECT, related_name='users'
@@ -58,4 +59,3 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f"Employee: {self.user} | Department: {self.department}"
-    
