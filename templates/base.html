@@ -26,9 +26,9 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="">
 
-    
-    <!-- External stylesheets -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- External links and styles -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ee196b5910.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -41,23 +41,23 @@
     <header>
             <!-- Navigation -->
         <nav>
-            <div class="nav-wrapper right-align">
-              <a href="{% url 'dashboard' %}" class="brand-logo">Logo</a>
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <div class="nav-wrapper">
+              <a href="{% url 'dashboard' %}" class="left brand-logo">The Checklistar</a>
+              <a href="#" data-target="mobile-demo" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
               <ul class="right hide-on-med-and-down">
-                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-                <li><a href="#">Components</a></li>
-                <li><a href="#">Javascript</a></li>
-                <li><a href="#">Mobile</a></li>
+                <li><a href="{% url 'dashboard' %}">All projects</a></li>
+                <li><a href="#">My open projects</a></li>
+                <li><a href="#">Need my approval</a></li>
+                <li><a class="waves-effect waves-light btn">Create project</a></li>
               </ul>
             </div>
           </nav>
         
           <ul class="sidenav" id="mobile-demo">
-            <li><a href="#">Sass</a></li>
-            <li><a href="#">Components</a></li>
-            <li><a href="#">Javascript</a></li>
-            <li><a href="#">Mobile</a></li>
+            <li><a href="{% url 'dashboard' %}">All projects</a></li>
+            <li><a href="#">My open projects</a></li>
+            <li><a href="#">Need my approval</a></li>
+            <li><a class="waves-effect waves-light btn">Create project</a></li>
           </ul>
                   
     </header>
@@ -74,21 +74,12 @@
                         <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
                             content.</p>
                     </div>
-                    <div class="col l4 offset-l2 s12">
-                        <h5 class="white-text">Links</h5>
-                        <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <div class="footer-copyright">
                 <div class="container">
-                    © 2014 Copyright Text
-                    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                    © 2022 The Checklistar created by Jannis Kiriasis
+                    <a class="grey-text text-lighten-4 right" href="https://www.linkedin.com/in/janniskiriasis/"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
             </div>
 
