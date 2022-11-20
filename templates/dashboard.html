@@ -1,6 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>This is a h1 test</h1>
+<div class="container">
+    <h1>All projects</h1>
+    <div class="collection responsive-table">
+        {% for project in project_list %}
+        <div class="collection-item avatar">
+            <img src="images/yuna.jpg" alt="" class="circle">
+            <div class="block">
+                <span class="title bold">Id: {{ project.id }}<br>
+                    Title: {{ project.title }} 
+                </span>
+                <p>Owner: {{ project.owner }}<br>
+                    Due date:<br>
+                </p>
+            </div>
+            <a href="" class="secondary-content waves-effect waves-light btn-small right-align">View details<i class="material-icons right">more_horiz</i></a>
+        </div>
+        {% endfor %}
+    </div>
 
-{%endblock%}
+
+    <!--  <div class="block">
+        <p><span class="bold">Sign off </span><br>
+            Second Line<br>
+            <span class="approved bold">Approved on</span>
+        </p>
+    </div> -->
+    {%endblock%}

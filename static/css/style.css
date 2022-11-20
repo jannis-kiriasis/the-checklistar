@@ -26,10 +26,36 @@ nav,
     background-color: var(--liberty);
 }
 
-.btn {
+.btn, .btn-small {
     background-color: var(--verdigris);
 }
 
 .brand-logo {
     margin-left: 10px;
+}
+
+.collection-item {
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+/* Dashboard template */
+
+.block{
+    flex-basis: auto;
+    margin-right: 15px;
+
+}
+
+.approved {
+    color: var(--verdigris);
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.secondary-content {
+    align-self: flex-start;
 }
