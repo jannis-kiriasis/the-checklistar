@@ -15,16 +15,20 @@
                     Due date:<br>
                 </p>
             </div>
+            {% for approver in project.approvers.all %}
+            <div class="block">
+                <p><span class="bold">{{ approver.approver }} Sign off </span><br>
+                    {{ approver.approver_department }}<br>
+                    <span class="approved bold">Approved on {{ approver.approval_date }}</span>
+                </p>
+            </div>
+            {% endfor %}
+
             <a href="" class="secondary-content waves-effect waves-light btn-small right-align">View details<i class="material-icons right">more_horiz</i></a>
         </div>
         {% endfor %}
     </div>
 
 
-    <!--  <div class="block">
-        <p><span class="bold">Sign off </span><br>
-            Second Line<br>
-            <span class="approved bold">Approved on</span>
-        </p>
-    </div> -->
+
     {%endblock%}
