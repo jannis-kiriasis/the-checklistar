@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from .models import Project, ProjectApproval, UserProfile, User
-
+from .forms import ProjectForm
 # ProjectList view for dashboard.html. Shows all the projects with related
 # approvers
 
@@ -14,6 +14,13 @@ class ProjectList(generic.ListView):
 
 
 def CreateProject(request):
-    options = User.objects.order_by('username')
-    context = {}
-    return render(request, "create-project.html", context)
+    if request.method == "POST":
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    form = ProjectForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'create-project.html', context)   
