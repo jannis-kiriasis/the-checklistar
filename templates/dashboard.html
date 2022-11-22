@@ -1,21 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <h1>All projects</h1>
-    <div class="collection responsive-table">
-        {% for project in projectapproval_list %}
-        <div class="collection-item avatar">
-            <a href="#"><i class="medium material-icons left">cloud_download</i></a> 
-            <div class="block">
-                <span class="title bold">Id: {{ project.project.id }}<br>
-                    Title: {{ project.project.title }} 
-                </span>
-                <p>Owner: {{ project.project.owner }}<br>
-                    Due date:<br>
-                </p>
-            </div>
-            <!-- {% for approval in projectapproval_list %}
+<section>
+    <div class="container">
+        <h1>All projects</h1>
+        <div class="collection responsive-table">
+            {% for project in projectapproval_list %}
+            <div class="collection-item avatar">
+                <a href="#"><i class="medium material-icons left">cloud_download</i></a>
+                <div class="block">
+                    <span class="title bold">Id: {{ project.project.id }}<br>
+                        Title: {{ project.project.title }}
+                    </span>
+                    <p>Owner: {{ project.project.owner }}<br>
+                        Due date:<br>
+                    </p>
+                </div>
+                <!-- {% for approval in projectapproval_list %}
             {% if approval.project_id is project.project.id %}
             <div class="block">
                 <p><span class="bold">{{ approval.approver }} Sign off </span><br>
@@ -25,12 +26,13 @@
             </div>
             {% endif %}
             {% endfor %} -->
-            <a href="" class="secondary-content waves-effect waves-light btn-small right-align">View details<i class="material-icons right">more_horiz</i></a>
+                <a href="" class="secondary-content waves-effect waves-light btn-small right-align">View details<i
+                        class="material-icons right">more_horiz</i></a>
+            </div>
+            {% endfor %}
         </div>
-        
-        {% endfor %}
-    </div>
 
+</section>
 
 
     {%endblock%}

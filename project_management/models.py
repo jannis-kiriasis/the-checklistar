@@ -7,9 +7,6 @@ PROJECT_STATUS = ((0, 'Not completed'), (1, 'Completed'))
 APPROVAL_STATUS = ((0, 'Not approved'), (1, 'Approved'))
 
 
-
-
-
 # Project model. Contains all the information related to a project,
 # including the project's approvers
 #  which are stored in the ProjectApprovers model

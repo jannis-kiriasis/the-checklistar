@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.views import generic
+from django.shortcuts import render, get_object_or_404
+from django.views import generic, View
 from .models import Project, ProjectApproval, UserProfile
 
 # ProjectList view for dashboard.html. Shows all the projects with related
@@ -12,3 +12,7 @@ class ProjectList(generic.ListView):
     template_name = 'dashboard.html'
     paginate_by = 20
 
+
+def CreateProject(request):
+    context = {}
+    return render(request, "create-project.html", context)

@@ -48,16 +48,16 @@
                 <li><a href="{% url 'dashboard' %}">All projects</a></li>
                 <li><a href="#">My open projects</a></li>
                 <li><a href="#">Need my approval</a></li>
-                <li><a class="waves-effect waves-light btn">Create project</a></li>
+                <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn">Create project</a></li>
               </ul>
             </div>
           </nav>
         
           <ul class="sidenav" id="mobile-demo">
             <li><a href="{% url 'dashboard' %}">All projects</a></li>
-            <li><a href="#">My open projects</a></li>
+            <li><a href="">My open projects</a></li>
             <li><a href="#">Need my approval</a></li>
-            <li><a class="waves-effect waves-light btn">Create project</a></li>
+            <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn">Create project</a></li>
           </ul>
                   
     </header>
