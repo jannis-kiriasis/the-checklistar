@@ -12,6 +12,11 @@ class ProjectList(generic.ListView):
     template_name = 'dashboard.html'
     paginate_by = 20
 
+    # def get_context_data(self, **kwargs):
+    #     context = super(ProjectList, self).get_context_data(**kwargs)
+    #     context['approval_list'] = ProjectApproval.objects.all()
+    #     return context
+
 
 def CreateProject(request):
     if request.method == "POST":

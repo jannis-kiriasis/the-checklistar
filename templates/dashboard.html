@@ -16,14 +16,14 @@
                         Due date:<br>
                     </p>
                 </div>
-            {% for approver in project.approvers.all %}
+            <!-- {% for approval in ProjectApproval.objects.all %}
             <div class="block">
-                <p><span class="bold">{{ approver.user }} Sign off </span><br>
+                <p><span class="bold">{{ approval.approver }} Sign off </span><br>
                     {{ approver.department }}<br>
-                    <!-- <span class="approved bold">Approved on {{ approver.approval_date }}</span> -->
+                    <span class="approved bold">Approved on {{ approval.approval_date }}</span>
                 </p>
             </div>
-            {% endfor %}
+            {% endfor %} -->
                 <a href="" class="secondary-content waves-effect waves-light btn-small right-align">View details<i
                         class="material-icons right">more_horiz</i></a>
             </div>
