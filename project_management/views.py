@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic, View
 from .models import Project, ProjectApproval, UserProfile, User
 from .forms import ProjectForm
@@ -35,12 +35,14 @@ class ProjectDetails(View):
 
 
 def CreateProject(request):
+    form = ProjectForm()
     if request.method == "POST":
         form = ProjectForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('dashboard')
-    form = ProjectForm()
+        else:
+            print('form invalid')
     context = {
         'form': form
     }
