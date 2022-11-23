@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1>Project details</h1>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="card darken-1">
+        <div class="card-content">
+          <span class="card-title"><span class="bold">{{ project.title }}</span></span>
+          <p><span class="bold">id:</span> {{ project.id }}</p>
+          <p><span class="bold">Owner:</span> {{ project.owner }}</p>
+          <p><span class="bold">Created on:</span> {{ project.date_created }}</p>
+          <p><span class="bold">File:</span> {{ project.document }}</p>
+        </div>
+        <div class="card-content ">
+          <span class="card-title"><span class="bold">Description</span></span>
+          {{ project.description }}
+          </div>
+          <div class="card-content ">
+            <span class="card-title"><span class="bold">Approvals</span></span>
+            {% for approval in approvals %}
+            <p><span class="bold">Department:</span><br>
+              <span class="bold">Approver:</span><br>
+              <span class="bold">Approval status:</span><br>
+            </p><hr>
+            {% endfor %}
+          </div>
+          <div class="card-action">
+            <a href="#" class="btn btn-small">EDIT PROJECT</a>
+            <a href="#" class="btn btn-small red">DELETE PROJECT</a>
+          </div>
+          
+      </div>
+    </div>
+  </div>
+  </div>
+
+{%endblock%}

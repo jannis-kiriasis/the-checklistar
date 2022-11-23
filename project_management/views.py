@@ -18,6 +18,22 @@ class ProjectList(generic.ListView):
     #     return context
 
 
+class ProjectDetails(View):
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Project.objects
+        project = get_object_or_404(queryset, slug=slug)
+        approvals = project.approvals.all()
+
+        return render(
+            request,
+            "project-details.html",
+            {
+                "project": project,
+                "approvals": approvals,
+            }
+            )
+
+
 def CreateProject(request):
     if request.method == "POST":
         form = ProjectForm(request.POST)

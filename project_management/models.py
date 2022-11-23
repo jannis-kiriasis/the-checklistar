@@ -4,7 +4,6 @@ from cloudinary.models import CloudinaryField
 
 
 PROJECT_STATUS = ((0, 'Not completed'), (1, 'Completed'))
-APPROVAL_STATUS = ((0, 'Not approved'), (1, 'Approved'))
 
 # UserProfile model: stores user information that aren't in User model
 
@@ -58,7 +57,7 @@ class ProjectApproval(models.Model):
     )
     approval_date = models.DateField(null=True, blank=True)
     approval_due_by = models.DateField(null=True, blank=True)
-    status = models.IntegerField(choices=APPROVAL_STATUS, default=0)
+    approved = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Project: {self.project} | Approver: {self.approver} | Department: {self.approver_department}"

@@ -28,6 +28,7 @@ nav,
 
 .btn, .btn-small {
     background-color: var(--verdigris);
+    margin: 2px;
 }
 
 .brand-logo {
@@ -64,4 +65,14 @@ nav,
 
 select {
     display: inline-flex;    
+}
+
+/* Project details */
+
+.red {
+    background-color: var(--fuzzy-wuzzy); 
+}
+
+.margin-approvers {
+    margin: 12px;
 }
