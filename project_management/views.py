@@ -7,8 +7,8 @@ from .forms import ProjectForm
 
 
 class ProjectList(generic.ListView):
-    model = ProjectApproval
-    queryset = ProjectApproval.objects.order_by('-project')
+    model = Project()
+    queryset = Project.objects.order_by('-date_created')
     template_name = 'dashboard.html'
     paginate_by = 20
 
@@ -23,4 +23,4 @@ def CreateProject(request):
     context = {
         'form': form
     }
-    return render(request, 'create-project.html', context)   
+    return render(request, 'create-project.html', context)

@@ -7,7 +7,7 @@
   <form action="create-project" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit">
+    <button type="submit">Create project</button>
   </form>
 </div>
 {%endblock%}
