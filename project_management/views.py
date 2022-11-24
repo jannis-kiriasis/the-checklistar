@@ -6,16 +6,27 @@ from .forms import ProjectForm
 # approvers
 
 
-class ProjectList(generic.ListView):
-    model = Project()
-    queryset = Project.objects.order_by('-date_created')
-    template_name = 'dashboard.html'
-    paginate_by = 20
+def ProjectList(request):
+    projects = Project.objects.order_by('-date_created')
+    projectId = Project.objects.values_list('id')
+    approvals = ProjectApproval.objects.all()
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(ProjectList, self).get_context_data(**kwargs)
-    #     context['approval_list'] = ProjectApproval.objects.all()
-    #     return context
+    context = {
+        'projects': projects,
+        'approvals': approvals
+    }
+
+    return render(request, 'dashboard.html', context)
+
+# class ProjectList(generic.ListView):
+#     queryset = Project.objects.order_by('-date_created')
+#     template_name = 'dashboard.html'
+#     paginate_by = 20
+
+#     def get_context_data(self, **kwargs):
+#         context = super(ProjectList, self).get_context_data(**kwargs)
+#         context['approval_list'] = ProjectApproval.objects.all()
+#         return context
 
 
 class ProjectDetails(View):

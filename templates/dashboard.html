@@ -5,7 +5,7 @@
     <div class="container">
         <h1>All projects</h1>
         <div class="collection responsive-table">
-            {% for project in project_list %}
+            {% for project in projects %}
             <div class="collection-item avatar">
                 <a href="#"><i class="medium material-icons left">cloud_download</i></a>
                 <div class="block">
@@ -16,14 +16,16 @@
                         Due date:<br>
                     </p>
                 </div>
-            <!-- {% for approval in ProjectApproval.objects.all %}
+            {% for approval in approvals %}
+            {% if approval.project_id is project.id %}
             <div class="block">
-                <p><span class="bold">{{ approval.approver }} Sign off </span><br>
-                    {{ approver.department }}<br>
+                <p><span class="bold">{{ approval.approver.user }} Sign off </span><br>
+                    {{ approval.approver.department }}<br>
                     <span class="approved bold">Approved on {{ approval.approval_date }}</span>
                 </p>
             </div>
-            {% endfor %} -->
+            {% endif %}
+            {% endfor %}
                 <a href="{% url 'project-details' project.slug %}" class="secondary-content waves-effect waves-light btn-small right-align">View details<i
                         class="material-icons right">more_horiz</i></a>
             </div>
