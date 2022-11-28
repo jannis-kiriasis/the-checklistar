@@ -70,10 +70,14 @@ select {
 /* Project details */
 
 .red {
-    background-color: var(--fuzzy-wuzzy); 
+    background-color: var(--fuzzy-wuzzy) !important; 
 }
 
 .margin-approvers {
     margin: 12px;
+}
+
+.margin-bottom {
+    padding-bottom: 32px;
 }
 

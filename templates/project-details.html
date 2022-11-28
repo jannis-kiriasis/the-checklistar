@@ -22,9 +22,9 @@
           <div class="card-content ">
             <span class="card-title"><span class="bold">Approvals</span></span>
             {% for approval in approvals %}
-            <p><span class="bold">Department:</span><br>
-              <span class="bold">Approver:</span><br>
-              <span class="bold">Approval status:</span><br>
+            <p><span class="bold">Department:</span> {{ approval.approver_department }}<br>
+              <span class="bold">Approver:</span> {{approval.approver }}<br>
+              <span class="bold">Approval status:</span> {{approval.status }}<br>
             </p><hr>
             {% endfor %}
           </div>
