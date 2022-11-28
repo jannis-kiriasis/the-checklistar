@@ -112,3 +112,25 @@ def CreateProject(request):
         'approver_form': approver_form
     }
     return render(request, 'create-project.html', context)
+
+
+def EditProject(request, project_id):
+    project = get_object_or_404(Project, id=project_id)
+    approver = get_object_or_404(ProjectApproval, project_id=project_id)
+    if request.method == "POST":
+        form = ProjectForm(request.POST, request.FILES, instance=project)
+        approver_form = ApproverForm(request.POST, instance=approver)
+        if form.is_valid():
+            project = form.save()
+            if approver_form.is_valid():
+                approver = approver_form.save(commit=False)
+                approver.project = project
+                approver.save()
+            return redirect('dashboard')
+    form = ProjectForm(instance=project)
+    approver_form = ApproverForm(instance=approver)
+    context = {
+        'form': form,
+        'approver_form': approver_form
+    }
+    return render(request, 'edit-project.html', context)
