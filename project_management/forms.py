@@ -2,35 +2,15 @@ from .models import Project, ProjectApproval, User, UserProfile
 from django import forms
 
 
+class ProjectForm(forms.ModelForm):
 
-# class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ['title', 'owner', 'description', 'document']
 
-#     title = forms.CharField(
-#         required=True,
-#     )
 
-#     owners = forms.ModelChoiceField(
-#         queryset=User.objects.all()
-#     )
+class ApproverForm(forms.ModelForm):
 
-#     # document = forms.FileField()
-
-#     description = forms.CharField(
-#         required=True,
-#         widget=forms.widgets.Textarea(
-#             attrs={
-#                 "placeholder": "Add your project description...",
-#                 "class": "textarea",
-#             }
-#         ),
-#         label="",
-#     )
-
-#     approvers = forms.ModelChoiceField(
-#         queryset=UserProfile.objects.all()
-#     )
-
-#     class Meta:
-#         model = Project
-#         fields = ['title', 'owner', 'description', 'document', 'approvers']
-
+    class Meta:
+        model = ProjectApproval
+        fields = ['approver', 'approver_department', 'approval_due_by']

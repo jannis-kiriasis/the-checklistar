@@ -4,80 +4,13 @@
 
 <div class="container">
   <h1>Create a project</h1>
-  <form enctype="multipart/form-data" class="col s12" method="POST">
-    {% csrf_token %}
-    <div class="row">
-      <label for="title">Title</label>
-      <input name="title" id="title" type="text">
-      </select>
-    </div>
-    <div class="row">
-      <label for="owner">Owner</label>
-      <select name="owner" id="owner">
-        {% for owner in users %}
-        <option value="{{ owner.username }}">{{ owner.username }}</option>
-        {% endfor %}
-      </select>
-    </div>
-    <div class="row">
-      <label for="description">Description</label>
 
-      <textarea id="description" name="description" rows="4" cols="50">
-      </textarea>
-    </div>
-    <div class="row">
-      <label for="document">Document upload</label>
-      <input id="document" name="document" type="file">
-    </div>
-    <div class="row">
-      <label for="approvers">Approvers</label>
-      <select name="approvers" id="approvers" multiple>
-        {% for approver in users %}
-        <option value="{{ approver.username }}">{{ approver.username }}</option>
-        {% endfor %}
-      </select>
-    </div>
-    <div class="row">
-      <button type="submit">Create project</button>
-    </div>
+  <form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ approver_form.as_p }}
+    <button class="btn" type="submit">Create project</button>
   </form>
 </div>
 
 {%endblock%}
-
-<!-- <form enctype="multipart/form-data" class="col s12" method="POST">
-    {% csrf_token %}
-    <div class="row">
-      <label for="">Project title</label>
-      {{ form.title }}
-    </div>
-    <div class="row">
-      <label for="">Project owner</label>
-      {{ form.owner }}
-    </div>
-    <div class="row">
-      <label for="">Project description</label>
-      {{ form.description }}
-    </div>
-    <div class="row">
-      <label for="">Project document</label>
-      {{ form.document }}
-    </div>
-    <div class="row">
-      <label for="">Project approvers</label>
-      {{ form.approvers }}
-    </div>
-    <div class="row">
-      <button class="btn" type="submit">Create project</button>
-    </div>
-  </form> -->
-
-<!-- <div class="container">
-    <h1>Create a project</h1>
-  
-    <form enctype="multipart/form-data" method="POST">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Create project</button>
-    </form>
-  </div> -->

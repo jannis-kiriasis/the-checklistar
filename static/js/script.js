@@ -1,6 +1,4 @@
-var survey_options = document.getElementById('survey_options');
-var add_more_fields = document.getElementById('add_more_fields');
-var remove_fields = document.getElementById('remove_fields');
+const add = document.getElementById("addApprover");
 
 document.addEventListener("DOMContentLoaded", function() {
     // sidenav initialization
@@ -8,21 +6,14 @@ document.addEventListener("DOMContentLoaded", function() {
     M.Sidenav.init(sidenav);
 })
 
+add.addEventListener("click", function() {
+    // First create a DIV element.
+	var txtNewInputBox = document.createElement('div');
 
+    // Then add the content (a new input box) of the element.
+    txtNewInputBox.setAttribute('class', 'row')
+	txtNewInputBox.innerHTML = '<div class="col s6">{{ approver_form.as_p }}</div>';
 
-add_more_fields.onclick = function(){
-  var newField = document.createElement('input');
-  newField.setAttribute('type','text');
-  newField.setAttribute('name','survey_options[]');
-  newField.setAttribute('class','survey_options');
-  newField.setAttribute('siz',50);
-  newField.setAttribute('placeholder','Another Field');
-  survey_options.appendChild(newField);
-}
-
-remove_fields.onclick = function(){
-  var input_tags = survey_options.getElementsByTagName('input');
-  if(input_tags.length > 2) {
-    survey_options.removeChild(input_tags[(input_tags.length) - 1]);
-  }
-}
+    // Finally put it where it is supposed to appear.
+	document.getElementById("newElement").appendChild(txtNewInputBox);
+});

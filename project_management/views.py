@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic, View
 from .models import Project, ProjectApproval, UserProfile, User
-# from .forms import ProjectForm
+from .forms import ProjectForm, ApproverForm
 
 
 # ProjectList view for dashboard.html. Shows all the projects with related
@@ -48,35 +48,35 @@ class ProjectDetails(View):
             )
 
 
-def CreateProject(request):
-    users = User.objects.all()
-    userProfile = UserProfile.objects.all()
-    projectApprovers = ProjectApproval.objects.all()
+# def CreateProject(request):
+#     users = User.objects.all()
+#     userProfile = UserProfile.objects.all()
+#     projectApprovers = ProjectApproval.objects.all()
 
-    if request.method == "POST":
-        title = request.POST.get("title")
-        owner = request.POST.get("owner")
-        description = request.POST.get("description")
-        document = request.POST.get("document")
-        approvers = request.POST.get("approvers")
-        Project.objects.create(
-            title=title,
-            owner=User,
-            description=description,
-            document=document,
-            )
+#     if request.method == "POST":
+#         title = request.POST.get("title")
+#         owner = request.POST.get("owner")
+#         description = request.POST.get("description")
+#         document = request.POST.get("document")
+#         approvers = request.POST.get("approvers")
+#         Project.objects.create(
+#             title=title,
+#             owner=User,
+#             description=description,
+#             document=document,
+#             )
 
-        ProjectApproval.objects.create(
-            project=request.title,
-            approver=approvers
-        )
-        return redirect('dashboard')
+#         ProjectApproval.objects.create(
+#             project=request.title,
+#             approver=approvers
+#         )
+#         return redirect('dashboard')
 
-    context = {
-        'users': users
-    }
+#     context = {
+#         'users': users
+#     }
 
-    return render(request, 'create-project.html', context)
+#     return render(request, 'create-project.html', context)
 
 # def CreateProject(request):
 #     form = ProjectForm()
@@ -88,6 +88,27 @@ def CreateProject(request):
 #         else:
 #             print('form invalid')
 #     context = {
-#         'form': form
+#         'form': form,
 #     }
 #     return render(request, 'create-project.html', context)
+
+def CreateProject(request):
+    form = ProjectForm()
+    approver_form = ApproverForm()
+    if request.method == "POST":
+        form = ProjectForm(request.POST)
+        approver_form = ApproverForm(request.POST)
+        if form.is_valid():
+            project = form.save()
+            if approver_form.is_valid():
+                approver = approver_form.save(commit=False)
+                approver.project = project
+                approver.save()
+            return redirect('dashboard')
+        else:
+            print('form invalid')
+    context = {
+        'form': form,
+        'approver_form': approver_form
+    }
+    return render(request, 'create-project.html', context)
