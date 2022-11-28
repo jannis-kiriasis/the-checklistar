@@ -30,7 +30,7 @@ class Project(models.Model):
     owner = models.ForeignKey(
         User, on_delete=models.PROTECT, related_name='projects'
     )
-    document = CloudinaryField('image', null=True, default=None, blank=True)
+    document = CloudinaryField('document', null=True, default=None, blank=True)
     description = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=PROJECT_STATUS, default=0)

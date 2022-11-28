@@ -7,7 +7,9 @@
         <div class="collection responsive-table">
             {% for project in projects %}
             <div class="collection-item avatar">
-                <a href="#"><i class="medium material-icons left">cloud_download</i></a>
+                {% if project.document %}
+                <a href="{{ project.document.url }}" download target="_blank"><i class="medium material-icons left">cloud_download</i></a>
+                {% endif %}
                 <div class="block">
                     <span class="title bold">Id: {{ project.id }}<br>
                         Title: {{ project.title }}

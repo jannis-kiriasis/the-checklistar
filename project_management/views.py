@@ -96,7 +96,7 @@ def CreateProject(request):
     form = ProjectForm()
     approver_form = ApproverForm()
     if request.method == "POST":
-        form = ProjectForm(request.POST)
+        form = ProjectForm(request.POST, request.FILES)
         approver_form = ApproverForm(request.POST)
         if form.is_valid():
             project = form.save()

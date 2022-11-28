@@ -11,7 +11,9 @@
           <p><span class="bold">id:</span> {{ project.id }}</p>
           <p><span class="bold">Owner:</span> {{ project.owner }}</p>
           <p><span class="bold">Created on:</span> {{ project.date_created }}</p>
-          <p><span class="bold">File:</span> {{ project.document }}</p>
+          {% if project.document.url %}
+          <p><span class="bold">File:</span><a href=" {{ project.document.url }}" download target="_blank"> Open attachment</a></p>
+          {% endif %}
         </div>
         <div class="card-content ">
           <span class="card-title"><span class="bold">Description</span></span>
