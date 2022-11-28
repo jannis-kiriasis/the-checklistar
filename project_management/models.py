@@ -34,7 +34,6 @@ class Project(models.Model):
     description = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=PROJECT_STATUS, default=0)
-    approvers = models.ManyToManyField(UserProfile)
 
     class Meta:
         ordering = ['-date_created', 'owner']

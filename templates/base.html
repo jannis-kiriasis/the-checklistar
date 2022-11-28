@@ -45,10 +45,16 @@
               <a href="{% url 'dashboard' %}" class="left brand-logo">The Checklistar</a>
               <a href="#" data-target="mobile-demo" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
               <ul class="right hide-on-med-and-down">
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn">Create project</a></li>
                 <li><a href="{% url 'dashboard' %}">All projects</a></li>
                 <li><a href="#">My open projects</a></li>
                 <li><a href="#">Need my approval</a></li>
-                <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn">Create project</a></li>
+                <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                {% else %} 
+                <li><a href="{% url 'account_signup' %}">Sign up</a></li>
+                <li><a href="{% url 'account_login' %}" class="waves-effect waves-light btn">Login</a></li>
+                {% endif %}
               </ul>
             </div>
           </nav>

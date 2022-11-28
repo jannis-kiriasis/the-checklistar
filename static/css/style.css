@@ -76,3 +76,9 @@ select {
 .margin-approvers {
     margin: 12px;
 }
+
+/* Create project */
+
+label {
+    display: block;
+}
