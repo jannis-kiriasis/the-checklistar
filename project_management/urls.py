@@ -8,4 +8,5 @@ urlpatterns = [
     path('<slug:slug>/', views.ProjectDetails.as_view(), name='project-details'),
     path('edit/<project_id>', views.EditProject, name='edit'),
     path('approve/<projectApproval_id>', views.ApproveProject, name='approve'),
+    path('delete/<project_id>', views.DeleteProject, name='delete'),
 ]

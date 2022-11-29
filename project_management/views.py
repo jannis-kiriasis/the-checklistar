@@ -142,3 +142,12 @@ def ApproveProject(request, projectApproval_id):
     approver.save()
     return redirect('dashboard')
 
+def DeleteApprover(request, projectApproval_id):
+    approver = get_object_or_404(ProjectApproval, id=projectApproval_id)
+    approver.delete()
+    return redirect('dashboard')
+
+def DeleteProject(request, project_id):
+    project = get_object_or_404(Project, id=project_id)
+    project.delete()
+    return redirect('dashboard')

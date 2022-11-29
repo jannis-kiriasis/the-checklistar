@@ -54,11 +54,11 @@ class Project(models.Model):
 
 class ProjectApproval(models.Model):
     project = models.ForeignKey(
-        Project, on_delete=models.PROTECT, related_name="approvals"
+        Project, on_delete=models.CASCADE, related_name="approvals"
         )
     approver_department = models.CharField(max_length=80)
     approver = models.ForeignKey(
-        UserProfile, on_delete=models.PROTECT, related_name='approvers'
+        UserProfile, on_delete=models.CASCADE, related_name='approvers'
     )
     approval_date = models.DateField(null=True, blank=True)
     approval_due_by = models.DateField(null=True, blank=True)
