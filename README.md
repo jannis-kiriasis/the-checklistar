@@ -1,6 +1,6 @@
 # Project 2 - Insured
 
-[Insured live demo](https://jannis-kiriasis.github.io/insured/index.html)\
+[The Checklistar live demo](https://jannis-kiriasis.github.io/insured/index.html)\
 [The Checklistar repository](https://github.com/jannis-kiriasis/the-checklistar)
 
 ## Table of contents
@@ -41,34 +41,36 @@ And obviously everyone has comments and edits.
 
 The Checklistar takes away the pain of following up with every team, dig into email threads and record evidence of approvals (yes there is also the risk management team).
 
+Does it sound familiar to you?
+
+You are not alone.
+
+A quick search with Google Keywords Planner can reveal how many monthly search there are to 'workflow management system' and related queries.
+
+![queries about workflow management system](./README-files/workflow-management-system-keywords.png)
+
+This is what you can do with The Checklistar:
+1. Start a project, set and follow the stages it needs to go through.
+2. Set the 'approvers', the people or the teams in your organization who need to review the project or document.
+3. Receive a feedback from the approvers in form of comments, to keep the messages around one project / document in the same place.
+
+### Who is The Checklistar for?
+The checklistar is for those companies that need a desktop app to track progresses on multiple cross team projects or documents approval.
+
+### What The Checklistar offer:
+- A simple form to setup a project and approvers who need to review it.
+- A unified view to see all the projects open.
+- A view to see all the projects the logged in user have started.
+- A view to see all the projects the logged in user need to approve.
+- A form to leave comments under each project.
+- The possibility to edit and delete projects.
+
 ![Insured responsive design](./README-files/i-am-responsive.png)
 
-A quick search with Google Keywords Planner can reveal how many questions people have about life insurance that need to be answered before getting one.
-
-![Questions about life insurance](./README-files/life-insurance-questions.png)
-
-All those questions can be resumed in 3 main questions:
-- Do I need life insurance?
-- What life insurance do I need?
-- How much life insurance do I need?
-
-This is exactly what Insured do:
-1. Let you know if you need a life insurance
-2. Help you understand what type of life cover you need
-3. Let you apply for a cover painlessly
-
-### Who is Insured for?
-Insured is for those people who aren't sure whether they should get a life cover and those who need some clarity around the cover types available.
-
-### What Insured offer:
-- A quick questionnaire to understand users' life insurance needs.
-- A simple life cover calculator to find out how much cover users need.
-- An almost totally prefilled application form that let you apply for a life policy only and painlessly.
-
 ## User Experience (UX) - user stories
-Now that we are familiar with Insured target audience and offering, we are looking at the needs website visitors may have. Following, you can find the users' stories covering the main users' needs.
+Now that we are familiar with The Checklistar target audience and offering, we are looking at the needs the app users may have. Following, you can find the epics an the user stories break down used to plan the development of the app.
 
-### Visitor goals
+### Users goals
 
 | **User stories**                                                                                          |
 |-----------------------------------------------------------------------------------------------------------|
