@@ -61,6 +61,10 @@ nav,
     align-self: flex-start;
 }
 
+.not-approved {
+    color: var(--fuzzy-wuzzy);
+ }
+
 /* Base template */
 
 select {
@@ -71,6 +75,10 @@ select {
 
 .red {
     background-color: var(--fuzzy-wuzzy) !important; 
+}
+
+.tan {
+    background-color: var(--tan) !important; 
 }
 
 .margin-approvers {

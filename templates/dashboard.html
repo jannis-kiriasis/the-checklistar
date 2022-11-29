@@ -7,9 +7,6 @@
         <div class="collection responsive-table">
             {% for project in projects %}
             <div class="collection-item avatar">
-                {% if project.document %}
-                <a href="{{ project.document.url }}" download target="_blank"><i class="medium material-icons left">cloud_download</i></a>
-                {% endif %}
                 <div class="block">
                     <span class="title bold">Id: {{ project.id }}<br>
                         Title: {{ project.title }}
@@ -17,13 +14,24 @@
                     <p>Owner: {{ project.owner }}<br>
                         Due date:<br>
                     </p>
+                    {% if project.document %}
+                    <a href="{{ project.document.url }}" download target="_blank"><i class="small material-icons left">attachment</i></a>
+                    {% endif %}
                 </div>
             {% for approval in approvals %}
             {% if approval.project_id is project.id %}
             <div class="block">
                 <p><span class="bold">{{ approval.approver.user }} Sign off </span><br>
                     {{ approval.approver.department }}<br>
-                    <span class="approved bold">Approved on {{ approval.approval_date }}</span>
+                    {% if approval.approved %}
+                    <span class="approved bold">Approved <i class="material-icons">check</i><br>
+                        on {{ approval.approval_date }}
+                    </span>
+                    {% else %}
+                    <span class="not-approved bold">Not approved <i class="material-icons">clear</i><br>
+                        due by {{ approval.approval_due_by }}
+                    </span>
+                    {% endif %}
                 </p>
             </div>
             {% endif %}

@@ -19,20 +19,32 @@
           <span class="card-title"><span class="bold">Description</span></span>
           {{ project.description }}
           </div>
-          <div class="card-content ">
-            <span class="card-title"><span class="bold">Approvals</span></span>
-            {% for approval in approvals %}
-            <p><span class="bold">Department:</span> {{ approval.approver_department }}<br>
-              <span class="bold">Approver:</span> {{approval.approver }}<br>
-              <span class="bold">Approval status:</span> {{approval.status }}<br>
-            </p><hr>
-            {% endfor %}
-          </div>
           <div class="card-action">
             <a href="/edit/{{ project.id }}" class="btn btn-small">EDIT PROJECT</a>
             <a href="#" class="btn btn-small red">DELETE PROJECT</a>
           </div>
-          
+        </div>
+
+          <div class="card-content ">
+            <h2 class="card-title">Approvals</h2>
+            {% for approval in approvals %}
+            <p><span class="bold">Department:</span> {{ approval.approver_department }}<br>
+              <span class="bold">Approver:</span> {{ approval.approver }}<br>
+              {% if approval.approved %}
+              <span class="bold">Approval status:</span> Approved<br>
+              {% else %}
+              <span class="bold">Approval status:</span> Not approved<br>
+              {% endif %}
+            </p>
+          </div>
+          <div class="card-action">
+            {% if approval.approved %}
+            <a href="#" class="btn btn-small">approved <i class="material-icons">check</i></a>
+            {% else %}
+            <a href="/approve/{{ approval.id }}" class="btn btn-small tan">APPROVE PROJECT</a>
+            {% endif %}
+          </div><hr>
+          {% endfor %}
       </div>
     </div>
   </div>

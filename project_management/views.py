@@ -134,3 +134,11 @@ def EditProject(request, project_id):
         'approver_form': approver_form
     }
     return render(request, 'edit-project.html', context)
+
+
+def ApproveProject(request, projectApproval_id):
+    approver = get_object_or_404(ProjectApproval, id=projectApproval_id)
+    approver.approved = not approver.approved
+    approver.save()
+    return redirect('dashboard')
+
