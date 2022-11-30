@@ -5,10 +5,17 @@
 <div class="container margin-bottom ">
   <h1>Create a project</h1>
 
-  <form enctype="multipart/form-data" method="POST">
+  <form enctype="multipart/form-data" method="POST" id="form-container">
     {% csrf_token %}
     {{ form.as_p }}
-    {{ formset.as_p }}
+
+    {{ formset.management_form }}
+    {% for approver in formset %}
+    <div class="approver-form">
+      {{ approver.as_p }}
+    </div>
+    {% endfor %}
+    <button id="add-approver" type="button">Add Another approver</button>
 
     <button class="btn" type="submit">Create project</button>
   </form>

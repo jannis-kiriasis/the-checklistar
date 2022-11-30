@@ -104,3 +104,7 @@ select {
     border-radius: 5px;
     background-color: #48a9a605;
 }
+
+.margin-top {
+    margin-top: 15px;
+}

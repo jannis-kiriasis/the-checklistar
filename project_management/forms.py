@@ -28,7 +28,8 @@ ApproverFormSet = inlineformset_factory(
         'approver',
         'approver_department',
         'approval_due_by'
-    )
+    ),
+    extra=1
 )
 
 # Create comments form form to be assigned to a project

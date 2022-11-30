@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
 from django.views import generic, View
 from django.forms import inlineformset_factory
 from .models import Project, ProjectApproval, UserProfile, User
@@ -101,7 +101,7 @@ def CreateProject(request):
 
 def EditProject(request, project_id):
     project = get_object_or_404(Project, id=project_id)
-    approver = get_object_or_404(ProjectApproval, project_id=project_id)
+    approver = get_list_or_404(ProjectApproval, project_id=project_id)
     if request.method == "POST":
         form = ProjectForm(request.POST, request.FILES, instance=project)
         approver_form = ApproverForm(request.POST, instance=approver)

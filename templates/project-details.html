@@ -32,32 +32,52 @@
         <div class="card-content ">
           <h3>Approvals</h3>
           {% for approval in approvals %}
-          <p><span class="bold">Department:</span> {{ approval.approver_department }}<br>
-            <span class="bold">Approver:</span> {{ approval.approver }}<br>
+          <p><span class="bold">Department:</span> 
+            {{ approval.approver_department }}<br>
+            <span class="bold">Approver:</span> 
+            {{ approval.approver }}<br>
             {% if approval.approved %}
-            <span class="bold">Approval status:</span> Approved<br>
+            <p class="bold">Approval status:
+              <span class="approved">Approved</span>
+            </p>
             {% else %}
-            <span class="bold">Approval status:</span> Not approved<br>
+            <p>
+              <span class="bold">Approval status:
+                <span class="not-approved">
+                  Not approved
+                </span>
+              </span>
+            </p>
             {% endif %}
-          </p>
+          
           {% if approval.approved %}
-          <p class="approved"><i class="material-icons">check</i> approved</p>
           {% else %}
-          <a href="/approve/{{ approval.id }}" class="btn btn-small tan">APPROVE PROJECT</a>
+          <a href="/approve/{{ approval.id }}" class="btn btn-small tan margin-top">APPROVE PROJECT</a>
           {% endif %}
           <hr>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
     </div>
   </div>
 
   <!-- Comments -->
   <div class="row">
-
-    <!-- Section for existing comments -->
+    <!-- Section for comments form -->
     <div class="col s6 m6">
-      <h3>Comments:</h3>
+      <div class="comment-form approved">
+        {% if user.is_authenticated %}
+        <h3>Leave a comment:</h3>
+        <p>Posting as: {{ user.username }}</p>
+        <form method="post">
+        {{ comment_form }}
+        {% csrf_token %}
+        <button type="submit" class="btn">Add comment</button>
+        </form>
+        {% endif %}
+      </div>
+      <!-- Section for existing comments -->
+      <h3>Comments</h3>
         <div class="card-body">
         <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
           {% for comment in comments %}
@@ -79,22 +99,6 @@
           {% endfor %}
         </div>
     </div>
-
-    <!-- Section for comments form -->
-    <div class="col s3 m3 right">
-      <div class="comment-form approved">
-        {% if user.is_authenticated %}
-        <h3>Leave a comment:</h3>
-        <p> Posting as: {{ user.username }}</p>
-        <form method="post">
-        {{ comment_form }}
-        {% csrf_token %}
-        <button type="submit" class="btn">Add comment</button>
-        </form>
-        {% endif %}
-      </div>
-    </div>
-
 
   </div>
 </div>
