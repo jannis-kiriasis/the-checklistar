@@ -37,7 +37,7 @@ function addForm(e) {
     newForm.innerHTML = newForm.innerHTML.replace(formRegex, `approvals-${formNum}-`) 
     
     //Insert the new form at the end of the list of forms
-    container.insertBefore(newForm, addButton) 
+    container.appendChild(newForm) 
 
     //Increment the number of total forms in the management form
     totalForms.setAttribute('value', `${formNum+1}`) 

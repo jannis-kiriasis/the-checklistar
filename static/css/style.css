@@ -108,3 +108,20 @@ select {
 .margin-top {
     margin-top: 15px;
 }
+
+/* Create project template */
+
+.add-approvers {
+    padding: 20px; 
+    background-color: #d4b48315 !important;
+    border: 1px solid #d4b48315 !important;
+    border-radius: 5px;
+}
+
+.approver-form {
+    margin: 10px auto;
+    padding: 20px; 
+    background-color: #d4b48315 !important;
+    border: 1px solid #d4b48315 !important;
+    border-radius: 5px;
+}
