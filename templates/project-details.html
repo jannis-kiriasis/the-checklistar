@@ -46,8 +46,20 @@
           </div><hr>
           {% endfor %}
       </div>
+      <div class="row">
+        <!-- Comments -->
+        {% if user.is_authenticated %}
+        <h3>Leave a comment:</h3>
+        <p> Posting as: {{ user.username }}</p>
+        <form method="post">
+          {{ comment_form }}
+          {% csrf_token %}
+          <button type="submit" class="btn">Add comment</button>
+        </form>
+        {% endif %}
+      </div>
     </div>
   </div>
   </div>
 
-{%endblock%}
+{% endblock %}

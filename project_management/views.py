@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic, View
 from .models import Project, ProjectApproval, UserProfile, User
-from .forms import ProjectForm, ApproverForm
+from .forms import ProjectForm, ApproverForm, CommentForm
 
 
 # ProjectList view for dashboard.html. Shows all the projects with related
@@ -37,6 +37,7 @@ class ProjectDetails(View):
         queryset = Project.objects
         project = get_object_or_404(queryset, slug=slug)
         approvals = project.approvals.all()
+        comments = project.comments.order_by("created_on")
 
         return render(
             request,
@@ -44,6 +45,8 @@ class ProjectDetails(View):
             {
                 "project": project,
                 "approvals": approvals,
+                "comment_form": CommentForm(),
+                "comments": comments
             }
             )
 

@@ -66,3 +66,23 @@ class ProjectApproval(models.Model):
 
     def __str__(self):
         return f"Project: {self.project} | Approver: {self.approver} | Department: {self.approver_department}"
+
+
+# Comments model
+
+
+class Comment(models.Model):
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE,
+        related_name="comments"
+        )
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["created_on"]
+
+    def __str__(self):
+        return f"Comment {self.body} by {self.name}"

@@ -1,4 +1,4 @@
-from .models import Project, ProjectApproval, User, UserProfile
+from .models import Project, ProjectApproval, User, UserProfile, Comment
 from django import forms
 
 
@@ -14,3 +14,10 @@ class ApproverForm(forms.ModelForm):
     class Meta:
         model = ProjectApproval
         fields = ['approver', 'approver_department', 'approval_due_by']
+
+
+class CommentForm(forms.ModelForm):
+    
+    class Meta:
+        model = Comment
+        fields = ('body',)
