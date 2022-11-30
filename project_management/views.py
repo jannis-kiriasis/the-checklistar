@@ -21,16 +21,8 @@ def ProjectList(request):
     return render(request, 'dashboard.html', context)
 
 
-# class ProjectList(generic.ListView):
-#     queryset = Project.objects.order_by('-date_created')
-#     template_name = 'dashboard.html'
-#     paginate_by = 20
-
-#     def get_context_data(self, **kwargs):
-#         context = super(ProjectList, self).get_context_data(**kwargs)
-#         context['approval_list'] = ProjectApproval.objects.all()
-#         return context
-
+# ProjectDetails view for project-details.html.
+# Render all the details related to a project and its comments
 
 class ProjectDetails(View):
     def get(self, request, slug, *args, **kwargs):
@@ -49,7 +41,7 @@ class ProjectDetails(View):
                 "comments": comments,
             },
             )
-            
+
     def post(self, request, slug, *args, **kwargs):
         queryset = Project.objects
         project = get_object_or_404(queryset, slug=slug)
@@ -78,49 +70,10 @@ class ProjectDetails(View):
             },
             )
 
-# def CreateProject(request):
-#     users = User.objects.all()
-#     userProfile = UserProfile.objects.all()
-#     projectApprovers = ProjectApproval.objects.all()
 
-#     if request.method == "POST":
-#         title = request.POST.get("title")
-#         owner = request.POST.get("owner")
-#         description = request.POST.get("description")
-#         document = request.POST.get("document")
-#         approvers = request.POST.get("approvers")
-#         Project.objects.create(
-#             title=title,
-#             owner=User,
-#             description=description,
-#             document=document,
-#             )
+# View to create a project. Takes the forms to create projects and approvers
+# and save the inputs in the related modeles.
 
-#         ProjectApproval.objects.create(
-#             project=request.title,
-#             approver=approvers
-#         )
-#         return redirect('dashboard')
-
-#     context = {
-#         'users': users
-#     }
-
-#     return render(request, 'create-project.html', context)
-
-# def CreateProject(request):
-#     form = ProjectForm()
-#     if request.method == "POST":
-#         form = ProjectForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('dashboard')
-#         else:
-#             print('form invalid')
-#     context = {
-#         'form': form,
-#     }
-#     return render(request, 'create-project.html', context)
 
 def CreateProject(request):
     form = ProjectForm()
@@ -144,6 +97,8 @@ def CreateProject(request):
     return render(request, 'create-project.html', context)
 
 
+# view to edit the projcts in the project-details template
+
 def EditProject(request, project_id):
     project = get_object_or_404(Project, id=project_id)
     approver = get_object_or_404(ProjectApproval, project_id=project_id)
@@ -166,16 +121,25 @@ def EditProject(request, project_id):
     return render(request, 'edit-project.html', context)
 
 
+# view to approve the projcts in the project-details template
+
+
 def ApproveProject(request, projectApproval_id):
     approver = get_object_or_404(ProjectApproval, id=projectApproval_id)
     approver.approved = not approver.approved
     approver.save()
     return redirect('dashboard')
 
-def DeleteApprover(request, projectApproval_id):
-    approver = get_object_or_404(ProjectApproval, id=projectApproval_id)
-    approver.delete()
-    return redirect('dashboard')
+# view to delete approvers the projcts in the project-details template
+
+# def DeleteApprover(request, projectApproval_id):
+#     approver = get_object_or_404(ProjectApproval, id=projectApproval_id)
+#     approver.delete()
+#     return redirect('dashboard')
+
+
+# view to delete projects the projcts in the project-details template
+
 
 def DeleteProject(request, project_id):
     project = get_object_or_404(Project, id=project_id)
