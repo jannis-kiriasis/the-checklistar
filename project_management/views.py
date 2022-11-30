@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic, View
+from django.forms import inlineformset_factory
 from .models import Project, ProjectApproval, UserProfile, User
-from .forms import ProjectForm, ApproverForm, CommentForm
+from .forms import ProjectForm, ApproverForm, CommentForm, ApproverFormSet
 
 
 # ProjectList view for dashboard.html. Shows all the projects with related
@@ -57,7 +58,7 @@ class ProjectDetails(View):
             comment.project = project
             comment.save()
         else:
-            comment_form - CommentForm()
+            comment_form = CommentForm()
 
         return render(
             request,
@@ -71,28 +72,27 @@ class ProjectDetails(View):
             )
 
 
-# View to create a project. Takes the forms to create projects and approvers
+# View to create a project. Takes the form and formset  
 # and save the inputs in the related modeles.
 
 
 def CreateProject(request):
     form = ProjectForm()
-    approver_form = ApproverForm()
+    approver_form = ApproverFormSet(instance=Project())
     if request.method == "POST":
         form = ProjectForm(request.POST, request.FILES)
-        approver_form = ApproverForm(request.POST)
         if form.is_valid():
             project = form.save()
+            approver_form = ApproverFormSet(request.POST, instance=project)
             if approver_form.is_valid():
-                approver = approver_form.save(commit=False)
-                approver.project = project
-                approver.save()
-            return redirect('dashboard')
+                approver_form.save()
+                return redirect('dashboard')
         else:
             print('form invalid')
+
     context = {
         'form': form,
-        'approver_form': approver_form
+        'formset': approver_form
     }
     return render(request, 'create-project.html', context)
 

@@ -1,5 +1,7 @@
 from .models import Project, ProjectApproval, User, UserProfile, Comment
 from django import forms
+from django.forms import inlineformset_factory
+
 
 # Create a project form
 
@@ -21,6 +23,14 @@ class ApproverForm(forms.ModelForm):
         fields = ['approver', 'approver_department', 'approval_due_by']
 
 
+ApproverFormSet = inlineformset_factory(
+    Project, ProjectApproval, fields=(
+        'approver',
+        'approver_department',
+        'approval_due_by'
+    )
+)
+
 # Create comments form form to be assigned to a project
 
 
@@ -29,3 +39,5 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('body',)
+
+

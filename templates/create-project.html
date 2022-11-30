@@ -8,7 +8,8 @@
   <form enctype="multipart/form-data" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    {{ approver_form.as_p }}
+    {{ formset.as_p }}
+
     <button class="btn" type="submit">Create project</button>
   </form>
 </div>
