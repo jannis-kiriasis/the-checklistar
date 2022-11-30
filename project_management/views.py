@@ -46,10 +46,37 @@ class ProjectDetails(View):
                 "project": project,
                 "approvals": approvals,
                 "comment_form": CommentForm(),
-                "comments": comments
-            }
+                "comments": comments,
+            },
             )
+            
+    def post(self, request, slug, *args, **kwargs):
+        queryset = Project.objects
+        project = get_object_or_404(queryset, slug=slug)
+        approvals = project.approvals.all()
+        comments = project.comments.order_by("created_on")
 
+        comment_form = CommentForm(data=request.POST)
+
+        if comment_form.is_valid():
+            comment_form.instance.email = request.user.email
+            comment_form.instance.name = request.user.username
+            comment = comment_form.save(commit=False)
+            comment.project = project
+            comment.save()
+        else:
+            comment_form - CommentForm()
+
+        return render(
+            request,
+            "project-details.html",
+            {
+                "project": project,
+                "approvals": approvals,
+                "comment_form": CommentForm(),
+                "comments": comments,
+            },
+            )
 
 # def CreateProject(request):
 #     users = User.objects.all()

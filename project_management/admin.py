@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, ProjectApproval, UserProfile
+from .models import Project, ProjectApproval, UserProfile, Comment
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -28,3 +28,10 @@ class UserProfileAdmin(SummernoteModelAdmin):
 
     list_filter = ('user', 'department')
     list_display = ('user', 'department')
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'body', 'project', 'created_on')
+    list_filter = ('name', 'created_on')
+    search_fields = ('name', 'email', 'body')

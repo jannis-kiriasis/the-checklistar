@@ -89,3 +89,18 @@ select {
     padding-bottom: 32px;
 }
 
+.row .col.m3 {
+    border: 2px solid #48a9a610 !important;
+    padding: 20px !important;
+    margin: 20px !important;
+    border-radius: 5px;
+    background-color: #48a9a605;
+    ;
+}
+
+.comment-box {
+    border: 1px solid #48a9a610 !important;
+    padding: 2px 15px !important;
+    border-radius: 5px;
+    background-color: #48a9a605;
+}
