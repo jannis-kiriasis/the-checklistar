@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic, View
 from django.forms import inlineformset_factory
 from .models import Project, ProjectApproval, UserProfile, User
-from .forms import ProjectForm, ApproverForm, CommentForm, ApproverFormSet
+from .forms import ProjectForm, ApproverForm, CommentForm, ApproverFormSet, EditApproverFormSet
 
 
 # ProjectList view for dashboard.html. Shows all the projects with related
@@ -101,19 +101,22 @@ def CreateProject(request):
 
 def EditProject(request, project_id):
     project = get_object_or_404(Project, id=project_id)
-    approver = get_list_or_404(ProjectApproval, project_id=project_id)
+    form = ProjectForm(instance=project)
+    approver_form = EditApproverFormSet(instance=project)
     if request.method == "POST":
         form = ProjectForm(request.POST, request.FILES, instance=project)
-        approver_form = ApproverForm(request.POST, instance=approver)
         if form.is_valid():
             project = form.save()
+            approver_form = EditApproverFormSet(request.POST, instance=project)
             if approver_form.is_valid():
-                approver = approver_form.save(commit=False)
-                approver.project = project
-                approver.save()
-            return redirect('dashboard')
-    form = ProjectForm(instance=project)
-    approver_form = ApproverForm(instance=approver)
+                approver_form.save()
+                return redirect('dashboard')
+            else:
+                print('Approver form is invalid')
+                print(approver_form)
+        else:
+            print('form invalid')
+
     context = {
         'form': form,
         'approver_form': approver_form

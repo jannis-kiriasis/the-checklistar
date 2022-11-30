@@ -4,11 +4,23 @@
 
 <div class="container margin-bottom ">
   <h1>Edit project</h1>
+
   <form enctype="multipart/form-data" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    {{ approver_form.as_p }}
-    <button class="btn" type="submit">Update project</button>
+
+    {{ approver_form.management_form }}
+    <div class="add-approvers">
+    <div id="form-container">
+      <h2>Approvers</h2>
+      {% for approver in approver_form %}
+      <div class="approver-form">
+        {{ approver.as_p }}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+    <button class="btn margin-top" type="submit">Update project</button>
   </form>
 </div>
 
