@@ -16,7 +16,7 @@ class UserProfile(models.Model):
     department = models.CharField(max_length=80)
 
     def __str__(self):
-        return f"Employee: {self.user} | Department: {self.department}"
+        return f"{self.user}"
 
 
 # Project model. Contains all the information related to a project,
