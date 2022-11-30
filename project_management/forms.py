@@ -1,7 +1,8 @@
 from .models import Project, ProjectApproval, User, UserProfile, Comment
 from django import forms
 
-#Create a project form
+# Create a project form
+
 
 class ProjectForm(forms.ModelForm):
 
@@ -10,7 +11,7 @@ class ProjectForm(forms.ModelForm):
         fields = ['title', 'owner', 'description', 'document']
 
 
-#Create project approvers form to be assigned to a project
+# Create project approvers form to be assigned to a project
 
 
 class ApproverForm(forms.ModelForm):
@@ -20,7 +21,7 @@ class ApproverForm(forms.ModelForm):
         fields = ['approver', 'approver_department', 'approval_due_by']
 
 
-#Create comments form form to be assigned to a project
+# Create comments form form to be assigned to a project
 
 
 class CommentForm(forms.ModelForm):

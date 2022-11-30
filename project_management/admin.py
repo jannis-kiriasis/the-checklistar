@@ -3,6 +3,10 @@ from .models import Project, ProjectApproval, UserProfile, Comment
 from django_summernote.admin import SummernoteModelAdmin
 
 
+class ApprovalInline(admin.TabularInline):
+    model = ProjectApproval
+
+
 @admin.register(Project)
 class ProjectAdmin(SummernoteModelAdmin):
 
@@ -10,6 +14,9 @@ class ProjectAdmin(SummernoteModelAdmin):
     list_filter = ('status', 'date_created', 'owner')
     list_display = ('title', 'owner', 'date_created', 'status')
     summernote_fields = ('description')
+    inlines = [
+        ApprovalInline
+    ]
 
 
 @admin.register(ProjectApproval)
