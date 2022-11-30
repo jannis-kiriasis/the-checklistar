@@ -33,6 +33,8 @@ class Project(models.Model):
     document = CloudinaryField('document', null=True, default=None, blank=True)
     description = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
+    due = models.DateField(null=True, blank=True)
+
     status = models.IntegerField(choices=PROJECT_STATUS, default=0)
 
     class Meta:

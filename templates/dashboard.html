@@ -12,7 +12,7 @@
                         Title: {{ project.title }}
                     </span>
                     <p>Owner: {{ project.owner }}<br>
-                        Due date:<br>
+                        Due date: {{ project.due }}<br>
                     </p>
                     {% if project.document %}
                     <a href="{{ project.document.url }}" download target="_blank"><i class="small material-icons left">attachment</i></a>

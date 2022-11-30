@@ -14,6 +14,7 @@
           <p><span class="bold">id:</span> {{ project.id }}</p>
           <p><span class="bold">Owner:</span> {{ project.owner }}</p>
           <p><span class="bold">Created on:</span> {{ project.date_created }}</p>
+          <p><span class="bold">Due on:</span> {{ project.due }}</p>
           {% if project.document.url %}
           <p><span class="bold">File:</span><a href=" {{ project.document.url }}" download target="_blank"> Open attachment</a></p>
           {% endif %}

@@ -10,7 +10,7 @@ class ProjectForm(forms.ModelForm):
 
     class Meta:
         model = Project
-        fields = ['title', 'owner', 'description', 'document']
+        fields = ['title', 'owner', 'description', 'document', 'due']
 
 
 # Create project approvers form to be assigned to a project
