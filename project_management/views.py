@@ -158,3 +158,21 @@ def CompleteProject(request, project_id):
     project.status = not 0
     project.save()
     return redirect('dashboard')
+
+
+# ProjectList view for my-projects.html. Shows all the projects opened by the
+# signed in user
+
+
+def MyProjectList(request):
+    user = request.user.id
+    projects = Project.objects.filter(owner=user).order_by('status','due')
+    projectId = Project.objects.values_list('id')
+    approvals = ProjectApproval.objects.all()
+
+    context = {
+        'projects': projects,
+        'approvals': approvals
+    }
+
+    return render(request, 'my-projects.html', context)

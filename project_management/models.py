@@ -67,7 +67,7 @@ class ProjectApproval(models.Model):
     approved = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"Project: {self.project} | Approver: {self.approver} | Department: {self.approver_department}"
+        return f"Project: {self.project} | Approver: {self.approver} | Department: {self.approver.department}"
 
 
 # Comments model
