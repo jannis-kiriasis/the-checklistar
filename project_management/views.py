@@ -10,7 +10,7 @@ from .forms import ProjectForm, ApproverForm, CommentForm, ApproverFormSet, Edit
 
 
 def ProjectList(request):
-    projects = Project.objects.order_by('-date_created')
+    projects = Project.objects.order_by('status','due')
     projectId = Project.objects.values_list('id')
     approvals = ProjectApproval.objects.all()
 
@@ -147,4 +147,14 @@ def ApproveProject(request, projectApproval_id):
 def DeleteProject(request, project_id):
     project = get_object_or_404(Project, id=project_id)
     project.delete()
+    return redirect('dashboard')
+
+
+# view to complete the projcts in the project-details template
+
+
+def CompleteProject(request, project_id):
+    project = get_object_or_404(Project, id=project_id)
+    project.status = not 0
+    project.save()
     return redirect('dashboard')

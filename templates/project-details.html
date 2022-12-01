@@ -18,21 +18,36 @@
           {% if project.document.url %}
           <p><span class="bold">File:</span><a href=" {{ project.document.url }}" download target="_blank"> Open attachment</a></p>
           {% endif %}
+          <div>
+            {% if project.status == 0 %}
+            <p class="not-approved">
+                <i class="material-icons">clear</i>
+            </p>
+            {% else %}
+            <p class="approved">
+                <i class="material-icons">check_circle
+                </i>
+            </p>
+            {% endif %}
+        </div>
           <h3>Description</h3>
           {{ project.description }}
 
           <!-- Project actions edit and delete -->
-          {% if user == project.owner %}
+          {% if user == project.owner and project.status == 0 %}
           <div>
             <hr>
             <a href="/edit/{{ project.id }}" class="btn btn-small">EDIT PROJECT</a>
             <a href="/delete/{{ project.id }}" class="btn btn-small red">DELETE PROJECT</a>
+            <a href="/complete/{{ project.id }}" class="btn btn-small tan">COMPLETE PROJECT</a>
+
           </div>
           {% else %}
           <div>
             <hr>
             <a href="/edit/{{ project.id }}" class="btn btn-small disabled">EDIT PROJECT</a>
             <a href="/delete/{{ project.id }}" class="btn btn-small red disabled">DELETE PROJECT</a>
+            <a href="/complete/{{ project.id }}" class="btn btn-small tan disabled">COMPLETE PROJECT</a>
           </div>
           {% endif %}
 

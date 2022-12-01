@@ -9,4 +9,6 @@ urlpatterns = [
     path('edit/<project_id>', views.EditProject, name='edit'),
     path('approve/<projectApproval_id>', views.ApproveProject, name='approve'),
     path('delete/<project_id>', views.DeleteProject, name='delete'),
+    path('complete/<project_id>', views.CompleteProject, name='complete'),
+
 ]
