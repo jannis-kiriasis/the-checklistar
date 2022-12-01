@@ -22,8 +22,8 @@ class ProjectAdmin(SummernoteModelAdmin):
 @admin.register(ProjectApproval)
 class ProjectApprovalAdmin(SummernoteModelAdmin):
 
-    list_filter = ('project', 'approver', 'approver_department')
-    list_display = ('id', 'project', 'approver', 'approver_department', 'approved')
+    list_filter = ('project', 'approver')
+    list_display = ('id', 'project', 'approver', 'approved')
     actions = ['approve_projects']
 
     def approve_projects(self, request, queryset):

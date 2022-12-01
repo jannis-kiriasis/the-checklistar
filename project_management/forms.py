@@ -20,13 +20,12 @@ class ApproverForm(forms.ModelForm):
 
     class Meta:
         model = ProjectApproval
-        fields = ['approver', 'approver_department', 'approval_due_by']
+        fields = ['approver', 'approval_due_by']
 
 
 ApproverFormSet = inlineformset_factory(
     Project, ProjectApproval, fields=(
         'approver',
-        'approver_department',
         'approval_due_by'
     ),
     extra=1
@@ -35,7 +34,6 @@ ApproverFormSet = inlineformset_factory(
 EditApproverFormSet = inlineformset_factory(
     Project, ProjectApproval, fields=(
         'approver',
-        'approver_department',
         'approval_due_by'
     ),
     extra=0

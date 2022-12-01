@@ -58,7 +58,7 @@
           <h3>Approvals</h3>
           {% for approval in approvals %}
           <p><span class="bold">Department:</span> 
-            {{ approval.approver_department }}<br>
+            {{ approval.approver.department }}<br>
             <span class="bold">Approver:</span> 
             {{ approval.approver }}<br>
             {% if approval.approved %}

@@ -16,7 +16,7 @@ class UserProfile(models.Model):
     department = models.CharField(max_length=80)
 
     def __str__(self):
-        return f"{self.user}"
+        return f"{self.user} | {self.department}"
 
 
 # Project model. Contains all the information related to a project,
@@ -58,7 +58,7 @@ class ProjectApproval(models.Model):
     project = models.ForeignKey(
         Project, on_delete=models.CASCADE, related_name="approvals"
         )
-    approver_department = models.CharField(max_length=80)
+    # approver_department = models.CharField(max_length=80)
     approver = models.ForeignKey(
         UserProfile, on_delete=models.CASCADE, related_name='approvers'
     )
