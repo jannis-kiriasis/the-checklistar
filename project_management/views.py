@@ -3,7 +3,7 @@ from django.views import generic, View
 from django.forms import inlineformset_factory
 from .models import Project, ProjectApproval, UserProfile, User
 from .forms import ProjectForm, ApproverForm, CommentForm, ApproverFormSet, EditApproverFormSet
-from django.db.models import Exists, OuterRef, Q
+from django.utils import timezone
 
 
 # ProjectList view for dashboard.html. Shows all the projects with related
@@ -131,6 +131,7 @@ def EditProject(request, project_id):
 def ApproveProject(request, projectApproval_id):
     approver = get_object_or_404(ProjectApproval, id=projectApproval_id)
     approver.approved = not approver.approved
+    approver.approval_date = timezone.now()
     approver.save()
     return redirect('dashboard')
 

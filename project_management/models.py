@@ -58,7 +58,6 @@ class ProjectApproval(models.Model):
     project = models.ForeignKey(
         Project, on_delete=models.CASCADE, related_name="approvals"
         )
-    # approver_department = models.CharField(max_length=80)
     approver = models.ForeignKey(
         UserProfile, on_delete=models.CASCADE, related_name='approvers'
     )
