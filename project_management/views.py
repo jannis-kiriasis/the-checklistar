@@ -3,6 +3,7 @@ from django.views import generic, View
 from django.forms import inlineformset_factory
 from .models import Project, ProjectApproval, UserProfile, User
 from .forms import ProjectForm, ApproverForm, CommentForm, ApproverFormSet, EditApproverFormSet
+from django.db.models import Exists, OuterRef, Q
 
 
 # ProjectList view for dashboard.html. Shows all the projects with related
@@ -176,3 +177,26 @@ def MyProjectList(request):
     }
 
     return render(request, 'my-projects.html', context)
+
+
+# MyApprovalsList view for my-approvals.html. Shows all the projects that the 
+# logged in user needs to approve
+
+
+def MyApprovalsList(request):
+    user = request.user.id
+    project = Project.objects.all()
+    projects = Project.objects.distinct().filter(
+        approvals__approver_id=user
+        ).order_by(
+            'due', 'status'
+        )
+    approvals = ProjectApproval.objects.all()
+
+    context = {
+        'projects': projects,
+        'approvals': approvals
+
+    }
+
+    return render(request, 'my-approvals.html', context)
