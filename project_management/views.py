@@ -91,6 +91,9 @@ def CreateProject(request):
             approver_form = ApproverFormSet(request.POST, instance=project)
             if approver_form.is_valid():
                 approver_form.save()
+                approver = ProjectApproval.objects.latest('project_id')
+                create_notification(request, approver.approver.user, 'added_approver', extra_id=project.slug)
+
                 return redirect('dashboard')
         else:
             print('form invalid')

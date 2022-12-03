@@ -26,6 +26,11 @@
                         <strong>{{ notification.created_by.username }}</strong> approved a project<br>
                         <small>{{ notification.created_at|timesince }} ago</small>
                     </a>
+                {% elif notification.notification_type == 'added_approver' %}
+                    <a href="{% url 'notifications' %}?goto=project-details&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
+                        <strong>{{ notification.created_by.username }}</strong> added you as an approver to a new project<br>
+                        <small>{{ notification.created_at|timesince }} ago</small>
+                    </a>                
                 {% endif %}
             </p>
         </div>

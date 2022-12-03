@@ -6,6 +6,7 @@ from .models import Notification
 # From https://www.youtube.com/watch?v=C8pYT1R8yo4&ab_channel=CodeWithStein
 # edited as needed
 
+
 @login_required
 def notifications(request):
     goto = request.GET.get('goto', '')
@@ -20,6 +21,8 @@ def notifications(request):
         if notification.notification_type == Notification.COMMENT:
             return redirect('project-details', slug=notification.extra_id)
         elif notification.notification_type == Notification.APPROVAL:
+            return redirect('project-details', slug=notification.extra_id)
+        elif notification.notification_type == Notification.ADDED_APPROVER:
             return redirect('project-details', slug=notification.extra_id)
 
     return render(request, 'notifications.html')

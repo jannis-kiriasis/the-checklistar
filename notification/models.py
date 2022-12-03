@@ -10,10 +10,12 @@ from project_management.models import UserProfile
 class Notification(models.Model):
     COMMENT = 'comment'
     APPROVAL = 'approval'
+    ADDED_APPROVER = 'added_approver'
 
     CHOICES = (
         (COMMENT, 'Comment'),
-        (APPROVAL, 'Approval')
+        (APPROVAL, 'Approval'),
+        (ADDED_APPROVER, 'Added_approval')        
     )
 
     to_user = models.ForeignKey(User, related_name='notifications', on_delete=models.CASCADE)
