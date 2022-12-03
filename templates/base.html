@@ -46,6 +46,7 @@
               <ul class="right hide-on-med-and-down">
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn">Create project</a></li>
+                <li><a href="#">Notifications centre ({{ notifications.count }})</a></li>
                 <li><a href="{% url 'dashboard' %}">All projects</a></li>
                 <li><a href="{% url 'my-projects' %}">My projects</a></li>
                 <li><a href="{% url 'my-approvals' %}">Need my approval</a></li>
@@ -61,6 +62,7 @@
           <ul class="sidenav" id="mobile-demo">
             {% if user.is_authenticated %}
             <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn">Create project</a></li>
+            <li><a href="#">Notifications centre {{ Notifications.count }}</a></li>
             <li><a href="{% url 'dashboard' %}">All projects</a></li>
             <li><a href="{% url 'my-projects' %}">My projects</a></li>
             <li><a href="{% url 'my-approvals' %}">Need my approval</a></li>
