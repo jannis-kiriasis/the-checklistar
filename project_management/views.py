@@ -4,6 +4,7 @@ from django.forms import inlineformset_factory
 from .models import Project, ProjectApproval, UserProfile, User
 from .forms import ProjectForm, ApproverForm, CommentForm, ApproverFormSet, EditApproverFormSet
 from django.utils import timezone
+from notification.utilities import create_notification
 
 
 # ProjectList view for dashboard.html. Shows all the projects with related
@@ -133,6 +134,9 @@ def ApproveProject(request, projectApproval_id):
     approver.approved = not approver.approved
     approver.approval_date = timezone.now()
     approver.save()
+
+    create_notification(request, approver.approver.user, 'approval', extra_id=approver.project.slug)
+
     return redirect('dashboard')
 
 # view to delete approvers the projcts in the project-details template

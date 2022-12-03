@@ -1,6 +1,6 @@
 from .models import Notification
 
-# Create context processor for notifications 
+# Create context processor for notifications
 # Code from https://www.youtube.com/watch?v=C8pYT1R8yo4&ab_channel=CodeWithStein
 
 

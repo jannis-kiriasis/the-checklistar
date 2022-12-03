@@ -12,4 +12,5 @@ urlpatterns = [
     path('complete/<project_id>', views.CompleteProject, name='complete'),
     path('my-projects', views.MyProjectList, name='my-projects'),
     path('my-approvals', views.MyApprovalsList, name='my-approvals'),
+    path('notifications', include('notification.urls')),
 ]
