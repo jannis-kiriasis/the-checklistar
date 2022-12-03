@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
 from django.views import generic, View
 from django.forms import inlineformset_factory
 from .models import Project, ProjectApproval, UserProfile, User
@@ -59,9 +59,15 @@ class ProjectDetails(View):
             comment = comment_form.save(commit=False)
             comment.project = project
             comment.save()
-
-            create_notification(request, request.user, 'comment', extra_id=project.slug)
-
+            
+            # approval = ProjectApproval.objects.filter(project=project)
+             
+            # if request.user == project.owner:
+            #     create_notification(request, project.owner, 'comment', extra_id=project.slug)
+            #     create_notification(request, approval.approver.user, 'comment', extra_id=project.slug)
+            # if request.user == approval.approver.user:
+            #     create_notification(request, project.owner, 'comment', extra_id=project.slug)
+            #     create_notification(request, project.owner, 'comment', extra_id=project.slug)
         else:
             comment_form = CommentForm()
 
@@ -91,8 +97,14 @@ def CreateProject(request):
             approver_form = ApproverFormSet(request.POST, instance=project)
             if approver_form.is_valid():
                 approver_form.save()
-                approver = ProjectApproval.objects.latest('project_id')
-                create_notification(request, approver.approver.user, 'added_approver', extra_id=project.slug)
+                
+                last_project = Project.objects.latest('date_created')
+                approvals = ProjectApproval.objects.all()
+
+                approver = get_list_or_404(approvals, project=last_project)
+
+                for approver in approver:
+                    create_notification(request, approver.approver.user, 'added_approver', extra_id=project.slug)
 
                 return redirect('dashboard')
         else:
