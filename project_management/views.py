@@ -141,7 +141,7 @@ def ApproveProject(request, projectApproval_id):
     approver.approval_date = timezone.now()
     approver.save()
 
-    create_notification(request, approver.approver.user, 'approval', extra_id=approver.project.slug)
+    create_notification(request, approver.project.owner, 'approval', extra_id=approver.project.slug)
 
     return redirect('dashboard')
 
