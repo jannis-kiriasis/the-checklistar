@@ -60,16 +60,20 @@ class ProjectDetails(View):
             comment.project = project
             comment.save()
             
+            # get all approvers of this project for if statement
             project_approvals = ProjectApproval.objects.all()
+            approver_list = get_list_or_404(project_approvals, project=project)
 
-            approver = get_list_or_404(project_approvals, project=project)
-
+            # get logged in user for elif statement
+            # project_approvals_by_user_id = ProjectApproval.objects.filter(approver_id=request.user.id)
+            # approver = get_object_or_404(project_approvals_by_user_id, project=project)
+    
             if request.user == project.owner:
-                for approver in approver:
+                for approver in approver_list:
                     create_notification(request, approver.approver.user, 'comment', extra_id=project.slug)
+            else:
+                create_notification(request, project.owner, 'comment', extra_id=project.slug)
 
-            # if request.user == approval.approver.user:
-            #     create_notification(request, project.owner, 'comment', extra_id=project.slug)
         else:
             comment_form = CommentForm()
 
