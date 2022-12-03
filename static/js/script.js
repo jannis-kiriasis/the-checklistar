@@ -1,6 +1,7 @@
-let approverForm = document.querySelectorAll(".approver-form")
-let container = document.querySelector("#form-container")
-let addButton = document.querySelector("#add-approver")
+let approverForm = document.querySelectorAll(".approver-form");
+let container = document.querySelector("#form-container");
+let addButton = document.querySelector("#add-approver");
+const deleteProject = document.querySelector("#delete");
 
 // Get input with total number of forms
 let totalForms = document.querySelector("#id_approvals-TOTAL_FORMS")
@@ -42,3 +43,12 @@ function addForm(e) {
     //Increment the number of total forms in the management form
     totalForms.setAttribute('value', `${formNum+1}`) 
 }
+
+// SweetAlert fire modal on delete project click
+
+deleteProject.addEventListener('click', function(){
+    Swal.fire({
+        text: "Your name cannot be blank. Try Again!",
+        customClass: "swalButton",
+      });
+    });
