@@ -59,10 +59,16 @@
           </nav>
         
           <ul class="sidenav" id="mobile-demo">
-            <li><a href="{% url 'dashboard' %}">All projects</a></li>
-            <li><a href="">My open projects</a></li>
-            <li><a href="#">Need my approval</a></li>
+            {% if user.is_authenticated %}
             <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn">Create project</a></li>
+            <li><a href="{% url 'dashboard' %}">All projects</a></li>
+            <li><a href="{% url 'my-projects' %}">My projects</a></li>
+            <li><a href="{% url 'my-approvals' %}">Need my approval</a></li>
+            <li><a href="{% url 'account_logout' %}">Logout</a></li>
+            {% else %} 
+            <li><a href="{% url 'account_signup' %}">Sign up</a></li>
+            <li><a href="{% url 'account_login' %}" class="waves-effect waves-light btn">Login</a></li>
+            {% endif %}
           </ul>
                   
     </header>
@@ -75,9 +81,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col l6 s12">
-                        <h5 class="white-text">Footer Content</h5>
-                        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
-                            content.</p>
+                        <h5 class="white-text">The Checklistar</h5>
+                        <p class="grey-text text-lighten-4">A project management system designed to bring your projects from A to Z.</p>
                     </div>
                 </div>
             </div>
