@@ -49,7 +49,7 @@ class ProjectDetails(View):
         queryset = Project.objects
         project = get_object_or_404(queryset, slug=slug)
         approvals = project.approvals.all()
-        comments = project.comments.order_by("created_on")
+        comments = project.comments.order_by("-created_on")
 
         comment_form = CommentForm(data=request.POST)
 
@@ -59,6 +59,9 @@ class ProjectDetails(View):
             comment = comment_form.save(commit=False)
             comment.project = project
             comment.save()
+
+            create_notification(request, request.user, 'comment', extra_id=project.slug)
+
         else:
             comment_form = CommentForm()
 

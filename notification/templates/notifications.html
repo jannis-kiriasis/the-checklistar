@@ -17,12 +17,12 @@
         <div class="notification">
             <p>
                 {% if notification.notification_type == 'comment' %}
-                    <a href="{% url 'notifications' %}?goto=project-details&{{ notification.extra_id }}">
+                    <a href="{% url 'notifications' %}?goto=project-details&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
                         <strong>{{ notification.created_by.username }}</strong> added a comment<br>
                         <small>{{ notification.created_at|timesince }} ago</small>
                     </a>
                 {% elif notification.notification_type == 'approval' %}
-                    <a href="{% url 'notifications' %}?goto=project-details&{{ notification.extra_id }}">
+                    <a href="{% url 'notifications' %}?goto=project-details&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
                         <strong>{{ notification.created_by.username }}</strong> approved a project<br>
                         <small>{{ notification.created_at|timesince }} ago</small>
                     </a>
