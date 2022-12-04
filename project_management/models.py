@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.text import slugify
 
-
 PROJECT_STATUS = ((0, 'Not completed'), (1, 'Completed'))
 
 # UserProfile model: stores user information that aren't in User model
