@@ -6,6 +6,7 @@ const deleteButton = document.getElementById("delete");
 const approveButton = document.getElementById("approve");
 const confirmButton = document.getElementById("confirm");
 const editButton = document.getElementById("edit");
+const completeButton = document.getElementById("complete");
 
 // Get message box
 const message = document.getElementById("message");
@@ -21,19 +22,43 @@ let totalForms = document.querySelector("#id_approvals-TOTAL_FORMS")
 // Get the number of the last form on the page with zero-based indexing
 let formNum = approverForm.length-1 
 
-addButton.addEventListener('click', addForm)
+if (addButton){
+  addButton.addEventListener('click', addForm)
+} 
 
 // Event listeners for SweetAlerts defensive design
-deleteButton.addEventListener('click', confirmDelete);
-approveButton.addEventListener('click', confirmApprove);
-completeButton.addEventListener('click', confirmComplete);
-editButton.addEventListener('click', confirmEdit);
+
+if(deleteButton){
+  deleteButton.addEventListener('click', confirmDelete);
+}
+
+if(approveButton){
+  approveButton.addEventListener('click', confirmApprove);
+}
+
+if(completeButton){
+  completeButton.addEventListener('click', confirmComplete);
+}
+
+if(editButton){
+  editButton.addEventListener('click', confirmEdit);
+}
+
+if (editButton) {
+  editButton.addEventListener('click', confirmEdit);
+}
 
 // On DOM content loaded initialize sidenav
 document.addEventListener("DOMContentLoaded", function() {
-    // sidenav initialization
-    let sidenav = document.querySelectorAll(".sidenav");
-    M.Sidenav.init(sidenav);
+
+  let collapsible = document.querySelectorAll('.collapsible');
+  M.Collapsible.init(collapsible);
+
+  // sidenav initialization
+  let sidenav = document.querySelectorAll(".sidenav");
+  M.Sidenav.init(sidenav);
+
+
 })
 
 // The following function to add dynamic form fields comes from
