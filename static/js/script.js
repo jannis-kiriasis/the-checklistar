@@ -12,6 +12,8 @@ let totalForms = document.querySelector("#id_approvals-TOTAL_FORMS")
 // Get the number of the last form on the page with zero-based indexing
 let formNum = approverForm.length-1 
 
+addButton.addEventListener('click', addForm)
+
 // Event listeners for SweetAlerts defensive design
 deleteButton.addEventListener('click', confirmDelete);
 approveButton.addEventListener('click', confirmApprove);
@@ -28,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function() {
 // https://www.brennantymrak.com/articles/django-dynamic-formsets-javascript
 // and it has been edited to suit this project
 
-addButton.addEventListener('click', addForm)
 
 function addForm(e) {
     e.preventDefault()

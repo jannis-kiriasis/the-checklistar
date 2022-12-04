@@ -31,8 +31,8 @@ class ProjectDetails(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Project.objects
         project = get_object_or_404(queryset, slug=slug)
-        approvals = project.approvals.all()
-        comments = project.comments.order_by("created_on")
+        approvals = project.approvals.order_by("created_on")
+        comments = project.comments.order_by("-created_on")
 
         return render(
             request,
@@ -48,7 +48,7 @@ class ProjectDetails(View):
     def post(self, request, slug, *args, **kwargs):
         queryset = Project.objects
         project = get_object_or_404(queryset, slug=slug)
-        approvals = project.approvals.all()
+        approvals = project.approvals.order_by("created_on")
         comments = project.comments.order_by("-created_on")
 
         comment_form = CommentForm(data=request.POST)

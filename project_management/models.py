@@ -64,6 +64,7 @@ class ProjectApproval(models.Model):
     approval_date = models.DateField(null=True, blank=True)
     approval_due_by = models.DateField(null=True, blank=True)
     approved = models.BooleanField(default=False)
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Project: {self.project} | Approver: {self.approver} | Department: {self.approver.department}"
