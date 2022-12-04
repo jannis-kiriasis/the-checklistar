@@ -1,7 +1,7 @@
 let approverForm = document.querySelectorAll(".approver-form");
 let container = document.querySelector("#form-container");
 let addButton = document.querySelector("#add-approver");
-const deleteProject = document.querySelector("#delete");
+const deleteProject = document.getElementById("delete");
 
 // Get input with total number of forms
 let totalForms = document.querySelector("#id_approvals-TOTAL_FORMS")
@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // sidenav initialization
     let sidenav = document.querySelectorAll(".sidenav");
     M.Sidenav.init(sidenav);
+    deleteProject.addEventListener('click', confirmDelete)
+
 })
 
 // The following function to add dynamic form fields comes from
@@ -44,11 +46,32 @@ function addForm(e) {
     totalForms.setAttribute('value', `${formNum+1}`) 
 }
 
-// SweetAlert fire modal on delete project click
 
-deleteProject.addEventListener('click', function(){
+// Delete project defensive design with SweetAlerts2
+// Get href url, prevent button click, fire SweetAlerts2, 
+// after defensive design redirect to /delete/{{ project.id }}
+
+function goToDeleteUrl() {
+    let href = document.getElementById('delete').getAttribute('href')
+    window.location.href = `${href}`;
+}
+
+function confirmDelete(event){
+    event.preventDefault()
     Swal.fire({
-        text: "Your name cannot be blank. Try Again!",
-        customClass: "swalButton",
-      });
-    });
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        iconColor: 'var(--tan)',
+        showCancelButton: true,
+        confirmButtonColor: 'var(--fuzzy-wuzzy)',
+        cancelButtonColor: 'var(--liberty)',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            goToDeleteUrl();
+        }
+      })
+    }
+
+

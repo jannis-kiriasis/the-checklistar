@@ -26,9 +26,12 @@
     <link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico">
 
     <!-- External links and styles -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/ee196b5910.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Sweet alert script - To use Sweet alerts (Swal.fire in JS files) -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -73,7 +76,23 @@
             <li><a href="{% url 'account_login' %}" class="waves-effect waves-light btn">Login</a></li>
             {% endif %}
           </ul>
-                  
+
+    <div class="container">
+        <div class="row">
+            <div class="col m-12">
+                {% for message in messages %}
+                <div id="message" class="alert card green lighten-4 green-text text-darken-4 message">
+                    <div class="card-content">
+                        <p><i class="material-icons">check_circle</i>{{ message | safe }}</p>
+                    </div>
+                </div>
+            
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>                  
     </header>
     <main>
         {% block content %}

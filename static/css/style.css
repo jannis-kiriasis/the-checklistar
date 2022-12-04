@@ -41,6 +41,18 @@ nav,
 
 }
 
+.alert .card-content span {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-right: 4px;
+  }
+  .alert .card-content .material-icons {
+    font-size: 1.5em;
+    position: relative;
+    top: 5px;
+    margin-right: 0.5em;
+  }
+
 /* Dashboard template */
 
 .block{
@@ -125,3 +137,4 @@ select {
     border: 1px solid #d4b48315 !important;
     border-radius: 5px;
 }
+
