@@ -60,6 +60,8 @@ class ProjectDetails(View):
             comment = comment_form.save(commit=False)
             comment.project = project
             comment.save()
+            messages.success(request, 'You have commented successfully.')
+
             
             # get all approvers of this project for if statement
             project_approvals = ProjectApproval.objects.all()
@@ -104,7 +106,8 @@ def CreateProject(request):
             approver_form = ApproverFormSet(request.POST, instance=project)
             if approver_form.is_valid():
                 approver_form.save()
-                
+                messages.success(request, 'You have created a new project!')
+
                 last_project = Project.objects.latest('date_created')
                 approvals = ProjectApproval.objects.all()
 
@@ -138,7 +141,7 @@ def EditProject(request, project_id):
             
             if approver_form.is_valid():
                 approver_form.save()
-                messages.success(request, 'Project details updated')
+                messages.success(request, 'Project details have been updated successfully.')
                 return redirect('dashboard')
             else:
                 print('Approver form is invalid')
@@ -162,6 +165,7 @@ def ApproveProject(request, projectApproval_id):
     approver.approved = not approver.approved
     approver.approval_date = timezone.now()
     approver.save()
+    messages.success(request, 'You have approved the project.')
 
     create_notification(request, approver.project.owner, 'approval', extra_id=approver.project.slug)
 
@@ -181,6 +185,8 @@ def ApproveProject(request, projectApproval_id):
 def DeleteProject(request, project_id):
     project = get_object_or_404(Project, id=project_id)
     project.delete()
+    messages.success(request, 'The project has been deleted.')
+
     return redirect('dashboard')
 
 
@@ -191,6 +197,8 @@ def CompleteProject(request, project_id):
     project = get_object_or_404(Project, id=project_id)
     project.status = not 0
     project.save()
+    messages.success(request, 'The project has been completed!')
+
     return redirect('dashboard')
 
 

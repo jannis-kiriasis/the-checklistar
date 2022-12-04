@@ -58,7 +58,7 @@ nav,
 	bottom: 5%;
 	/* transform: translate(-50%, -50%); */
   	width: auto;
-    padding: 15px 30px;
+    padding: 15px 20px;
     z-index: 1000;
     color: var(--verdigris);
     vertical-align: middle;
@@ -66,7 +66,7 @@ nav,
 
 #message > div > p > i {
     vertical-align: middle;
-    margin: 15px;
+    margin: 10px;
 }
 
 /* Dashboard template */
