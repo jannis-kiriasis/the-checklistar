@@ -55,7 +55,10 @@
 
         <!-- Project approvals -->
         <div class="card-content ">
-          <h3>Approvals</h3>
+          {% if approvals %}
+            <h3>Approvals</h3>
+          {% else %}
+          {% endif %}
           {% for approval in approvals %}
           <p><span class="bold">Department:</span> 
             {{ approval.approver.department }}<br>
