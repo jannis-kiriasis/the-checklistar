@@ -5,6 +5,15 @@ let addButton = document.querySelector("#add-approver");
 const deleteButton = document.getElementById("delete");
 const approveButton = document.getElementById("approve");
 const confirmButton = document.getElementById("confirm");
+const editButton = document.getElementById("edit");
+
+// Get message box
+const message = document.getElementById("message");
+
+// Make message box disappear after 5 seconds
+setTimeout(function(){ 
+  message.style.display = "none"; 
+}, 5000);
 
 // Get input with total number of forms
 let totalForms = document.querySelector("#id_approvals-TOTAL_FORMS")
@@ -18,6 +27,7 @@ addButton.addEventListener('click', addForm)
 deleteButton.addEventListener('click', confirmDelete);
 approveButton.addEventListener('click', confirmApprove);
 completeButton.addEventListener('click', confirmComplete);
+editButton.addEventListener('click', confirmEdit);
 
 // On DOM content loaded initialize sidenav
 document.addEventListener("DOMContentLoaded", function() {
@@ -136,3 +146,21 @@ function confirmComplete(event){
         }
       })
     }
+
+
+// Edit project defensive design with SweetAlerts2
+// Get href url, prevent button click, fire SweetAlerts2, 
+
+
+function confirmEdit(){
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    iconColor: 'var(--verdigris)',
+    title: 'Your project has been updated!',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  }
+
+

@@ -5,6 +5,7 @@ from .models import Project, ProjectApproval, UserProfile, User
 from .forms import ProjectForm, ApproverForm, CommentForm, ApproverFormSet, EditApproverFormSet
 from django.utils import timezone
 from notification.utilities import create_notification
+from django.contrib import messages
 
 
 # ProjectList view for dashboard.html. Shows all the projects with related
@@ -134,8 +135,10 @@ def EditProject(request, project_id):
         if form.is_valid():
             project = form.save()
             approver_form = EditApproverFormSet(request.POST, instance=project)
+            
             if approver_form.is_valid():
                 approver_form.save()
+                messages.success(request, 'Project details updated')
                 return redirect('dashboard')
             else:
                 print('Approver form is invalid')
@@ -148,6 +151,7 @@ def EditProject(request, project_id):
         'approver_form': approver_form
     }
     return render(request, 'edit-project.html', context)
+
 
 
 # view to approve the projcts in the project-details template

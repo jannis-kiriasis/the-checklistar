@@ -77,21 +77,13 @@
             {% endif %}
           </ul>
 
-    <div class="container">
-        <div class="row">
-            <div class="col m-12">
-                {% for message in messages %}
-                <div id="message" class="alert card green lighten-4 green-text text-darken-4 message">
-                    <div class="card-content">
-                        <p><i class="material-icons">check_circle</i>{{ message | safe }}</p>
-                    </div>
-                </div>
-            
-                </div>
-                {% endfor %}
+    <div id="message">
+        {% for message in messages %}
+        <div class="comment-box">
+                <p><i class="material-icons">check_circle</i>{{ message | safe }}</p>
             </div>
         </div>
-
+        {% endfor %}
     </div>                  
     </header>
     <main>
