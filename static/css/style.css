@@ -12,6 +12,14 @@
     --fuzzy-wuzzy: #A42D2D;
 }
 
+.a-notification {
+    color: var(--liberty);
+}
+
+.a-notification:hover {
+    text-decoration: underline;
+}
+
 h1 {
     color: var(--liberty);
     font-size: 3.125rem;
@@ -98,16 +106,13 @@ select {
     display: inline-flex;
 }
 
-/* .alert .card-content span {
-    font-weight: bold;
-    font-size: 1.1em;
-    margin-right: 4px;
-  }
-  .alert .card-content .material-icons {
-    font-size: 1.5em;
-    top: 5px;
-    margin-right: 0.5em;
-  } */
+.notification-count {
+    background-color: var(--fuzzy-wuzzy) !important;
+    border-radius: 50% !important;
+    padding: 8px;
+    text-align: center;
+    line-height: 1.5;
+}
 
 #message {
     position: fixed;
@@ -199,7 +204,7 @@ select {
 }
 
 .margin-bottom {
-    padding-bottom: 32px;
+    margin-bottom: 32px;
 }
 
 .row .col.m3 {
@@ -245,4 +250,14 @@ select {
     background-color: #d4b48315 !important;
     border: 1px solid #d4b48315 !important;
     border-radius: 5px;
+}
+
+/* Create project template */
+
+.notification {
+    margin-bottom: 20px;
+}
+
+.notification:hover {
+    box-shadow: 1px 1px 1px var(--verdigris);
 }

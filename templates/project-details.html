@@ -70,47 +70,44 @@
     </div>
     {% if approvals %}
     <div class="row project-approvers padding-2rem">
-          {% for approval in approvals %}
-          {% if approval.project_id is project.id %}
-          <div class="col xs12 s6 m4 l3">
-            <h2>Approvers</h2>
-            <p><span class="bold">Department:</span>
-              {{ approval.approver.department }}
-            </p>
-            <p>
-              <span class="bold">Approver:</span>
-              {{ approval.approver }}
-            </p>
-            {% if approval.approved %}
-            <p class="bold">Approval status:
-              <span class="approved">Approved</span>
-            </p>
-            {% else %}
-            <p>
-              <span class="bold">Approval status:
-                <span class="not-approved">
-                  Not approved
-                </span>
-              </span>
-            </p>
-            {% endif %}
-  
-            {% if user.id == approval.approver_id %}
-            {% if approval.approved %}
-            {% else %}
-            <a href="/approve/{{ approval.id }}" id="approve" class="btn btn-small tan margin-top">APPROVE PROJECT</a>
-            {% endif %}
-            {% endif %}
-          {% endif %}
-          {% endfor %}
-          </div>
+      {% for approval in approvals %}
+      {% if approval.project_id is project.id %}
+      <div class="col xs12 s6 m4 l3">
+        <h2>Approvers</h2>
+        <p><span class="bold">Department:</span>
+          {{ approval.approver.department }}
+        </p>
+        <p>
+          <span class="bold">Approver:</span>
+          {{ approval.approver }}
+        </p>
+        {% if approval.approved %}
+        <p class="bold">Approval status:
+          <span class="approved">Approved</span>
+        </p>
+        {% else %}
+        <p>
+          <span class="bold">Approval status:
+            <span class="not-approved">
+              Not approved
+            </span>
+          </span>
+        </p>
+        {% endif %}
+
+        {% if user.id == approval.approver_id %}
+        {% if approval.approved %}
+        {% else %}
+        <a href="/approve/{{ approval.id }}" id="approve" class="btn btn-small tan margin-top">APPROVE PROJECT</a>
+        {% endif %}
+        {% endif %}
+      </div>
+        {% endif %}
+        {% endfor %}
     </div>
     {% else %}
     {% endif %}
   </div>
-
-
-
   <!-- Comments -->
   <div class="row">
     <!-- Section for comments form -->
@@ -128,27 +125,27 @@
       </div>
     </div>
   </div>
-  <div class="row margin-bottom">
+  <div class="row notification">
     <div class="col s12">
       {% if comments %}
       <h3>Comments</h3>
       {% endif %}
     </div>
-        <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
-        {% for comment in comments %}
-        <div class="col s12">
-          <p>
-            <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-            {{ comment.name }}
-            {{ comment.created_on }}
-            wrote:
-          </p>
-          <div class="comment-box col s12 m8">
-            {{ comment.body | linebreaks }}
-          </div>
-        </div>
-        <!-- Our for loop ends here -->
-        {% endfor %}
+    <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
+    {% for comment in comments %}
+    <div class="col s12">
+      <p>
+        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+        {{ comment.name }}
+        {{ comment.created_on }}
+        wrote:
+      </p>
+      <div class="comment-box col s12 m8">
+        {{ comment.body | linebreaks }}
       </div>
+    </div>
+    <!-- Our for loop ends here -->
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}

@@ -5,35 +5,46 @@
 <!-- Template from https://www.youtube.com/watch?v=C8pYT1R8yo4&ab_channel=CodeWithStein -->
 
 <div class="container margin-bottom ">
-    <h1 class="title">Notifications</h1>
-    
+    <h1>Notifications</h1>
+
     <!-- If there aren't notifications -->
     {% if not notifications %}
-        No new notifications!
+    <p>No new notifications!</p>
     {% endif %}
-    
+
     <!-- If there are notifications -->
     {% for notification in notifications %}
-        <div class="notification">
-            <p>
-                {% if notification.notification_type == 'comment' %}
-                    <a href="{% url 'notifications' %}?goto=project-details&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
-                        <strong>{{ notification.created_by.username }}</strong> added a comment<br>
-                        <small>{{ notification.created_at|timesince }} ago</small>
-                    </a>
-                {% elif notification.notification_type == 'approval' %}
-                    <a href="{% url 'notifications' %}?goto=project-details&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
-                        <strong>{{ notification.created_by.username }}</strong> approved a project<br>
-                        <small>{{ notification.created_at|timesince }} ago</small>
-                    </a>
-                {% elif notification.notification_type == 'added_approver' %}
-                    <a href="{% url 'notifications' %}?goto=project-details&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
-                        <strong>{{ notification.created_by.username }}</strong> added you as an approver to a new project<br>
-                        <small>{{ notification.created_at|timesince }} ago</small>
-                    </a>                
-                {% endif %}
-            </p>
+    <div class="row">
+        {% if notification.notification_type == 'comment' %}
+        <div class="comment-box notification col s12 m8 margin-bottom">
+            <a class="a-notification"
+                href="{% url 'notifications' %}?goto=project-details&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
+                <p>{{ notification.created_by.username }} added a comment. Read it now!<br>
+                    <small>{{ notification.created_at|timesince }} ago</small>
+                </p>
+            </a>
         </div>
+        {% elif notification.notification_type == 'approval' %}
+        <div class="comment-box notification col s12 m8 margin-bottom">
+            <a class="a-notification"
+                href="{% url 'notifications' %}?goto=project-details&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
+                <p>{{ notification.created_by.username }} approved a project.<br>
+                    <small>{{ notification.created_at|timesince }} ago</small>
+                </p>
+            </a>
+        </div>
+        {% elif notification.notification_type == 'added_approver' %}
+        <div class="comment-box notification col s12 m8 margin-bottom">
+            <a class="a-notification"
+                href="{% url 'notifications' %}?goto=project-details&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
+                <p>{{ notification.created_by.username }} added you as an approver to a new project. Go to approve
+                    it!<br>
+                    <small>{{ notification.created_at|timesince }} ago</small>
+                </p>
+            </a>
+        </div>
+        {% endif %}
+    </div>
     {% endfor %}
 </div>
 
