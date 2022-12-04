@@ -4,70 +4,90 @@
 <section>
     <div class="container">
         <h1>All projects</h1>
-        <div class="collection responsive-table">
-            {% for project in projects %}
-            <div class="collection-item avatar">
-                <div class="block">
-                    <span class="title bold">Id: {{ project.id }}<br>
-                        Title: {{ project.title }}
-                    </span>
-                    <p>Owner: {{ project.owner }}<br>
-                        Due date: {{ project.due }}<br>
-                    </p>
-                    {% if project.document %}
-                    <div>
-                        <a href="{{ project.document.url }}" download target="_blank"><i class="small material-icons">attachment</i></a>
+        {% for project in projects %}
+        <div class="project z-depth-1">
+            <div>
+                <div class="row">
+                    <div class=" col s6">
+                        <h2>Project Details</h2>
                     </div>
-                    {% endif %}
-                    <div>
-                        {% if project.status == 0 %}
-                        <p class="not-approved">
-                            <i class="material-icons">clear</i>
-                        </p>
-                        {% else %}
-                        <p class="approved">
-                            <i class="material-icons">check_circle
-                            </i>
-                        </p>
-                        {% endif %}
+                    <div class="col s6 right view-project">
+                        <a href="{% url 'project-details' project.slug %}" class="waves-effect waves-light btn-small">
+                            View details
+                            <i class="material-icons right">more_horiz</i>
+                        </a>
                     </div>
-
                 </div>
-            {% for approval in approvals %}
-            {% if approval.project_id is project.id %}
-            <div class="block">
-                <p><span class="bold">{{ approval.approver.user }} Sign off </span><br>
-                    {{ approval.approver.department }}<br>
-                    {% if approval.approved %}
-                    <span class="approved bold">Approved <i class="material-icons">check</i><br>
-                        on {{ approval.approval_date }}
-                    </span>
-                    {% else %}
-                    <span class="not-approved bold">Not approved <i class="material-icons">clear</i><br>
-                        due by {{ approval.approval_due_by }}
-                    </span>
-                    {% endif %}
-                </p>
+                <div class="row">
+                    <div class="col s6">
+                        <p id="title" >
+                            <span class="bold">Id:</span> {{ project.id }}
+                            <span class="bold">Title:</span> {{ project.title }}
+                        </p>
+                        <div>
+                            {% if project.document %}
+                            <a href="{{ project.document.url }}" download target="_blank"><i
+                                    class="small material-icons">attachment</i></a>
+                            {% endif %}
+                        </div>
+                        <div>
+                            {% if project.status == 0 %}
+                            <p class="not-approved">
+                                <i class="material-icons">clear</i>
+                            </p>
+                            {% else %}
+                            <p class="approved">
+                                <i class="material-icons">check_circle
+                                </i>
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <p>
+                            <span class="bold">Owner:</span> 
+                            {{ project.owner }}
+                            <span class="bold">Due date:</span> 
+                            {{ project.due|date:"SHORT_DATE_FORMAT" }}
+                        </p>
+                    </div>
+                </div>
             </div>
-            {% endif %}
-            {% endfor %}
-            <div class="right secondary-content">
-
-
-                <a href="{% url 'project-details' project.slug %}" 
-                    class="waves-effect waves-light btn-small">
-                    View details
-                    <i class="material-icons right">more_horiz</i>
-                </a>
-
-            </div>
-
-
+            <ul class="project-details collapsible">
+                <li>
+                    <div class="collapsible-header">View approvers</div>
+                    <div class="row collapsible-body">
+                        {% for approval in approvals %}
+                        {% if approval.project_id is project.id %}
+                        <div class="col xs12 s6 m4 l3">
+                            <h2>Approver</h2>
+                            <p><span class="bold">{{ approval.approver.user }}</span><br>
+                                {{ approval.approver.department }} dept<br>
+                            </p>
+                            <div class="approval">
+                                {% if approval.approved %}
+                                <i class="material-icons approved">check</i>
+                                <p class="approved bold">
+                                    on {{ approval.approval_date|date:"SHORT_DATE_FORMAT" }}
+                                    <br>
+                                </p>
+                                {% else %}
+                                <i class="material-icons not-approved">clear</i>
+                                <p class="not-approved bold">
+                                    due by {{ approval.approval_due_by|date:"SHORT_DATE_FORMAT" }}
+                                    <br>
+                                </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+            </ul>
         </div>
         {% endfor %}
-        </div>
+    </div>
 
 </section>
-
-
 {% endblock %}
