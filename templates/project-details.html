@@ -39,7 +39,7 @@
             <hr>
             <a href="/edit/{{ project.id }}" class="btn btn-small">EDIT PROJECT</a>
             <a href="/delete/{{ project.id }}" class="btn btn-small red" id="delete">DELETE PROJECT</a>
-            <a href="/complete/{{ project.id }}" class="btn btn-small tan">COMPLETE PROJECT</a>
+            <a href="/complete/{{ project.id }}" class="btn btn-small tan" id="complete">COMPLETE PROJECT</a>
 
           </div>
           {% else %}
@@ -78,7 +78,7 @@
           {% if user.id == approval.approver_id %}
           {% if approval.approved %}
           {% else %}
-          <a href="/approve/{{ approval.id }}" class="btn btn-small tan margin-top">APPROVE PROJECT</a>
+          <a href="/approve/{{ approval.id }}" id="approve" class="btn btn-small tan margin-top">APPROVE PROJECT</a>
           {% endif %}
           {% endif %}
           <hr>
