@@ -6,6 +6,7 @@
     --liberty: #3B4D97;
     --liberty-light: #e9ecf7;
     --verdigris: #48a9a6;
+    --verdigris-light: #ecf7f7;
     --timberwolf: #f4f2f0;
     --tan: #d4b483;
     --fuzzy-wuzzy: #A42D2D;
@@ -21,6 +22,13 @@ h2 {
     font-size: 1.5rem;
     margin-block-start: 10px;
     margin-block-end: 0px;
+    font-weight: 700;
+}
+
+h3 {
+    color: var(--verdigris);
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 p {
@@ -129,8 +137,13 @@ select {
 }
 
 .project-details {
+    background-color: var(--liberty-light);
+}
+
+.project-approvers {
     background-color: #ffffff;
     border-radius: 0 0 0.5rem 0.5rem;
+    border: 1px solid var(--liberty-light);
 }
 
 .approved {
@@ -199,14 +212,22 @@ select {
 }
 
 .comment-box {
-    border: 1px solid #48a9a6 !important;
+    border: 1px solid var(--verdigris-light) !important;
     padding: 2px 15px !important;
     border-radius: 5px;
-    background-color: #d2eceb;
+    background-color: var(--verdigris-light);
 }
 
 .margin-top {
     margin-top: 15px;
+}
+
+.project-container {
+    border-radius: 0.5rem;
+}
+
+.padding-2rem {
+    padding: 2rem;
 }
 
 /* Create project template */

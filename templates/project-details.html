@@ -4,66 +4,83 @@
 <div class="container">
   <h1>Project details</h1>
   <!-- Project details -->
-  <div class="row">
-    <div class="col s12 m12">
-      <div class="card darken-1">
-
-        <!-- Project generalities -->
-        <div class="card-content">
-          <h2><span class="bold">{{ project.title }}</span></h2>
-          <p><span class="bold">id:</span> {{ project.id }}</p>
-          <p><span class="bold">Owner:</span> {{ project.owner }}</p>
-          <p><span class="bold">Created on:</span> {{ project.date_created }}</p>
-          <p><span class="bold">Due on:</span> {{ project.due }}</p>
-          {% if project.document.url %}
-          <p><span class="bold">File:</span><a href=" {{ project.document.url }}" download target="_blank"> Open attachment</a></p>
-          {% endif %}
+  <div class="project-container z-depth-1">
+    <div class="project-details padding-2rem">
+      <div class="row">
+        <div class=" col s6">
+          <h2>Project Details</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6">
+          <p id="title">
+            <span class="bold">Id:</span> {{ project.id }}
+            <span class="bold">Title:</span> {{ project.title }}
+          </p>
+          <div>
+            {% if project.document %}
+            <a href="{{ project.document.url }}" download target="_blank"><i
+                class="small material-icons">attachment</i></a>
+            {% endif %}
+          </div>
           <div>
             {% if project.status == 0 %}
             <p class="not-approved">
-                <i class="material-icons">clear</i>
+              <i class="material-icons">clear</i>
             </p>
             {% else %}
             <p class="approved">
-                <i class="material-icons">check_circle
-                </i>
+              <i class="material-icons">check_circle
+              </i>
             </p>
             {% endif %}
+          </div>
         </div>
-          <h3>Description</h3>
-          {{ project.description }}
-
+        <div class="col s6">
+          <p>
+            <span class="bold">Owner:</span>
+            {{ project.owner }}
+            <span class="bold">Due date:</span>
+            {{ project.due|date:"SHORT_DATE_FORMAT" }}
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <h2>Description</h2>
+          <p>
+            {{ project.description }}
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
           <!-- Project actions edit and delete -->
           {% if user == project.owner and project.status == 0 %}
-          <div>
-            <hr>
-            <a href="/edit/{{ project.id }}" class="btn btn-small">EDIT PROJECT</a>
-            <a href="/delete/{{ project.id }}" class="btn btn-small red" id="delete">DELETE PROJECT</a>
-            <a href="/complete/{{ project.id }}" class="btn btn-small tan" id="complete">COMPLETE PROJECT</a>
-
-          </div>
+          <a href="/edit/{{ project.id }}" class="btn btn-small">EDIT PROJECT</a>
+          <a href="/delete/{{ project.id }}" class="btn btn-small red" id="delete">DELETE PROJECT</a>
+          <a href="/complete/{{ project.id }}" class="btn btn-small tan" id="complete">COMPLETE PROJECT</a>
           {% else %}
-          <div>
-            <hr>
-            <a href="/edit/{{ project.id }}" class="btn btn-small disabled">EDIT PROJECT</a>
-            <a href="/delete/{{ project.id }}" class="btn btn-small red disabled">DELETE PROJECT</a>
-            <a href="/complete/{{ project.id }}" class="btn btn-small tan disabled">COMPLETE PROJECT</a>
-          </div>
+          <a href="/edit/{{ project.id }}" class="btn btn-small disabled">EDIT PROJECT</a>
+          <a href="/delete/{{ project.id }}" class="btn btn-small red disabled">DELETE PROJECT</a>
+          <a href="/complete/{{ project.id }}" class="btn btn-small tan disabled">COMPLETE PROJECT</a>
           {% endif %}
-
         </div>
-
-        <!-- Project approvals -->
-        <div class="card-content ">
-          {% if approvals %}
-            <h3>Approvals</h3>
-          {% else %}
-          {% endif %}
+      </div>
+    </div>
+    {% if approvals %}
+    <div class="row project-approvers padding-2rem">
           {% for approval in approvals %}
-          <p><span class="bold">Department:</span> 
-            {{ approval.approver.department }}<br>
-            <span class="bold">Approver:</span> 
-            {{ approval.approver }}<br>
+          {% if approval.project_id is project.id %}
+          <div class="col xs12 s6 m4 l3">
+            <h2>Approvers</h2>
+            <p><span class="bold">Department:</span>
+              {{ approval.approver.department }}
+            </p>
+            <p>
+              <span class="bold">Approver:</span>
+              {{ approval.approver }}
+            </p>
             {% if approval.approved %}
             <p class="bold">Approval status:
               <span class="approved">Approved</span>
@@ -77,59 +94,61 @@
               </span>
             </p>
             {% endif %}
-          
-          {% if user.id == approval.approver_id %}
-          {% if approval.approved %}
-          {% else %}
-          <a href="/approve/{{ approval.id }}" id="approve" class="btn btn-small tan margin-top">APPROVE PROJECT</a>
+  
+            {% if user.id == approval.approver_id %}
+            {% if approval.approved %}
+            {% else %}
+            <a href="/approve/{{ approval.id }}" id="approve" class="btn btn-small tan margin-top">APPROVE PROJECT</a>
+            {% endif %}
+            {% endif %}
           {% endif %}
-          {% endif %}
-          <hr>
           {% endfor %}
-        </div>
-      </div>
+          </div>
     </div>
+    {% else %}
+    {% endif %}
   </div>
+
+
 
   <!-- Comments -->
   <div class="row">
     <!-- Section for comments form -->
-    <div class="col s6 m6">
+    <div class="col s12 m8">
       <div class="comment-form approved">
         {% if user.is_authenticated %}
         <h3>Leave a comment:</h3>
         <p>Posting as: {{ user.username }}</p>
         <form method="post">
-        {{ comment_form }}
-        {% csrf_token %}
-        <button type="submit" class="btn">Add comment</button>
+          {{ comment_form }}
+          {% csrf_token %}
+          <button type="submit" class="btn">Add comment</button>
         </form>
         {% endif %}
       </div>
-      <!-- Section for existing comments -->
+    </div>
+  </div>
+  <div class="row margin-bottom">
+    <div class="col s12">
+      {% if comments %}
       <h3>Comments</h3>
-        <div class="card-body">
+      {% endif %}
+    </div>
         <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
-          {% for comment in comments %}
-          <div class="comments" style="padding: 10px;">
-            <p class="font-weight-bold">
+        {% for comment in comments %}
+        <div class="col s12">
+          <p>
             <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
             {{ comment.name }}
-              <span class=" text-muted font-weight-normal">
-                <!-- The comment's created date goes here -->
-                {{ comment.created_on }}
-              </span> wrote:
-            </p>
-            <!-- The body of the comment goes before the | -->
-            <div class="comment-box">
-              {{ comment.body | linebreaks }}
-            </div>
+            {{ comment.created_on }}
+            wrote:
+          </p>
+          <div class="comment-box col s12 m8">
+            {{ comment.body | linebreaks }}
           </div>
-          <!-- Our for loop ends here -->
-          {% endfor %}
         </div>
-    </div>
-
-  </div>
+        <!-- Our for loop ends here -->
+        {% endfor %}
+      </div>
 </div>
 {% endblock %}
