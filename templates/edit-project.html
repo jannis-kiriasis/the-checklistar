@@ -11,21 +11,28 @@
 
     {{ approver_form.management_form }}
     <div class="add-approvers">
-    <div id="form-container">
       <h2>Approvers</h2>
-      {% for approver in approver_form %}
-      <div class="approver-form">
-        {{ approver.as_p }}
+      <div id="form-container">
+        {% for approver in approver_form %}
+        <div class="approver-form">
+          {{ approver.as_p }}
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
+      <div class="flex">
+        <div id="add-approver">
+          <button class="btn-floating btn-large waves-effect waves-light tan btn-small"><i
+              class="material-icons">add</i></button>
+        </div>
+        <div id="remove-approver">
+          <button class="btn-floating btn-large waves-effect waves-light red btn-small"><i
+              class="material-icons ">remove</i></button>
+        </div>
+      </div>
     </div>
-    <div id="add-approver">
-      <button class="btn-floating btn-large waves-effect waves-light tan"><i class="material-icons">add</i></button>
-    </div>
-  </div>
-    <button class="btn margin-top" id="edit" type="submit">Update project</button>
+    <button class="btn margin-top margin-bottom" type="submit">Create project</button>
   </form>
 </div>
-
+</div>
 
 {%endblock%}

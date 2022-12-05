@@ -61,7 +61,8 @@ EditApproverFormSet = inlineformset_factory(
     widgets={
         'approval_due_by': widgets.DateInput(attrs={'type': 'date'})
     },  
-    extra=0
+    extra=0,
+    min_num=1
 )
 
 # Create comments form form to be assigned to a project
