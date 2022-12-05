@@ -13,7 +13,7 @@ from django.contrib import messages
 
 
 def ProjectList(request):
-    projects = Project.objects.order_by('status','due')
+    projects = Project.objects.order_by('status', 'due')
     projectId = Project.objects.values_list('id')
     approvals = ProjectApproval.objects.all()
 
@@ -102,10 +102,12 @@ def CreateProject(request):
     if request.method == "POST":
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
-            project = form.save()
+            project = form.save(commit=False)
             approver_form = ApproverFormSet(request.POST, instance=project)
             if approver_form.is_valid():
+                form.save()
                 approver_form.save()
+
                 messages.success(request, 'You have created a new project!')
 
                 last_project = Project.objects.latest('date_created')
@@ -210,7 +212,7 @@ def CompleteProject(request, project_id):
 
 def MyProjectList(request):
     user = request.user.id
-    projects = Project.objects.filter(owner=user).order_by('status','due')
+    projects = Project.objects.filter(owner=user).order_by('status', 'due')
     projectId = Project.objects.values_list('id')
     approvals = ProjectApproval.objects.all()
 

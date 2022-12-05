@@ -11,6 +11,7 @@
     --timberwolf: #f4f2f0;
     --tan: #d4b483;
     --fuzzy-wuzzy: #A42D2D;
+    --fuzzy-wuzzy-light: #f9e7e7;
 }
 
 .a-notification {
@@ -239,6 +240,14 @@ select {
 }
 
 /* Create project template */
+
+.errorlist {
+    color: var(--fuzzy-wuzzy);
+    border: 1px solid var(--fuzzy-wuzzy);
+    background-color: var(--fuzzy-wuzzy-light);
+    padding: 5px;
+    border-radius: 5px;
+}
 
 .add-approvers {
     padding: 20px;
