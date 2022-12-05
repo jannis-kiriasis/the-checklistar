@@ -48,7 +48,7 @@
                             <span class="bold">Owner:</span> 
                             {{ project.owner }}
                             <span class="bold">Due date:</span> 
-                            {{ project.due|date:"SHORT_DATE_FORMAT" }}
+                            {{ project.due|date:'d/m/y' }}
                         </p>
                     </div>
                 </div>
@@ -68,13 +68,13 @@
                                 {% if approval.approved %}
                                 <i class="material-icons approved">check</i>
                                 <p class="approved bold">
-                                    on {{ approval.approval_date|date:"SHORT_DATE_FORMAT" }}
+                                    on {{ approval.approval_date|date:'d/m/y' }}
                                     <br>
                                 </p>
                                 {% else %}
                                 <i class="material-icons not-approved">clear</i>
                                 <p class="not-approved bold">
-                                    due by {{ approval.approval_due_by|date:"SHORT_DATE_FORMAT" }}
+                                    due by {{ approval.approval_due_by|date:'d/m/y' }}
                                     <br>
                                 </p>
                                 {% endif %}

@@ -41,7 +41,7 @@
             <span class="bold">Owner:</span>
             {{ project.owner }}
             <span class="bold">Due date:</span>
-            {{ project.due|date:"SHORT_DATE_FORMAT" }}
+            {{ project.due|date:'d/m/y' }}
           </p>
         </div>
       </div>
@@ -74,12 +74,12 @@
       {% if approval.project_id is project.id %}
       <div class="col xs12 s6 m4 l3">
         <h2>Approvers</h2>
-        <p><span class="bold">Department:</span>
+        <p><span class="bold">Department:</span><br>
           {{ approval.approver.department }}
         </p>
         <p>
-          <span class="bold">Approver:</span>
-          {{ approval.approver }}
+          <span class="bold">Approver:</span><br>
+          {{ approval.approver.user }}
         </p>
         {% if approval.approved %}
         <p class="bold">Approval status:
@@ -87,9 +87,9 @@
         </p>
         {% else %}
         <p>
-          <span class="bold">Approval status:
+          <span class="bold">Approval status:<br>
             <span class="not-approved">
-              Not approved
+              Not approved. Due by {{ approval.approval_due_by|date:'d/m/y' }}
             </span>
           </span>
         </p>
