@@ -148,7 +148,7 @@ def EditProject(request, project_id):
                 messages.success(
                     request, 'Project details have been updated successfully.'
                     )
-                return redirect('dashboard')
+                return redirect('my-projects')
             else:
                 print('Approver form is invalid')
                 print(approver_form)
