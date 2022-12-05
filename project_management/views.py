@@ -145,7 +145,9 @@ def EditProject(request, project_id):
             
             if approver_form.is_valid():
                 approver_form.save()
-                messages.success(request, 'Project details have been updated successfully.')
+                messages.success(
+                    request, 'Project details have been updated successfully.'
+                    )
                 return redirect('dashboard')
             else:
                 print('Approver form is invalid')
@@ -191,7 +193,7 @@ def DeleteProject(request, project_id):
     project.delete()
     messages.success(request, 'The project has been deleted.')
 
-    return redirect('dashboard')
+    return redirect('my-projects')
 
 
 # view to complete the projcts in the project-details template
