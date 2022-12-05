@@ -5,6 +5,7 @@
 :root {
     --liberty: #3B4D97;
     --liberty-light: #e9ecf7;
+    --liberty-medium: #d4d9ee;
     --verdigris: #48a9a6;
     --verdigris-light: #ecf7f7;
     --timberwolf: #f4f2f0;
@@ -53,6 +54,7 @@ nav,
     box-shadow: none;
     -webkit-box-shadow: none;
 }
+
 .approval {
     display: flex;
     align-items: center;
@@ -63,6 +65,7 @@ nav,
 }
 
 @media only screen and (max-width: 450px) {
+
     .xs12,
     .s6 {
         width: auto !important;
@@ -239,20 +242,61 @@ select {
 
 .add-approvers {
     padding: 20px;
-    background-color: #d4b48315 !important;
-    border: 1px solid #d4b48315 !important;
+    background-color: var(--liberty-medium) !important;
+    border: 1px solid var(--liberty-medium) !important;
     border-radius: 5px;
 }
 
 .approver-form {
     margin: 10px auto;
     padding: 20px;
-    background-color: #d4b48315 !important;
-    border: 1px solid #d4b48315 !important;
+    background-color: var(--liberty-light) !important;
+    border: 1px solid var(--liberty-light) !important;
     border-radius: 5px;
 }
 
-/* Create project template */
+label {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.88);
+    margin-top: 5px;
+}
+
+input[type=text]:not(.browser-default),
+input[type=date]:not(.browser-default),
+select,
+textarea {
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    border: 1px solid var(--liberty-medium);
+    width: 100%
+}
+
+select {
+    width: 100%;
+    height: 3rem;
+}
+
+textarea {
+    width: 100%;
+    height: 6rem;
+}
+
+input[type=file] {
+
+    color: var(--liberty);
+    border: 1 solid var(--liberty);
+    border-radius: 2px;
+    display: inline-block;
+
+    padding: 0 16px;
+}
+
+/*  #form-container > div > p:nth-child(3) > label */
+label[for="id_approvals-0-DELETE"] {
+    display: hide !important;
+    }
+
+/* Notification centre */
 
 .notification {
     margin-bottom: 20px;

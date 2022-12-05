@@ -2,29 +2,33 @@
 
 {% block content %}
 
-<div class="container margin-bottom ">
-  <h1>Create a project</h1>
+<div class="container">
+  <div class="row">
 
-  <form enctype="multipart/form-data" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
+    <h1>Create a project</h1>
+    <div class="col s12 m9 project-details margin-bottom project-container">
+      <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
 
-    {{ formset.management_form }}
-    <div class="add-approvers">
-      <div id="form-container">
-        <h2>Approvers</h2>
-        {% for approver in formset %}
-        <div class="approver-form">
-          {{ approver.as_p }}
+        {{ formset.management_form }}
+        <div class="add-approvers">
+          <div id="form-container">
+            <h2>Approvers</h2>
+            {% for approver in formset %}
+            <div class="approver-form">
+              {{ approver.as_p }}
+            </div>
+            {% endfor %}
+          </div>
+          <div id="add-approver">
+            <button class="btn-floating btn-large waves-effect waves-light tan"><i
+                class="material-icons">add</i></button>
+          </div>
         </div>
-        {% endfor %}
-      </div>
-      <div id="add-approver">
-        <button class="btn-floating btn-large waves-effect waves-light tan"><i class="material-icons">add</i></button>
-      </div>
+        <button class="btn margin-top margin-bottom" type="submit">Create project</button>
+      </form>
     </div>
-    <button class="btn margin-top" type="submit">Create project</button>
-  </form>
-</div>
+  </div>
 
-{%endblock%}
+  {%endblock%}
