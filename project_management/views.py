@@ -173,7 +173,7 @@ def ApproveProject(request, projectApproval_id):
 
     create_notification(request, approver.project.owner, 'approval', extra_id=approver.project.slug)
 
-    return redirect('dashboard')
+    return redirect('my-approvals')
 
 # view to delete approvers the projcts in the project-details template
 
