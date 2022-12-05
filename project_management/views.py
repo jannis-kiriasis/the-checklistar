@@ -203,7 +203,7 @@ def CompleteProject(request, project_id):
     project.save()
     messages.success(request, 'The project has been completed!')
 
-    return redirect('dashboard')
+    return redirect('my-projects')
 
 
 # ProjectList view for my-projects.html. Shows all the projects opened by the
