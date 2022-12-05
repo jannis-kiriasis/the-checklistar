@@ -111,12 +111,14 @@ def CreateProject(request):
                 last_project = Project.objects.latest('date_created')
                 approvals = ProjectApproval.objects.all()
 
-                approver = get_list_or_404(approvals, project=last_project)
-
-                for approver in approver:
-                    create_notification(request, approver.approver.user, 'added_approver', extra_id=project.slug)
-
-                return redirect('dashboard')
+                try:
+                    approver = get_list_or_404(approvals, project=last_project)
+                    if approver:
+                        for approver in approver:
+                            create_notification(request, approver.approver.user, 'added_approver', extra_id=project.slug)
+                        return redirect('dashboard')
+                except Exception:
+                    return redirect('dashboard')
         else:
             print('form invalid')
 
