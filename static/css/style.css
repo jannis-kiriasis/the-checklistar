@@ -110,14 +110,6 @@ select {
     display: inline-flex;
 }
 
-.notification-count {
-    background-color: var(--fuzzy-wuzzy) !important;
-    border-radius: 50% !important;
-    padding: 8px;
-    text-align: center;
-    line-height: 1.5;
-}
-
 #message {
     position: fixed;
     left: 5%;

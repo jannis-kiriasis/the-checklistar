@@ -50,7 +50,7 @@
               <ul class="right hide-on-med-and-down">
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn">Create project</a></li>
-                <li><a href="{% url 'notifications' %}">Notifications <span class="notification-count">{{ notifications.count }}</span></a></li>
+                <li><a href="{% url 'notifications' %}">Notifications <span class="btn-floating btn-small red">{{ notifications.count }}</span></a></li>
                 <li><a href="{% url 'dashboard' %}">All projects</a></li>
                 <li><a href="{% url 'my-projects' %}">My projects</a></li>
                 <li><a href="{% url 'my-approvals' %}">My approvals</a></li>
@@ -66,7 +66,7 @@
           <ul class="sidenav" id="mobile-demo">
             {% if user.is_authenticated %}
             <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn">Create project</a></li>
-            <li><a href="{% url 'notifications' %}">Notifications <span class="notification-count">{{ Notifications.count }}</span></a></li>
+            <li><a href="{% url 'notifications' %}">Notifications <span class="btn-floating btn-small red">{{ notifications.count }}</span></a></li>
             <li><a href="{% url 'dashboard' %}">All projects</a></li>
             <li><a href="{% url 'my-projects' %}">My projects</a></li>
             <li><a href="{% url 'my-approvals' %}">My approval</a></li>
