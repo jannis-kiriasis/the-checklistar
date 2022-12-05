@@ -1,6 +1,7 @@
-let approverForm = document.querySelectorAll(".approver-form");
-let container = document.querySelector("#form-container");
-let addButton = document.querySelector("#add-approver");
+const approverForm = document.querySelectorAll(".approver-form");
+const container = document.querySelector("#form-container");
+const addButton = document.querySelector("#add-approver");
+const removeButton = document.querySelector("#remove-approver");
 
 const deleteButton = document.getElementById("delete");
 const approveButton = document.getElementById("approve");
@@ -24,6 +25,10 @@ let formNum = approverForm.length-1
 
 if (addButton){
   addButton.addEventListener('click', addForm)
+} 
+
+if (removeButton){
+  removeButton.addEventListener('click', removeForm)
 } 
 
 // Event listeners for SweetAlerts defensive design
@@ -88,6 +93,13 @@ function addForm(e) {
     totalForms.setAttribute('value', `${formNum+1}`) 
 }
 
+function removeForm(e) {
+  e.preventDefault()
+
+  formNum--
+  container.removeChild(container.lastChild);
+  totalForms.setAttribute('value', `${formNum-1}`)
+}
 
 // Delete project defensive design with SweetAlerts2
 // Get href url, prevent button click, fire SweetAlerts2, 

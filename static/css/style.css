@@ -68,7 +68,7 @@ nav,
 
     .xs12,
     .s6 {
-        width: auto !important;
+        width: 100% !important;
     }
 
 }
@@ -295,6 +295,10 @@ input[type=file] {
 label[for="id_approvals-0-DELETE"] {
     display: hide !important;
     }
+
+.flex {
+    display: flex;
+}
 
 /* Notification centre */
 
