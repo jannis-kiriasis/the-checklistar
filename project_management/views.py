@@ -13,7 +13,7 @@ from django.contrib import messages
 
 
 def ProjectList(request):
-    projects = Project.objects.order_by('status', 'due')
+    projects = Project.objects.order_by('-date_created')
     projectId = Project.objects.values_list('id')
     approvals = ProjectApproval.objects.all()
 
