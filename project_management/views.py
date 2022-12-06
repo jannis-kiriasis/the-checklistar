@@ -214,7 +214,7 @@ def CompleteProject(request, project_id):
 
 def MyProjectList(request):
     user = request.user.id
-    projects = Project.objects.filter(owner=user).order_by('status', 'due')
+    projects = Project.objects.filter(owner=user).order_by('-id', 'due')
     projectId = Project.objects.values_list('id')
     approvals = ProjectApproval.objects.all()
 
@@ -232,16 +232,28 @@ def MyProjectList(request):
 
 def MyApprovalsList(request):
     user = request.user.id
-    project = Project.objects.all()
-    projects = Project.objects.distinct().filter(
-        approvals__approver_id=user
-        ).order_by(
-            'due', 'status'
-        )
-    approvals = ProjectApproval.objects.all()
 
+    # Get projects where there is an approver matching the requesting user
+    project_approver_is_user = Project.objects.distinct().filter(
+        approvals__approver_id=user
+        )
+
+    # In project_approver_is_user get only projects with status=uncompleted and 
+    # order them
+    projects = project_approver_is_user.filter(status=0).order_by(
+        '-due', 'status'
+        )
+
+    # In projects get only the projects where the requesting user 
+    # hasn't approved yet
+    project_to_approve = projects.filter(approvals__approved=False)
+
+    # Get all approvals and order them
+    approvals = ProjectApproval.objects.order_by(
+            'approval_due_by', 'approved'
+        )
     context = {
-        'projects': projects,
+        'projects': project_to_approve,
         'approvals': approvals
 
     }
