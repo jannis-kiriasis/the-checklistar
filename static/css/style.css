@@ -314,6 +314,7 @@ label[for="id_approvals-0-DELETE"] {
 #id_remember,
 [type="checkbox"]:not(:checked), 
 [type="checkbox"]:checked {
-    opacity: 100% !important;
-    position: inherit !important;
+    opacity: 100%;
+    position: inherit;
+    pointer-events: inherit;
 }
