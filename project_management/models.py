@@ -12,6 +12,7 @@ PROJECT_STATUS = ((0, 'Not completed'), (1, 'Completed'))
 def get_first_last_name(self):
     return f"{self.first_name} {self.last_name}"
 
+
 User.add_to_class("__str__", get_first_last_name)
 
 

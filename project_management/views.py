@@ -178,13 +178,6 @@ def ApproveProject(request, projectApproval_id):
 
     return redirect('my-approvals')
 
-# view to delete approvers the projcts in the project-details template
-
-# def DeleteApprover(request, projectApproval_id):
-#     approver = get_object_or_404(ProjectApproval, id=projectApproval_id)
-#     approver.delete()
-#     return redirect('dashboard')
-
 
 # view to delete projects the projcts in the project-details template
 
@@ -215,13 +208,15 @@ def CompleteProject(request, project_id):
 
 def MyProjectList(request):
     user = request.user.id
-    projects = Project.objects.filter(owner=user).order_by('-id', 'due')
-    projectId = Project.objects.values_list('id')
+    all_projects = Project.objects.filter(owner=user).order_by('-id', 'due')
+    projects = all_projects.filter(status=0)
+    projects_completed = all_projects.filter(status=1)
     approvals = ProjectApproval.objects.all()
 
     context = {
         'projects': projects,
-        'approvals': approvals
+        'approvals': approvals,
+        'projects_completed': projects_completed
     }
 
     return render(request, 'my-projects.html', context)
@@ -242,20 +237,23 @@ def MyApprovalsList(request):
     # In project_approver_is_user get only projects with status=uncompleted and 
     # order them
     projects = project_approver_is_user.filter(status=0).order_by(
-        '-due', 'status'
+        '-due'
         )
 
     # In projects get only the projects where the requesting user 
     # hasn't approved yet
     project_to_approve = projects.filter(approvals__approved=False)
 
+    project_approved = projects.filter(approvals__approved=True)
+
     # Get all approvals and order them
     approvals = ProjectApproval.objects.order_by(
-            'approval_due_by', 'approved'
+            '-approval_due_by', 'approved'
         )
     context = {
         'projects': project_to_approve,
-        'approvals': approvals
+        'approvals': approvals,
+        'project_approved': project_approved
 
     }
 

@@ -129,12 +129,19 @@ select {
 
 /* Dashboard template */
 
+
+
 .project {
     background-color: var(--liberty-light);
     border-radius: 0.5rem;
     margin-bottom: 20px;
     display: inline-block;
     width: 100%;
+}
+
+.project-approved {
+    background-color: var(--verdigris-light);
+
 }
 
 .project-details {
