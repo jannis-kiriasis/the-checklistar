@@ -8,6 +8,13 @@ from django.utils.translation import gettext_lazy as _
 
 PROJECT_STATUS = ((0, 'Not completed'), (1, 'Completed'))
 
+
+def get_first_last_name(self):
+    return f"{self.first_name} {self.last_name}"
+
+User.add_to_class("__str__", get_first_last_name)
+
+
 # UserProfile model: stores user information that aren't in User model
 
 
@@ -18,7 +25,7 @@ class UserProfile(models.Model):
     department = models.CharField(max_length=80)
 
     def __str__(self):
-        return f"{self.user} | {self.department}"
+        return f"{self.user.first_name} {self.user.last_name} | {self.department}"
 
 
 # Project model. Contains all the information related to a project,

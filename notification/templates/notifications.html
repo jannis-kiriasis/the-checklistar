@@ -19,7 +19,7 @@
         <div class="comment-box notification col s12 m8 margin-bottom">
             <a class="a-notification"
                 href="{% url 'notifications' %}?goto=project-details&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
-                <p>{{ notification.created_by.username }} added a comment. Read it now!<br>
+                <p>{{ notification.created_by.first_name }} {{ notification.created_by.last_name }} added a comment. Read it now!<br>
                     <small>{{ notification.created_at|timesince }} ago</small>
                 </p>
             </a>
@@ -28,7 +28,7 @@
         <div class="comment-box notification col s12 m8 margin-bottom">
             <a class="a-notification"
                 href="{% url 'notifications' %}?goto=project-details&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
-                <p>{{ notification.created_by.username }} approved a project.<br>
+                <p>{{ notification.created_by.first_name }} {{ notification.created_by.last_name }} approved a project.<br>
                     <small>{{ notification.created_at|timesince }} ago</small>
                 </p>
             </a>
@@ -37,7 +37,7 @@
         <div class="comment-box notification col s12 m8 margin-bottom">
             <a class="a-notification"
                 href="{% url 'notifications' %}?goto=project-details&notification={{ notification.id }}&extra_id={{ notification.extra_id }}">
-                <p>{{ notification.created_by.username }} added you as an approver to a new project. Go to approve
+                <p>{{ notification.created_by.first_name }} {{ notification.created_by.last_name }} added you as an approver to a new project. Go to approve
                     it!<br>
                     <small>{{ notification.created_at|timesince }} ago</small>
                 </p>

@@ -46,7 +46,7 @@
                     <div class="col s6">
                         <p>
                             <span class="bold">Owner:</span> 
-                            {{ project.owner }}
+                            {{ project.owner.first_name }} {{ project.owner.last_name }}
                             <span class="bold">Due date:</span> 
                             {{ project.due|date:'d/m/y' }}
                         </p>
@@ -61,7 +61,9 @@
                         {% if approval.project_id is project.id %}
                         <div class="col xs12 s6 m4 l3">
                             <h2>Approver</h2>
-                            <p><span class="bold">{{ approval.approver.user }}</span><br>
+                            <p><span class="bold">{{ approval.approver.user.first_name }}
+                                {{ approval.approver.user.last_name }}
+                            </span><br>
                                 {{ approval.approver.department }} dept<br>
                             </p>
                             <div class="approval">
