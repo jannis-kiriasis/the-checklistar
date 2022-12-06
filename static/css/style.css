@@ -310,3 +310,12 @@ label[for="id_approvals-0-DELETE"] {
 .notification:hover {
     box-shadow: 1px 1px 1px var(--verdigris);
 }
+
+/* Sign in template */
+
+#id_remember,
+[type="checkbox"]:not(:checked), 
+[type="checkbox"]:checked {
+    opacity: 100% !important;
+    position: inherit !important;
+}

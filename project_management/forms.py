@@ -24,7 +24,6 @@ class ProjectForm(forms.ModelForm):
                     "Please enter a valid due date! It can't be in the past."
                 )
         return due
-        
 
 
 # Create project approvers form to be assigned to a project
