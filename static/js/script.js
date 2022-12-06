@@ -9,6 +9,12 @@ const confirmButton = document.getElementById("confirm");
 const editButton = document.getElementById("edit");
 const completeButton = document.getElementById("complete");
 
+// Get delete input field and label by xpath
+let delete_input_xpath = "//input [contains (@id, '-DELETE')]";
+let delete_input = document.evaluate(delete_input_xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+let delete_label_xpath = "//label [contains (@for, '-DELETE')]";
+let delete_label = document.evaluate(delete_label_xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+
 // Get message box
 const message = document.getElementById("message");
 
@@ -201,3 +207,10 @@ function confirmEdit(){
   }
 
 
+// On /create-project remove delete approver buttons
+if (window.location.pathname === "/create-project") {
+  if (delete_input) {
+    delete_input.remove()
+    delete_label.remove()
+  }
+}

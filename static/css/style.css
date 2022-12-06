@@ -243,16 +243,14 @@ select {
 
 .add-approvers {
     padding: 20px;
-    background-color: var(--liberty-medium) !important;
-    border: 1px solid var(--liberty-medium) !important;
     border-radius: 5px;
 }
 
 .approver-form {
     margin: 10px auto;
     padding: 20px;
-    background-color: var(--liberty-light) !important;
-    border: 1px solid var(--liberty-light) !important;
+    background-color: var(--liberty-medium) !important;
+    border: 1px solid var(--liberty-medium) !important;
     border-radius: 5px;
 }
 
