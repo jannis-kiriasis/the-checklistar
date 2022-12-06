@@ -20,7 +20,7 @@ def ProjectList(request):
     context = {
         'projects': projects,
         'approvals': approvals,
-        'page_title': 'All projects'
+        'page_title': 'Dashboard'
     }
 
     return render(request, 'dashboard.html', context)
@@ -44,6 +44,7 @@ class ProjectDetails(View):
                 "approvals": approvals,
                 "comment_form": CommentForm(),
                 "comments": comments,
+                'page_title': 'Project details'
             },
             )
 
@@ -127,7 +128,8 @@ def CreateProject(request):
 
     context = {
         'form': form,
-        'formset': approver_form
+        'formset': approver_form,
+        'page_title': 'Create project'
     }
     return render(request, 'create-project.html', context)
 
@@ -158,7 +160,8 @@ def EditProject(request, project_id):
 
     context = {
         'form': form,
-        'approver_form': approver_form
+        'approver_form': approver_form,
+        'page_title': 'Edit project'
     }
     return render(request, 'edit-project.html', context)
 
@@ -216,7 +219,8 @@ def MyProjectList(request):
     context = {
         'projects': projects,
         'approvals': approvals,
-        'projects_completed': projects_completed
+        'projects_completed': projects_completed,
+        'page_title': 'My projects'
     }
 
     return render(request, 'my-projects.html', context)
@@ -253,7 +257,8 @@ def MyApprovalsList(request):
     context = {
         'projects': project_to_approve,
         'approvals': approvals,
-        'project_approved': project_approved
+        'project_approved': project_approved,
+        'page_title': 'My approvals'
 
     }
 

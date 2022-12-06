@@ -25,4 +25,7 @@ def notifications(request):
         elif notification.notification_type == Notification.ADDED_APPROVER:
             return redirect('project-details', slug=notification.extra_id)
 
-    return render(request, 'notifications.html')
+    context = {
+        'page_title': 'Notifications'
+    }
+    return render(request, 'notifications.html', context)
