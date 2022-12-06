@@ -9,7 +9,7 @@
             <div>
                 <div class="row">
                     <div class=" col s6">
-                        <h2>Project Details</h2>
+                        <h2>Project {{ project.id }}</h2>
                     </div>
                     <div class="col s6 right view-project">
                         <a href="{% url 'project-details' project.slug %}" class="waves-effect waves-light btn-small">
@@ -21,7 +21,6 @@
                 <div class="row">
                     <div class="col s6">
                         <p id="title" >
-                            <span class="bold">Id:</span> {{ project.id }}
                             <span class="bold">Title:</span> {{ project.title }}
                         </p>
                         <div>
