@@ -80,10 +80,14 @@ class CommentForm(forms.ModelForm):
 
 class CustomSignupForm(SignupForm):
 
-    department = forms.CharField(max_length=80, label='department')
+    first_name = forms.CharField(max_length=30, label='First name')
+    last_name = forms.CharField(max_length=30, label='Last name')
+    department = forms.CharField(max_length=80, label='Department')
 
     def save(self, request):
         user = super(CustomSignupForm, self).save(request)
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
         user.save()
         profile = UserProfile.objects.create(user=user)
         profile.department = self.cleaned_data.get('department')
