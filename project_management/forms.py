@@ -5,7 +5,6 @@ from django.utils import timezone
 from django.core.exceptions import ValidationError
 
 
-
 # Create a project form
 
 
@@ -24,6 +23,8 @@ class ProjectForm(forms.ModelForm):
                 raise ValidationError(
                     "Please enter a valid due date! It can't be in the past."
                 )
+        return due
+        
 
 
 # Create project approvers form to be assigned to a project

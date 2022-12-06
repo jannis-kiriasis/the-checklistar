@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.text import slugify
+from django.utils import timezone
 
 PROJECT_STATUS = ((0, 'Not completed'), (1, 'Completed'))
 
@@ -30,9 +31,9 @@ class Project(models.Model):
         User, on_delete=models.PROTECT, related_name='projects'
     )
     document = CloudinaryField('document', null=True, default=None, blank=True)
-    description = models.TextField()
+    description = models.TextField(max_length=2000)
     date_created = models.DateTimeField(auto_now_add=True)
-    due = models.DateField(null=True, blank=True)
+    due = models.DateField()
 
     status = models.IntegerField(choices=PROJECT_STATUS, default=0)
 
@@ -61,7 +62,7 @@ class ProjectApproval(models.Model):
         UserProfile, on_delete=models.CASCADE, related_name='approvers'
     )
     approval_date = models.DateField(null=True, blank=True)
-    approval_due_by = models.DateField(null=True, blank=True)
+    approval_due_by = models.DateField()
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
 
