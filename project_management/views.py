@@ -19,7 +19,8 @@ def ProjectList(request):
 
     context = {
         'projects': projects,
-        'approvals': approvals
+        'approvals': approvals,
+        'page_title': 'All projects'
     }
 
     return render(request, 'dashboard.html', context)

@@ -3,6 +3,7 @@ from django import forms
 from django.forms import inlineformset_factory, widgets
 from django.utils import timezone
 from django.core.exceptions import ValidationError
+from allauth.account.forms import SignupForm
 
 
 # Create a project form
@@ -75,3 +76,17 @@ class CommentForm(forms.ModelForm):
         fields = ('body',)
 
 
+# Custom signup form
+
+class CustomSignupForm(SignupForm):
+
+    department = forms.CharField(max_length=80, label='department')
+
+    def save(self, request):
+        user = super(CustomSignupForm, self).save(request)
+        user.save()
+        profile = UserProfile.objects.create(user=user)
+        profile.department = self.cleaned_data.get('department')
+        profile.save()
+
+        return user

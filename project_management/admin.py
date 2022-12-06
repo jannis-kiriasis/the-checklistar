@@ -81,7 +81,7 @@ class UserProfileAdmin(SummernoteModelAdmin):
 
     list_filter = ('user', 'department')
     list_display = ('user', 'department')
-
+  
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
