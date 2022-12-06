@@ -2,6 +2,7 @@ const approverForm = document.querySelectorAll(".approver-form");
 const container = document.querySelector("#form-container");
 const addButton = document.querySelector("#add-approver");
 const removeButton = document.querySelector("#remove-approver");
+const notification = document.getElementById("notification-count")
 
 const deleteButton = document.getElementById("delete");
 const approveButton = document.getElementById("approve");
@@ -213,4 +214,10 @@ if (window.location.pathname === "/create-project") {
     delete_input.remove()
     delete_label.remove()
   }
+}
+
+// Hide notification count if innerText = 0
+
+if (notification.innerText === "0") {
+  notification.remove()
 }
