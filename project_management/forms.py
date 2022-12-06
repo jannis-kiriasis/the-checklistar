@@ -17,15 +17,6 @@ class ProjectForm(forms.ModelForm):
             'due': widgets.DateInput(attrs={'type': 'date'})
         }
 
-    def clean_due(self, *args, **kwargs):
-        due = self.cleaned_data.get("due")
-        if due:
-            if due < timezone.now().date():
-                raise ValidationError(
-                    "Please enter a valid due date! It can't be in the past."
-                )
-        return due
-
 
 # Create project approvers form to be assigned to a project
 

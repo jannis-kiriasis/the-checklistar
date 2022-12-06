@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.text import slugify
 from django.utils import timezone
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 PROJECT_STATUS = ((0, 'Not completed'), (1, 'Completed'))
 
@@ -33,7 +35,12 @@ class Project(models.Model):
     document = CloudinaryField('document', null=True, default=None, blank=True)
     description = models.TextField(max_length=2000)
     date_created = models.DateTimeField(auto_now_add=True)
-    due = models.DateField()
+
+    def validate_date(due):
+        if due < timezone.now().date():
+            raise ValidationError("Date cannot be in the past")
+
+    due = models.DateField(validators=[validate_date])
 
     status = models.IntegerField(choices=PROJECT_STATUS, default=0)
 
@@ -55,19 +62,30 @@ class Project(models.Model):
 
 
 class ProjectApproval(models.Model):
+
     project = models.ForeignKey(
         Project, on_delete=models.CASCADE, related_name="approvals"
         )
     approver = models.ForeignKey(
         UserProfile, on_delete=models.CASCADE, related_name='approvers'
     )
+
     approval_date = models.DateField(null=True, blank=True)
-    approval_due_by = models.DateField()
-    approved = models.BooleanField(default=False)
+
     created_on = models.DateTimeField(auto_now_add=True)
+
+    def validate_date(approval_due_by):
+        if approval_due_by < timezone.now().date():
+            raise ValidationError("Date cannot be in the past")
+
+    approval_due_by = models.DateField(validators=[validate_date])
+
+    approved = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Project: {self.project} | Approver: {self.approver} | Department: {self.approver.department}"
+    
+
 
 
 # Comments model
