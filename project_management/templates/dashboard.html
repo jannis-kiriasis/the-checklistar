@@ -5,7 +5,11 @@
     <div class="container">
         <h1>All Projects</h1>
         {% for project in projects %}
-        <div class="project z-depth-1">
+            {% if user == project.owner and project.status == 1 %} 
+                    <div class="project project-approved z-depth-1" title="This is a project you opened and it is completed">
+            {% else %}
+        <div class="project z-depth-1" title="This is a project you opened and it isn't completed">
+            {% endif %}
             <div>
                 <div class="row">
                     <div class=" col s6">

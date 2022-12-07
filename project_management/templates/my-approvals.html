@@ -3,8 +3,9 @@
 {% block content %}
 <section>
     <div class="container">
-        {% if projects %}
         <h1>Projects Needing My Approval</h1>
+        {% if not projects %}
+        <p>There aren't new projects needing your approval.</p>
         {% endif %}
         {% for project in projects %}
         <div class="project z-depth-1">

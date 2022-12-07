@@ -13,14 +13,16 @@ from django.contrib import messages
 
 
 def ProjectList(request):
+    user = request.user
     projects = Project.objects.order_by('-date_created')
-    projectId = Project.objects.values_list('id')
     approvals = ProjectApproval.objects.all()
 
     context = {
         'projects': projects,
         'approvals': approvals,
-        'page_title': 'Dashboard'
+        'user': user,
+        'page_title': 'Dashboard',
+        'project-details': 'project-details'
     }
 
     return render(request, 'dashboard.html', context)
