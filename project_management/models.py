@@ -95,9 +95,7 @@ class ProjectApproval(models.Model):
     
 
 
-
 # Comments model
-
 
 class Comment(models.Model):
     project = models.ForeignKey(
