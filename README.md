@@ -1,6 +1,6 @@
 # Project 2 - Insured
 
-[The Checklistar live demo](https://jannis-kiriasis.github.io/insured/index.html)\
+[The Checklistar live demo](https://jannis-kiriasis.github.io/the-checklistar/index.html)\
 [The Checklistar repository](https://github.com/jannis-kiriasis/the-checklistar)
 
 ## Table of contents
@@ -47,7 +47,7 @@ You are not alone.
 
 A quick search with Google Keywords Planner can reveal how many monthly search there are to 'workflow management system' and related queries.
 
-![queries about workflow management system](./README-files/workflow-management-system-keywords.png)
+![queries about workflow management system](.media/README-files/workflow-management-system-keywords.png)
 
 This is what you can do with The Checklistar:
 1. Start a project, set and follow the stages it needs to go through.
@@ -65,7 +65,7 @@ The checklistar is for those companies that need a desktop app to track progress
 - A form to leave comments under each project.
 - The possibility to edit and delete projects.
 
-![Insured responsive design](./README-files/i-am-responsive.png)
+![Insured responsive design](./media/README-files/i-am-responsive.png)
 ## User Experience (UX) – The needs
 Now that we are familiar with The Checklistar target audience and offering, we are looking at the needs the app users may have. 
 
@@ -134,16 +134,16 @@ As a PM, I want to be able to create a project so that I don’t need to submit 
 As a project manager, I want to be able to assign unlimited approvers to a project so that I can get all the approvals needed for completion.
 
 **Acceptance criteria:**
-2. Set unlimited approvers when I’m creating the project
-3. The approvers must be associated to a department and have a deadline
+1. Set unlimited approvers when I’m creating the project
+2. The approvers must be associated to a department and have a deadline
 
 ### E1 - User story 3 – Create main dashboard
 As a project manager, I want to be able to see at what stage a process is and how many steps are missing so that I can make sure we are in line with deadlines.
 
 **Acceptance criteria:**
-2. Create a dashboard page with all the projects open and the approvals required for each project
-3. The approvals must be ordered by due date
-4. It should be immediate to notice what approvals have been given and what approvals are missing
+1. Create a dashboard page with all the projects open and the approvals required for each project
+2. The approvals must be ordered by due date
+3. It should be immediate to notice what approvals have been given and what approvals are missing
 
 ### E1 - User story 4 – Edit a workflow
 As a project manager, I want to be able to update a project anytime, so that if the requirements change, I can update the workflow.
@@ -234,10 +234,7 @@ As a risk controller, I want to be able to see the approval evidence so that I c
 ### User story 3 epic 3
 As a risk controller I want to be able to download a list of the projects completed so that I can record risk assessments and completion.
 
-
-
 **Acceptance criteria:**
-
 1. The completed projects need to be accessible easily
 
 ## Epic 4 – 
@@ -258,13 +255,9 @@ Mapping out the user stories helped me easily identify the problems the applicat
 
 
 
-**Features**
+##Features
 
 In the following paragraphs, we are going to see what features appear on the website and where they meet the users' needs.
-
-**Global features**
-
-This is a list of features that appear on every page.![Logo](Aspose.Words.4c96bf5c-2f8f-4cf7-bccf-572631e96517.001.png)
 
 1. **Main navigation**
    The main navigation includes the following pages:
@@ -380,9 +373,9 @@ the wireframes was to fulfill the user story requirements. Later on during devel
 I've upgraded the styling getting to the final version that you see live.
 
 - **Questionnaire**   
-![Intro page wireframe](./README-files/intro-page-wf.png)
-![Questions wireframe](./README-files/questions-wf.png)
-![Results wireframe](./README-files/results-page-wf.png)
+![Create project page wireframe](./media/README-files/create-project.png)
+![Dashboard wireframe](./media/README-files/dashboard.png)
+![View details wireframe](./media/README-files/view-project.png)
 
 ## Features left to implement 
 
