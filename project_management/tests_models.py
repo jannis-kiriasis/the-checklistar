@@ -32,6 +32,7 @@ class TestModels(TestCase):
             approval_due_by='2023-12-30',
         )
 
+
         self.comment = Comment.objects.create(
             project=get_object_or_404(Project, title="This is a project title"),
             name=self.user,
