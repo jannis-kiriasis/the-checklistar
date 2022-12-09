@@ -58,7 +58,7 @@
           {% if user == project.owner and project.status == 0 %}
           <a href="/edit/{{ project.id }}" class="btn btn-small text-black">EDIT PROJECT</a>
           <a href="/delete/{{ project.id }}" class="btn btn-small red" id="delete">DELETE PROJECT</a>
-          <a href="/complete/{{ project.id }}" class="btn btn-small tan" id="complete">COMPLETE PROJECT</a>
+          <a href="/complete/{{ project.id }}" class="btn btn-small tan text-black" id="complete">COMPLETE PROJECT</a>
           {% else %}
           <a href="/edit/{{ project.id }}" class="btn btn-small disabled">EDIT PROJECT</a>
           <a href="/delete/{{ project.id }}" class="btn btn-small red disabled">DELETE PROJECT</a>
@@ -97,7 +97,7 @@
         {% if user.id == approval.approver_id %}
         {% if approval.approved %}
         {% else %}
-        <a href="/approve/{{ approval.id }}" id="approve" class="btn btn-small tan margin-top">APPROVE PROJECT</a>
+        <a href="/approve/{{ approval.id }}" id="approve" class="btn btn-small tan margin-top text-black">APPROVE PROJECT</a>
         {% endif %}
         {% endif %}
       </div>
