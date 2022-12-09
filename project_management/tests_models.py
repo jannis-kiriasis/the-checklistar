@@ -1,7 +1,8 @@
 from django.test import TestCase
-from .models import Project, ProjectApproval, UserProfile, User
+from .models import Project, ProjectApproval, UserProfile, User, Comment
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 
 
 class TestModels(TestCase):
@@ -31,6 +32,13 @@ class TestModels(TestCase):
             approval_due_by='2023-12-30',
         )
 
+        self.comment = Comment.objects.create(
+            project=get_object_or_404(Project, title="This is a project title"),
+            name=self.user,
+            body='This is a test body comment',
+            created_on=timezone.now,
+        )
+
     # project __str__ is equal to the project title   
     def test_project_str(self):
         self.assertEqual(str(self.project), 'This is a project title')
@@ -51,3 +59,8 @@ class TestModels(TestCase):
     # test project_approval.project is connected to an existing Project
     def test_project_approval_project_FK(self):
         self.assertEqual(self.project_approval.project, self.project)
+        
+    # test project_approval.project is connected to an existing Project
+    def test_project_commnet_project_is_FK(self):
+        self.assertEqual(self.comment.project, self.project)
+
