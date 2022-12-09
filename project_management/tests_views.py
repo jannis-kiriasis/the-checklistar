@@ -61,21 +61,21 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'my-approvals.html')
 
 
-    # # test can complete a project
-    # def test_can_complete_project(self):
-    #     self.client.login(username='testuser', password='CiaoCiao1')
-    #     project = self.project
-    #     response = self.client.post(f'/complete/{project.id}', {'status': 1})
-    #     self.assertRedirects(response, '/my-projects')
-    #     completed_project = Project.objects.get(id=project.id)
-    #     self.assertEqual(completed_project.status, 1)
+    # test can complete a project
+    def test_can_complete_project(self):
+        self.client.login(username='testuser', password='CiaoCiao1')
+        project = self.project
+        response = self.client.post(f'/complete/{project.id}', {'status': 1})
+        self.assertRedirects(response, '/my-projects')
+        completed_project = Project.objects.get(id=project.id)
+        self.assertEqual(completed_project.status, 1)
 
-    # # test can approve a project
-    # def test_can_approve_project(self):
-    #     self.client.login(username='testuser', password='CiaoCiao1')
-    #     project = self.project
-    #     project_approval = self.project_approval
-    #     response = self.client.post(f'/approve/{project.id}', {'approved': True})
-    #     self.assertRedirects(response, '/my-approvals')
-    #     approved_project = ProjectApproval.objects.get(project_id=project.id)
-    #     self.assertEqual(approved_project.approved, True)
+    # test can approve a project
+    def test_can_approve_project(self):
+        self.client.login(username='testuser', password='CiaoCiao1')
+        project = self.project
+        project_approval = self.project_approval
+        response = self.client.post(f'/approve/{project.id}', {'approved': True})
+        self.assertRedirects(response, '/my-approvals')
+        approved_project = ProjectApproval.objects.get(project_id=project.id)
+        self.assertEqual(approved_project.approved, True)
