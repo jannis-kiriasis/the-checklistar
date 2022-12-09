@@ -96,6 +96,10 @@ nav,
     margin: 2px;
 }
 
+.text-black {
+    color: #000000 !important;
+}
+
 .brand-logo {
     margin-left: 10px;
 }

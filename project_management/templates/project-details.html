@@ -56,7 +56,7 @@
         <div class="col s12">
           <!-- Project actions edit and delete -->
           {% if user == project.owner and project.status == 0 %}
-          <a href="/edit/{{ project.id }}" class="btn btn-small">EDIT PROJECT</a>
+          <a href="/edit/{{ project.id }}" class="btn btn-small text-black">EDIT PROJECT</a>
           <a href="/delete/{{ project.id }}" class="btn btn-small red" id="delete">DELETE PROJECT</a>
           <a href="/complete/{{ project.id }}" class="btn btn-small tan" id="complete">COMPLETE PROJECT</a>
           {% else %}
@@ -118,7 +118,7 @@
         <form method="post">
           {{ comment_form }}
           {% csrf_token %}
-          <button type="submit" class="btn">Add comment</button>
+          <button type="submit" class="btn text-black">Add comment</button>
         </form>
         {% endif %}
       </div>

@@ -95,7 +95,7 @@ class TestProjectForm(TestCase):
 
 
 # class TestApproverFormSet(TestCase):
-    
+
 #     # test that approver is required
 #     def test_approver_is_required(self):
 #         form = ApproverFormSet.ProjectApproval({

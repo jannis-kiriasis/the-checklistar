@@ -66,142 +66,323 @@ The checklistar is for those companies that need a desktop app to track progress
 - The possibility to edit and delete projects.
 
 ![Insured responsive design](./README-files/i-am-responsive.png)
+## User Experience (UX) – The needs
+Now that we are familiar with The Checklistar target audience and offering, we are looking at the needs the app users may have. 
 
-## User Experience (UX) - user stories
-Now that we are familiar with The Checklistar target audience and offering, we are looking at the needs the app users may have. Following, you can find the epics an the user stories break down used to plan the development of the app.
+Having worked in corporate environments for different years, I was exposed to this type of processes where a project or document needed to be reviewed by different departments before it could be realised to the public. 
 
-### Users goals
+The first step I took was to listen to the needs of all the players involved in the process. I have identified 3 main stakeholders:
+### The project manager (PM)
+The project owner is the person who owns the project and is responsible to bring it to a conclusion. 
 
-| **User stories**                                                                                          |
-|-----------------------------------------------------------------------------------------------------------|
-| As a user, I want to easily understand the main purpose of the site                                       |
-| As a user, I want to have a better idea of what cover I need                                              |
-| As a user, I want to get a better understanding of what I need to consider when deciding on a life policy |
-| As a user, I want to see how long the questionnaire takes to complete                                     |
-| As a user, I want to see at what stage of the questionnaire I am and the number of questions left         |
-| As a user, I want to get a personalised result based on my personal needs                                 |
-| As a user, I want to be able to take the questionnaire again                                              |
-| As a user, I want to be able to find out how much cover I need                                            |
-| As a user, I want to be able to apply for a cover easily                                                  |
-| As a user, I want to know if my application had a positive outcome                                        |
-| As a user, I want to know be able to find my way if I get lost                                            |
+The project owner has different requirements since the beginning depending on the type of project that needs to be completed. 
 
-## Features
+To summaries, a project or document that needs to ‘go through the checklist’ (from here the name The Checklistar) always has:
+
+- A title
+- A description
+- An attachment
+- A due date
+- The departments that need to approve it
+- An aimed approval due date for each department to make sure the process doesn’t stop somewhere
+
+Not every project goes smoothly through the checklist every time. The PM faces different struggles:
+
+1. Some approvers forget to follow up and return the project approved on time. They are always busy, they (we) always get thousands of emails every day and the email with the project approval request gets forgotten under a pile of other urgent emails. The PM needs to remind the approvers constantly.
+
+3. Some approvers come back with suggestions or changes requests. The project / document needs to be reviewed. The approver and the project owner start to exchange many emails back and forth. Someone else may be called in to approve the project too.
+
+4. The PM also needs to collect evidence of every approval. All the approvals are recorded in case of an audit from third parties. The risk controllers regularly test a few projects to make sure that the company is limiting the risks as much as possible. The PM problem is that those approvals aren’t saved in a database, but in their mailbox. So they needs to go and find all the emails threads (from point 2) and keep a record of all the approval received. 
+
+5. Deadlines are missed because of point 1,2,3. The project owner is considered the responsible because it’s ‘the owner’.
+
+### The project approver (PA)
+The project approver is the person that needs to review and approve a project. Every project may have more than one approver. Usually, the approvals need to be given in a specific order.
+
+The PA also faces different problems:
+
+1. The PA receives many requests of approvals per week. Some of them take longer than others to review. The PA is usually one designated person in a department. It’s difficult to keep track of all the approval requests if the only place they are found is their mailbox.
+2. The PA needs to be always aware of the approval deadlines. Because it is difficult to keep up with all the incoming requests, it is imperative for the approver to be aware of all the deadlines. Some of the documents / projects are time sensitive, others may be regulatory changes. 
+### The risk controller (RC)
+The risk controller is someone that oversees the process from outside. The RC isn’t actively involved, however they periodically ‘test’ the process. They have to make sure that all the projects / documents completed went through the checklist rigorously and the approvals needed have been recorded.
+
+Even if not actively involved, the RC also faces some problem:
+
+1. While performing the tests, the RC needs to review all of the approval’s recordings. They need to examinate the evidence provided. Those evidence may be different from project to project. Every PM also collects them differently. The RC issue with this is that it’s time consuming and not immediate the answer. The RC may have to knock at the PM door to ask explanations about the evidence collected because not clear enough.
+1. The RC also needs to evaluate the quality of the evidence and decide whether it is satisfactory for the risk control. This means that the RC needs to influence the way the checklist is compiled and the way the evidence is recorded. Again this process takes time as it isn’t standardised.
+
+The first step was to outline all the problems the 3 main stakeholders have. Those problems where then translated into needs, in other words, the stakeholders ‘wants’ from the approval management system.
+
+The app needs to be able to solve all of them. The following step I took was to transform those needs into Epics and then User stories.
+
+At this point defining the epics was intuitive enough: I created 3 main epics, each of them addressing the issues of one of the stakeholders.
+## Epics and User Stories
+
+Following, you can find the epics an the user stories break down used to plan the development of the app.
+### Epic 1 – The project manager
+
+The PM requires a workflow to get some projects / documents approved. The PM needs to be able to submit certain information with the project/document. The PM needs to designate some approvers within the organization to review and approve the project. The PM needs to keep track of all the interactions with the PAs and collect approvals within certain deadlines. The approval evidence needs to be recorded for risk management reasons.
+
+
+### E1 - User story 1 – Create a project
+As a PM, I want to be able to create a project so that I don’t need to submit the project via email.
+
+**Acceptance criteria:**
+1. The project needs to include project id, title, description, attachment, due date and an unlimited number of approvers.
+
+### E1 - User story 2 – Set the project workflow
+As a project manager, I want to be able to assign unlimited approvers to a project so that I can get all the approvals needed for completion.
+
+**Acceptance criteria:**
+2. Set unlimited approvers when I’m creating the project
+3. The approvers must be associated to a department and have a deadline
+
+### E1 - User story 3 – Create main dashboard
+As a project manager, I want to be able to see at what stage a process is and how many steps are missing so that I can make sure we are in line with deadlines.
+
+**Acceptance criteria:**
+2. Create a dashboard page with all the projects open and the approvals required for each project
+3. The approvals must be ordered by due date
+4. It should be immediate to notice what approvals have been given and what approvals are missing
+
+### E1 - User story 4 – Edit a workflow
+As a project manager, I want to be able to update a project anytime, so that if the requirements change, I can update the workflow.
+
+**Acceptance criteria:**
+1. Project title, description, due date approvers and approval due dates must be editable.
+2. Only the project owner can edit a project.
+
+### E1 - User story 5 – Delete a workflow
+As a project manager, I want to be able to delete a project, so that if a project is cancelled, I can also delete it from the platform.
+
+**Acceptance criteria:**
+1. Include option to cancel a project and related approvers.
+2. Only the project owner can delete a project.
+
+### E1 - User story 6 – See all the projects open
+As a project manager, I want to be able to see all the projects I’ve started and their approvers, so that I can quickly see where I need to focus on.
+
+**Acceptance criteria:**
+1. Create a page where the PM can see only the projects the logged in PM have started
+2. Make instantly evident what projects are completed and what aren’t
+3. The projects should be ordered by created date
+
+
+### E1 - User story 7  
+As a project manager, I want to be able to message the approvers so that if I need to update them on something, I don’t need to send an email.
+
+**Acceptance criteria:**
+
+1. Projects should be comment-able 
+2. Comments should be in a thread and ordered by the newest
+
+
+### E1 - User story 8
+As a PM, I want to be notified when a comment is added to the project, or an approval is given so that I can decide how to proceed next
+
+**Acceptance criteria:**
+1. Send me a notification when a project is approved
+2. Send me a notification when a project is commented
+
+
+## Epic 2 – The approvers / stages
+The approvers need to be able to find of all the projects they need to approve easily. They’ll have a list of works they need to review so that nothing goes lost and they can make sure deadlines are respected. The approver needs to be able to comment and approve projects.
+
+### E2 - User story 1 
+As an approver, I want to quickly see what projects are pending my approval so that I can concentrate and to get the work done.
+
+**Acceptance criteria:**
+1. All the approvers’ projects need to be in a page and the deadline should be visible.
+2. The projects needing approval by the logged in approver need to be identifiable easily.
+
+### E2 - User story 2
+As an approver, I want to see when all the projects pending my approval are due, so that I can prioritise my work.
+
+**Acceptance criteria**
+1. The due date will be visible in the dashboard for each project
+
+### E2 - User story 3
+As an approver, I want to be able to add a comment to the project, so that I can record my feedback and don’t get lost in email threads. 
+
+**Acceptance criteria**
+1. The approver needs to be able to comment the project
+
+### E2 - User story 4
+As an approver, I want to be able to approve a project so that it can be sent to the next approver.
+
+**Acceptance criteria**
+1. A feature needs to allow the approver to approve the project
+
+### E2 – user story 5
+As an approver I want to be notified when a flow is assigned to me so that I can take an action.
+
+**Acceptance criteria**
+1. The approver needs to receive a notification when he has been assigned a project.
+
+## E3 – The risk controllers
+The tool will allow risk controllers to keep track of all the work done and make sure that it has been carried out respecting regulations to lower risk levels. The tool records all the projects/ works done and the evidence should be collectable easily.
+
+## E3 - User story 1
+As a risk controller, I want to be able to see a list of all the projects completed so that I can easily perform tests on the completed projects.
+
+**Acceptance criteria**
+1. The RC needs to find a list of all the projects approved.
+
+## E3 - User story 2 
+As a risk controller, I want to be able to see the approval evidence so that I can assess the risk controls operations.
+
+### User story 3 epic 3
+As a risk controller I want to be able to download a list of the projects completed so that I can record risk assessments and completion.
+
+
+
+**Acceptance criteria:**
+
+1. The completed projects need to be accessible easily
+
+## Epic 4 – 
+A user wants to be able to register and sign in into his dashboard to see the work in progress. Only the project owner can edit a task and only approvers can approve a task. Everyone can comment on a project.
+
+## User story 1 epic 4
+As a project owner, I can register and login to the software so that I will be the only one able to create, edit, cancel a project.
+
+## User story 2 epic 4
+As an approver, I can register and login to the software so that I will be the only one able to approve tasks.
+
+Mapping out the user stories helped me easily identify the problems the application solves:
+
+1. There is no need to save / download approval emails as they are all stored in a database
+1. The RC can find all project completed easily and download all the approvals from the database
+1. There is no need to exchange emails as the projects can be commented.
+1. Everything related to a project is centralised. So comments, approvals, deadlines and other project details can be found in the same place.
+
+
+
+**Features**
 
 In the following paragraphs, we are going to see what features appear on the website and where they meet the users' needs.
 
-### Global features
+**Global features**
 
-This is a list of features that appear on every page.
+This is a list of features that appear on every page.![Logo](Aspose.Words.4c96bf5c-2f8f-4cf7-bccf-572631e96517.001.png)
 
-1.	**Logo**  
-    The logo appears on every page. As an industry standard, the logo links back to the homepage.
+1. **Main navigation**
+   The main navigation includes the following pages:
+   1. Create a project
+   1. Dashboard – contains all the projects opened by anyone 
+   1. My projects – the projects the logged in user have started
+   1. My approvals – the approvals the logged in user need to give
+   1. Notification centre – as list of things that happened related to the logged in user
 
-    ![Logo](./README-files/insured-logo.png)
+The navigation allows users to filter the projects to easily find the projects they need to approve; they have opened and the option to create a project. 
 
-2.	**Main heading**  
-    The main heading appears on every page of the questionnaire, calculator and application form.
-    In the questionnaire, the main heading is the placeholder for the questions. Its content changes using DOM manipulation rules at every button click.
+Non logged in users can only see sign up and sign in in the navigation.
 
-    ![Heading](./README-files/main-heading.png)
+2. **The projects** 
+   The project includes the project details that the PM outlined. It also includes the approvers that need to approve it and their approval due dates.
 
-3.	**Sstages**  
-    I've used graphics to represent the 3 pages included on the website: The questionnaire, the calculator and the application form. It lets users know at what stage of the whole process they are. 
-    
-    The current page icon becomes Verdigris when the page is active.
+The content seen is personalised for the signed in user. On the ‘My approvals’ page:
 
-    ![Navigation](./README-files/navigation.png)
+- If the logged in user have already approved the project, it will have a green background (otherwise light blue)
 
-### Questionnaire features - index.html
+On the ‘my projects’ page:
 
-4.	**Progress bar**  
-    The progress bar helps users see at what stage of the questionnaire they are. The full questionnaire includes an intro, 5 questions and the results page. 
-    The current progress circle is blue. The past questions / pages are green. The progress bar updates at every button click with DOM manipulation, so when users start the questionnaire or answer a question.
+- If the logged in user have already completed a project, it will have a green background (otherwise light blue)
 
-    ![Progress bar](./README-files/progress-bar.png)
+Project collapsed
 
-    **Mobile progress bar**  
-    The mobile progress bar shows the current page only when users are on the intro page or results page. On the actual questions, the progress update shows the current question number on the total (x / 5).
+Project expanded
 
-    ![Mobile progress bar](./README-files/mobile-progress-bar.png)
+3. **The project details**
 
-5.	**Intro page**  
-    The intro page explains to users what Insured is all about. It also collects the user name which is stored in session storage and used later on. The user name is required and it's validated with other JS rules. 
+By clicking on view details on any project, it will open a project details page. There everyone can see more details about a project as well as its comments and the buttons to edit, approve, delete and complete. It also includes the form to submit a comment on the project.
 
-    If users click on 'start' and the user name hasn't been added or it doesn't pass validation, an alert message will show up and the input fields border becomes red.
+Only the PM can see edit, delete and complete. Only the approvers can see the approve button and only their correspondent button.
 
-    ![Intro](./README-files/intro-page.png)
+4. **My projects**
+The my projects view filters the projects by projects opened from the logged in user. The projects are also divided between completed and not completed. The projects completed have a light green background whereas the projects not completed have a light blue background.
 
-6.	**Question pages**  
-    When users click start on the intro page and pass the username validation test, the first question is served and the progress bar updates. Yes and no buttons also appear on the screen. This is all handled with DOM manipulation and updated as the user clicks on yes / no to go to the next question.
+5. **My approvals**
 
-    User answers are stored in variables.
+The my approvals view filters the projects by projects that the logged in person needs to approve. The projects are also divided by approved and not approved. The projects approved have a light green background and the projects not approved have a light blue background.
 
-    ![Question pages](./README-files/question-pages.png)
+6. **Notification centre**
 
-7.	**Results page**  
-    Based on the answers provided, the results page tells users what life cover they may need. It uses logic to determine what content to show. If users answer yes to at least 1 question, the 'calculate your life insurance need' button will be shown. It brings users to the next step: calculate the cover amount they need. If all the user's answers have a negative outcome, only the button to restart is shown.
+The notification centre includes a list of notifications personalised for the logged in user. The user is notified when:
 
-    ![Results page](./README-files/results.png)
+- a comment is added to a project where the user is an approver or a project owner
+- a project is assigned to an approver
+- a project has been approved
 
-### Life cover calculator features - life-insurance-calculator.html
+7. **Create and edit a project forms**
 
-8.	**Calculator**  
-    A simple calculator to help users figure out how much life insurance they need. There are only 2 input fields: salary and years of cover needed. The calculation is a simple multiplication. Input fields are validated with HTML and JS rules.
+As the title says, this form allows the user to create or edit a form. Every field is editable. Approvers can be added and removed during creation or when editing a project and the records are automatically added or removed from the database.
 
-    If the input fields aren't blank and differ from 0, an 'apply now for this cover' button is shown together with a 'recalculate' button.
+8. **Login** 
 
-    Users' inputs are saved in session storage.
+A form to authenticate the user to the app. Non authenticated users can see the projects but not interact with them (they can’t comment, approve, edit, open project etc. They can only ‘read’).
 
-    ![Calculator](./README-files/calculator.png)
+9. **Signup**
 
-### Application form features - application-form.html
+The signup form allows users to sign up and use the tool. At sign up they need to enter their department so that if they are selected as approvers, their department will show up in the approvers list of each project.
 
-9.	**Application form**  
-    The contact form is prepopulated with the data previously asked to users. Users only need to add their contact details and click apply. New input fields validation rules are used on all fields. 
+10. **The admin panel**
 
-    ![Application form](./README-files/application-form.png)
+The admin panel allows a superuser to see all the records saved in the database including:
 
-10. **Confirmation message**
-    An application submitted message appears on the screen when the form is submitted correctly. This is done using DOM manipulation. In the confirmation message, there is also a summary of the information submitted and a button to restart from the questionnaire.
+- projects
+- project approvals
+- users and user profiles
+- Notifications
+- comments
 
-    An email with the data submitted is also sent to the user and to Insured.
+From the admin panel, projects and project approvals can be downloaded as a csv file to be handed to the RC and fulfil their requirements.
 
-### Others
-11. **Custom 404 page**  
-    A custom 404 page asks visitors what page they were looking for.
+11. **Feedbacks and popups**
 
-    ![Custom 404 page](./README-files/404-page.png)
+The applications let the user know every time they user perform an action whether is has been completed or not.
+
+12. **404 and 500 error pages**
+
+The 404 and 500 error pages handle errors nicely explaining to the user what is happening and offering a way to exit the error.!
+
+[Custom 404 page](Aspose.Words.4c96bf5c-2f8f-4cf7-bccf-572631e96517.001.png)
 
 ## Where user stories meet features
 
-In the following paragraph, I’m going to match features with user needs (user stories). The features are numbered and the same feature numbers appear in the table below.
+In the following table, I’m going to match features with user stories and the issues the app solves. All the user stories, features and needs outlined in the paragraphs above have a number that correspond to the number you see in the table below.
 
-| **User stories**                                                                                          | **Features** |
-|-----------------------------------------------------------------------------------------------------------|--------------|
-| As a user, I want to easily understand the main purpose of the site                                       | 2, 3, 6      |
-| As a user, I want to have a better idea of what cover I need                                              | 7            |
-| As a user, I want to get a better understanding of what I need to consider when deciding on a life policy | 6, 7, 8      |
-| As a user, I want to see how long the questionnaire takes to complete                                     | 4            |
-| As a user, I want to see at what stage of the questionnaire I am and the number of questions left         | 4            |
-| As a user, I want to get a personalised result based on my personal needs                                 | 7            |
-| As a user, I want to be able to take the questionnaire again                                              | 7, 10        |
-| As a user, I want to be able to find out how much cover I need                                            | 8            |
-| As a user, I want to be able to apply for a cover easily                                                  | 9            |
-| As a user, I want to know if my application had a positive outcome                                        | 10           |
-| As a user, I want to know be able to find my way if I get lost                                            | 3, 11        |
+| User stories | Features |
+|--------------|----------|
+| E1 US1       | 7        |
+| E1 US2       | 7        |
+| E1 US3       | 2, 3     |
+| E1 US4       | 7        |
+| E1 US5       | 3        |
+| E1 US6       | 4        |
+| E1 US7       | 3        |
+| E1 US8       | 6        |
+| E2 US1       | 5        |
+| E2 US2       | 5, 3     |
+| E2 US3       | 3        |
+| E2 US4       | 3        |
+| E2 US5       | 6        |
+| E3 US1       | 10       |
+| E3 US2       | 10       |
+| E3 US3       | 10       |
 
 ## Wireframes
 
-The first draft of the website was completed by creating wireframes using Balsamic. 
+The first draft of the website was completed by creating wireframes using Balsamic.
+
+Below you can find the initial wireframes created. The main goal when I created 
+the wireframes was to fulfill the user story requirements. Later on during development
+I've upgraded the styling getting to the final version that you see live.
 
 - **Questionnaire**   
 ![Intro page wireframe](./README-files/intro-page-wf.png)
 ![Questions wireframe](./README-files/questions-wf.png)
 ![Results wireframe](./README-files/results-page-wf.png)
-
-- **Calculator & Application form**  
-I had the idea of adding a calculator and an application form while WIP so wireframes aren't available.
 
 ## Features left to implement 
 
@@ -217,11 +398,16 @@ In the following paragraph, I'm going to explain the colours, typography and ima
 
 ### Colours
 
-The main colour used is a shade of blue (Liberty). Blue is a calm and serene colour. It is often associated with stability and reliability. Most of the insurance companies I can think of have at least one shade of blue in their colour palette (Allianz, Aviva, Axa, Zurich to name a few) and so Insured had to have a blue too. I've increased a bit the contrast ratio with light backgrounds to achieve accessibility best scores.
+I've used a similar color palette to a project I previosly realised (pp2) so the reasoning behind the colors choice is very similar.
 
-As I chose Liberty, I needed an opposite colour to create contrast with important elements on the page, such as the buttons. So, I picked a shade of red, Fuzzy Wuzzy and increased its contrast ratio with light colours to pass accessibility tests.
+The main colour used is a shade of blue (Liberty). Blue is a calm and serene colour. It is often associated with stability and reliability. I've increased a bit the contrast ratio with light backgrounds to achieve accessibility best scores.
 
-As secondary colours, I've used a shade of green (Verdigris) to highlight the past questions in the progress bar, and a tan colour used for smaller decorative purposes. I've also added  Timberwolf in case I needed a light grey but I haven't used it. May become useful for future development. 
+All the main buttons are in a shade of green, Verdigris. It's different enough to differentiate from the main Liberty color. I've also used a share of red (Fuzzy Wuzzy) for the 'delete' button and the 'remove approver' button.
+
+I've also used a tan color for the 'edit', 'complete' and 'approve'. Those aren't stardard actions (for which I've used Verdigris) and they aren't 'delete' actions so Fuzzy Wuzzy red wasn't a good chioce for those. 
+
+Lighter shades of Verdigris and Liberty have been created to highlight complete / non completed and approved / not approved projects in the templates 'dashboard', 'my approvals', 'my projects'.
+
 
 ![Color Palette](./README-files/insured-color-palette.png)
 

@@ -50,7 +50,7 @@
               <a href="#" data-target="mobile-demo" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
               <ul class="right hide-on-med-and-down">
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn">Create project</a></li>
+                <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn text-black">Create project</a></li>
                 <li><a href="{% url 'notifications' %}">Notifications <span id="notification-count" class="btn-floating btn-small red">{{ notifications.count }}</span></a></li>
                 <li><a href="{% url 'dashboard' %}">All projects</a></li>
                 <li><a href="{% url 'my-projects' %}">My projects</a></li>
@@ -58,7 +58,7 @@
                 <li><a href="{% url 'account_logout' %}">Logout</a></li>
                 {% else %} 
                 <li><a href="{% url 'account_signup' %}">Sign up</a></li>
-                <li><a href="{% url 'account_login' %}" class="waves-effect waves-light btn">Login</a></li>
+                <li><a href="{% url 'account_login' %}" class="waves-effect waves-light btn text-black">Login</a></li>
                 {% endif %}
               </ul>
             </div>
@@ -66,7 +66,7 @@
         
           <ul class="sidenav" id="mobile-demo">
             {% if user.is_authenticated %}
-            <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn">Create project</a></li>
+            <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn text-black">Create project</a></li>
             <li><a href="{% url 'notifications' %}">Notifications <span class="btn-floating btn-small red">{{ notifications.count }}</span></a></li>
             <li><a href="{% url 'dashboard' %}">All projects</a></li>
             <li><a href="{% url 'my-projects' %}">My projects</a></li>
