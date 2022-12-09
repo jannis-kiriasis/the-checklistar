@@ -379,11 +379,11 @@ I've upgraded the styling getting to the final version that you see live.
 
 ## Features left to implement 
 
-- Little info boxes can be added next to each input field to clarify why that information is needed.
-- Additional fields can be added to the calculator to make it more advanced. An 'extra fields' dropdown could reveal more input fields and so give users the option to use the short calculator or the advanced calculator.
-- More questions can be added to the questionnaire: there are life insurance policies that haven't been covered such as the serious illness cover. More questions can be asked to the users to give an even more specific result.
-- Calculators for mortgage protection and income protection can also be created.
-- Preselected cover type input fields can be added to the application form. The field will be preselected to the cover type users need based on their questionnaire results.
+- Create checklist templates. A set or predefined approvers. Every templates have different predefined approves. Improves UX.
+- Implement email notification. When a notification is created, an email can also be created.
+- Option to upload more than 1 document. Possbly a versioning system.
+- Approvals to be give in a specific order, so disable the approver button untill the approver's turn comes.
+- Signup with a social media account or Google.
 
 ## Design
 
