@@ -87,3 +87,24 @@ class TestViews(TestCase):
         self.assertRedirects(response, '/my-projects')
         existing_project = Project.objects.filter(id=project.id)
         self.assertEqual(len(existing_project), 0)
+
+
+    # # test get projectDetails method returns 200 and dashboard.html
+    # def test_get_project_list(self):
+    #     project = self.project
+    #     response = self.client.post(f'/project-details/{project.slug}')
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertTemplateUsed(response, 'project-details.html')
+
+    # test create a project view
+    def test_create_project(self):
+        response = self.client.get('/create-project')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'create-project.html')
+
+    # test edit a project view
+    def test_get_edit_project_page(self):
+        project = self.project
+        response = self.client.get(f'/edit/{project.id}')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'edit-project.html')
