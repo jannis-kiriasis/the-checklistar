@@ -412,9 +412,13 @@ Lighter shades of Verdigris and Liberty have been created to highlight complete 
 ![Color Palette](./README-files/insured-color-palette.png)
 
 All the text colour combinations have been tested for accessibility and they all achieve WCAG AAA.
-- [Colour contrast test: white on red](https://webaim.org/resources/contrastchecker/?fcolor=FFFFFF&bcolor=A42D2D) - Used on buttons.  
-- [Colour contrast test: black on light blue](https://webaim.org/resources/contrastchecker/?fcolor=000000&bcolor=F3F4FA) - Used on the main text area.  
-- [Colour contrast test: blue on light blue](https://webaim.org/resources/contrastchecker/?fcolor=3B4D97&bcolor=F3F4FA) - Used on headings.  
+- [Colour contrast test: white on blue](https://webaim.org/resources/contrastchecker/?fcolor=FFFFFF&bcolor=3B4D97)   
+- [Colour contrast test: black on light blue](https://webaim.org/resources/contrastchecker/?fcolor=000000&bcolor=E9ECF7)   
+- [Colour contrast test: black on green](https://webaim.org/resources/contrastchecker/?fcolor=000000&bcolor=48A9A6) 
+- [Colour contrast test: white on red](https://webaim.org/resources/contrastchecker/?fcolor=FFFFFF&bcolor=A42D2D)   
+- [Colour contrast test: black on tan](https://webaim.org/resources/contrastchecker/?fcolor=000000&bcolor=D4B483)   
+- [Colour contrast test: blue on light blue](https://webaim.org/resources/contrastchecker/?fcolor=E9ECF7&bcolor=3B4D97)   
+- [Colour contrast test: black on tan](https://webaim.org/resources/contrastchecker/?fcolor=000000&bcolor=D4B483)   
 
 Tested with [Contrast checker](https://webaim.org/resources/contrastchecker/).
 

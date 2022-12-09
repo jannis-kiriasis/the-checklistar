@@ -28,7 +28,7 @@
               <i class="material-icons">clear</i>
             </p>
             {% else %}
-            <p class="approved">
+            <p class="dark-green">
               <i class="material-icons">check_circle
               </i>
             </p>
@@ -81,8 +81,8 @@
           {{ approval.approver.user }}
         </p>
         {% if approval.approved %}
-        <p class="bold">Approval status:
-          <span class="approved">Approved</span>
+        <p class="bold dark-green">Approval status:
+          <span class="dark-green">Approved</span>
         </p>
         {% else %}
         <p>
@@ -111,7 +111,7 @@
   <div class="row">
     <!-- Section for comments form -->
     <div class="col s12 m8">
-      <div class="comment-form approved">
+      <div class="comment-form">
         {% if user.is_authenticated %}
         <h3>Leave a comment:</h3>
         <p>Posting as: {{ user.username }}</p>

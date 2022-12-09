@@ -7,6 +7,7 @@
     --liberty-light: #e9ecf7;
     --liberty-medium: #d4d9ee;
     --verdigris: #48a9a6;
+    --dark-verdigris: #296161;
     --verdigris-light: #ecf7f7;
     --timberwolf: #f4f2f0;
     --tan: #d4b483;
@@ -16,6 +17,10 @@
 
 .a-notification {
     color: var(--liberty);
+}
+
+.dark-green {
+    color: var(--dark-verdigris);
 }
 
 .a-notification:hover {
@@ -36,7 +41,6 @@ h2 {
 }
 
 h3 {
-    color: var(--verdigris);
     font-size: 1.5rem;
     font-weight: 700;
 }

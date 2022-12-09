@@ -39,8 +39,8 @@
                                 <i class="material-icons">clear</i>
                             </p>
                             {% else %}
-                            <p title="Completed" class="approved">
-                                <i class="material-icons">check_circle
+                            <p title="Completed" class="dark-green">
+                                <i class="material-icons dark-green">check_circle
                                 </i>
                             </p>
                             {% endif %}
@@ -71,8 +71,8 @@
                             </p>
                             <div class="approval">
                                 {% if approval.approved %}
-                                <i class="material-icons approved">check</i>
-                                <p class="approved bold">
+                                <i class="material-icons dark-green">check</i>
+                                <p class="dark-green bold ">
                                     on {{ approval.approval_date|date:'d/m/y' }}
                                     <br>
                                 </p>
