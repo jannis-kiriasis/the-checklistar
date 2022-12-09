@@ -18,7 +18,7 @@
           </p>
           <div>
             {% if project.document %}
-            <a href="{{ project.document.url }}" download target="_blank"><i
+            <a href="{{ project.document.url }}" download target="_blank" aria-label="View project document"><i
                 class="small material-icons">attachment</i></a>
             {% endif %}
           </div>
@@ -56,13 +56,13 @@
         <div class="col s12">
           <!-- Project actions edit and delete -->
           {% if user == project.owner and project.status == 0 %}
-          <a href="/edit/{{ project.id }}" class="btn btn-small text-black">EDIT PROJECT</a>
-          <a href="/delete/{{ project.id }}" class="btn btn-small red" id="delete">DELETE PROJECT</a>
-          <a href="/complete/{{ project.id }}" class="btn btn-small tan text-black" id="complete">COMPLETE PROJECT</a>
+          <a href="/edit/{{ project.id }}" class="btn btn-small text-black" aria-label="Edit project">EDIT PROJECT</a>
+          <a href="/delete/{{ project.id }}" class="btn btn-small red" id="delete" aria-label="Delete project">DELETE PROJECT</a>
+          <a href="/complete/{{ project.id }}" class="btn btn-small tan text-black" id="complete" aria-label="Complete project">COMPLETE PROJECT</a>
           {% else %}
-          <a href="/edit/{{ project.id }}" class="btn btn-small disabled">EDIT PROJECT</a>
-          <a href="/delete/{{ project.id }}" class="btn btn-small red disabled">DELETE PROJECT</a>
-          <a href="/complete/{{ project.id }}" class="btn btn-small tan disabled">COMPLETE PROJECT</a>
+          <a href="#" class="btn btn-small disabled">EDIT PROJECT</a>
+          <a href="#" class="btn btn-small red disabled">DELETE PROJECT</a>
+          <a href="#" class="btn btn-small tan disabled">COMPLETE PROJECT</a>
           {% endif %}
         </div>
       </div>
@@ -97,7 +97,7 @@
         {% if user.id == approval.approver_id %}
         {% if approval.approved %}
         {% else %}
-        <a href="/approve/{{ approval.id }}" id="approve" class="btn btn-small tan margin-top text-black">APPROVE PROJECT</a>
+        <a href="/approve/{{ approval.id }}" id="approve" class="btn btn-small tan margin-top text-black" aria-label="Approve project">APPROVE PROJECT</a>
         {% endif %}
         {% endif %}
       </div>

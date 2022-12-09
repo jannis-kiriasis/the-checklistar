@@ -15,6 +15,12 @@
     --fuzzy-wuzzy-light: #f9e7e7;
 }
 
+body, 
+input {
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-size: 1.2rem;
+}
+
 .a-notification {
     color: var(--liberty);
 }

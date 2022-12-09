@@ -409,7 +409,7 @@ I've also used a tan color for the 'edit', 'complete' and 'approve'. Those aren'
 Lighter shades of Verdigris and Liberty have been created to highlight complete / non completed and approved / not approved projects in the templates 'dashboard', 'my approvals', 'my projects'.
 
 
-![Color Palette](./README-files/insured-color-palette.png)
+![Color Palette](./media/README-files/colors.png)
 
 All the text colour combinations have been tested for accessibility and they all achieve WCAG AAA.
 - [Colour contrast test: white on blue](https://webaim.org/resources/contrastchecker/?fcolor=FFFFFF&bcolor=3B4D97)   
@@ -419,12 +419,12 @@ All the text colour combinations have been tested for accessibility and they all
 - [Colour contrast test: black on tan](https://webaim.org/resources/contrastchecker/?fcolor=000000&bcolor=D4B483)   
 - [Colour contrast test: blue on light blue](https://webaim.org/resources/contrastchecker/?fcolor=E9ECF7&bcolor=3B4D97)   
 - [Colour contrast test: black on tan](https://webaim.org/resources/contrastchecker/?fcolor=000000&bcolor=D4B483)   
-
+- [Colour contrast test: dark green on white](https://webaim.org/resources/contrastchecker/?fcolor=296161&bcolor=FFFFFF)   
 Tested with [Contrast checker](https://webaim.org/resources/contrastchecker/).
 
 ### Typography
 
-The typography was chosen for my liking. Open Sans is a very popular font if not the most popular.
+The typography was chosen for my liking, again I've used it in previous projects PP2). Open Sans is a very popular font if not the most popular.
 
 I used [Open Sans](https://fonts.google.com/specimen/Open+Sans) for all body elements.  
 
@@ -432,13 +432,12 @@ The fallback font used is Helvetica for all body elements.
 
 ### Imagery
 
-I've used graphics for the logo, favicon and the navigation process. The navigation graphics come from [Flaticon](https://www.flaticon.com/).
+The only image used in thi project is the favicon.
 
-I've used SVG images where possible that are lighter than jpg and since it's a vector format, graphics always look sharp. It works well with logos and 'flat' graphics.
 
 ## Accessibility
 
-As mentioned above, all the colour combinations used for text passed a contrast ratio test. During the testing phase, the white fonts on the red backgrounds (only used to style buttons) resulted low in contrast ratio. The red colour was adjusted to pass and achieve an accessibility score of WCAG AAA.
+As mentioned above, all the colour combinations used for text passed a contrast ratio test. During the testing phase, Verdigris didn't pass the test and so it was darkened creating the Dark Verdigris color achiving the WCAG AAA score for accessibility.
 
 I've also used alt tags to describe images and aria labels to describe links.  
 The pages have been structured using semantic HTML markup.  

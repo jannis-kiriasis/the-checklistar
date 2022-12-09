@@ -46,19 +46,19 @@
             <!-- Navigation -->
         <nav>
             <div class="nav-wrapper">
-              <a href="{% url 'dashboard' %}" class="left brand-logo">The Checklistar</a>
-              <a href="#" data-target="mobile-demo" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
+              <a href="{% url 'dashboard' %}" class="left brand-logo" aria-label="Go to homepage">The Checklistar</a>
+              <a href="#" data-target="mobile-demo" class="right sidenav-trigger" aria-label="Open menu"><i class="material-icons">menu</i></a>
               <ul class="right hide-on-med-and-down">
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn text-black">Create project</a></li>
-                <li><a href="{% url 'notifications' %}">Notifications <span id="notification-count" class="btn-floating btn-small red">{{ notifications.count }}</span></a></li>
-                <li><a href="{% url 'dashboard' %}">All projects</a></li>
-                <li><a href="{% url 'my-projects' %}">My projects</a></li>
-                <li><a href="{% url 'my-approvals' %}">My approvals</a></li>
-                <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn text-black" aria-label="Create a project">Create project</a></li>
+                <li><a href="{% url 'notifications' %}">Notifications <span id="notification-count" class="btn-floating btn-small red" aria-label="Open notification centre">{{ notifications.count }}</span></a></li>
+                <li><a href="{% url 'dashboard' %}" aria-label="Go to main dahsboard">All projects</a></li>
+                <li><a href="{% url 'my-projects' %}" aria-label="Open my projects">My projects</a></li>
+                <li><a href="{% url 'my-approvals' %}" aria-label="Open my approvals">My approvals</a></li>
+                <li><a href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
                 {% else %} 
-                <li><a href="{% url 'account_signup' %}">Sign up</a></li>
-                <li><a href="{% url 'account_login' %}" class="waves-effect waves-light btn text-black">Login</a></li>
+                <li><a href="{% url 'account_signup' %}" aria-label="Sign up">Sign up</a></li>
+                <li><a href="{% url 'account_login' %}" class="waves-effect waves-light btn text-black" aria-label="Login">Login</a></li>
                 {% endif %}
               </ul>
             </div>
@@ -66,15 +66,15 @@
         
           <ul class="sidenav" id="mobile-demo">
             {% if user.is_authenticated %}
-            <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn text-black">Create project</a></li>
-            <li><a href="{% url 'notifications' %}">Notifications <span class="btn-floating btn-small red">{{ notifications.count }}</span></a></li>
-            <li><a href="{% url 'dashboard' %}">All projects</a></li>
-            <li><a href="{% url 'my-projects' %}">My projects</a></li>
-            <li><a href="{% url 'my-approvals' %}">My approval</a></li>
-            <li><a href="{% url 'account_logout' %}">Logout</a></li>
+            <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn text-black" aria-label="Create a project">Create project</a></li>
+            <li><a href="{% url 'notifications' %}">Notifications <span id="notification-count" class="btn-floating btn-small red" aria-label="Open notification centre">{{ notifications.count }}</span></a></li>
+            <li><a href="{% url 'dashboard' %}" aria-label="Go to main dahsboard">All projects</a></li>
+            <li><a href="{% url 'my-projects' %}" aria-label="Open my projects">My projects</a></li>
+            <li><a href="{% url 'my-approvals' %}" aria-label="Open my approvals">My approvals</a></li>
+            <li><a href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
             {% else %} 
-            <li><a href="{% url 'account_signup' %}">Sign up</a></li>
-            <li><a href="{% url 'account_login' %}" class="waves-effect waves-light btn">Login</a></li>
+            <li><a href="{% url 'account_signup' %}" aria-label="Sign up">Sign up</a></li>
+            <li><a href="{% url 'account_login' %}" class="waves-effect waves-light btn text-black" aria-label="Login">Login</a></li>
             {% endif %}
           </ul>
 
@@ -104,7 +104,7 @@
             <div class="footer-copyright">
                 <div class="container">
                     © 2022 The Checklistar created by Jannis Kiriasis
-                    <a class="grey-text text-lighten-4 right" href="https://www.linkedin.com/in/janniskiriasis/"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a class="grey-text text-lighten-4 right" href="https://www.linkedin.com/in/janniskiriasis/" aria-label="Go to Linkedin profile"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
             </div>
 
