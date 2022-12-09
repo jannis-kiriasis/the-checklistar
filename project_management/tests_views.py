@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from .models import Project, ProjectApproval, UserProfile, Comment
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
+from django.urls import reverse
+
 
 
 class TestViews(TestCase):
@@ -88,23 +90,55 @@ class TestViews(TestCase):
         existing_project = Project.objects.filter(id=project.id)
         self.assertEqual(len(existing_project), 0)
 
-
-    # # test get projectDetails method returns 200 and dashboard.html
-    # def test_get_project_list(self):
-    #     project = self.project
-    #     response = self.client.post(f'/project-details/{project.slug}')
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTemplateUsed(response, 'project-details.html')
-
     # test create a project view
-    def test_create_project(self):
+    def test_get_create_project(self):
         response = self.client.get('/create-project')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'create-project.html')
 
-    # test edit a project view
-    def test_get_edit_project_page(self):
-        project = self.project
-        response = self.client.get(f'/edit/{project.id}')
+    # # test can create a project
+    # def test_can_add_project(self):
+    #     response = self.client.post(
+    #         '/create-project', {
+    #             'title': 'This is a project title',
+    #             'slug': 'this-is-a-project-title',
+    #             'description': 'This is a text description',
+    #             'due': '2021-12-30',
+    #             'id': '1',
+    #             'owner': get_object_or_404(User, username='testuser'),
+    #             'body': 'This is a comment',
+    #             'approver': 'Jannis',
+    #             'approval_due_by': '2023-12-23',
+    #         })
+    #     self.assertEqual(response.status_code, 200)
+        
+
+    # verify that user can comment on project details page
+    def test_can_comment_on_project(self):
+        response = self.client.post(
+                    reverse('project-details', args=[self.project.slug]),
+                    data={'message': 'new comment'})
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'edit-project.html')
+        self.assertTemplateUsed(response, 'project-details.html')
+
+    # # test edit a project view
+    # def test_get_edit_project_page(self):
+    #     project = self.project
+    #     response = self.client.post(f'/edit/{project.id}')
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertTemplateUsed(response, 'edit-project.html')
+
+    # test get project details page and check correct templates are used
+    def test_get_project_detail_page(self):
+        response = self.client.get(
+                    reverse('project-details', args=[self.project.slug]))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'project-details.html')
+
+    # test post project details page and check correct templates are used
+    def test_post_project_detail_page(self):
+        project = self.project
+        response = self.client.post(
+                    reverse('project-details', args=[self.project.slug]))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'project-details.html')
