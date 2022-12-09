@@ -448,38 +448,26 @@ A Lighthouse report is available in a few paragraphs below in the testing sectio
 
 ## SEO
 
-Keywords have been used in the headings of the questionnaire start page and life insurance calculator page. Each page addresses a specific search intent:
-- On the questionnaire page, the need of knowing whether a life insurance cover is needed
-- the calculator page, the need for a life cover calculator
-- The application form, the need of getting a cover painlessly
-
-The title tags also include target keywords and the length displays in full on Google Search. Tested with this [title tag length checker](https://www.highervisibility.com/seo/tools/serp-snippet-optimizer/).
-
-I've included the most common metadata (description, keywords, index) and a self-referring `rel=canonical` link on each page.
-
-I've included Open Graph tags to control the pages' appearance when shared on social media as posts.
-
-The Lighthouse SEO test also reports a score of 100/100. 
-
-A Lighthouse report is available a few paragraphs below in the testing section.
+While the most important SEO tags (meta tags and open graphs) have been used in the base.html template head, this app in for internal use, so in isn't made to be found on searh engines. 
+SEO is irrevelant for this project.
 
 ## Technologies and tools used
 
 - [HTML5](https://en.wikipedia.org/wiki/HTML5)
 - [CSS3](https://en.wikipedia.org/wiki/CSS)
 - [JavaScript](https://it.wikipedia.org/wiki/JavaScript)
+- [Python](https://www.python.org/)
+- [Django](https://www.djangoproject.com/)
+- [Materialize](https://materializecss.com/)
 - Version control: [Git](https://git-scm.com/)
 - Public repository: [GitHub](https://github.com/)
-- Resize and edit images: [Pixlr.com](https://pixlr.com/)
-- Transform png to SVG: [Convertio.co](https://convertio.co/it/png-svg/)
-- Graphics: [Flaticon](https://www.flaticon.com/)
 - Google Font: [Open Sans](https://fonts.google.com/specimen/Open+Sans)
 - Wireframes: [Balsamiq](https://balsamiq.com/)
 - Lighthouse: [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/)
-- Colours contrast checker: [Contrast checker](https://color-contrast-checker.deque.com/)
 - Colours accessibility: [Webiam](https://webaim.org/resources/contrastchecker/)
-- Send emails with JS: [emailJS](https://www.emailjs.com/)
 - Uniform alert on all browsers: [SweetAlert](https://sweetalert2.github.io/)
+- Colors darkener: [Color darkener](https://mdigi.tools/darken-color/)
+- Color lightener: [Color lightener](https://mdigi.tools/lighten-color/)
 
 ## Testing
 
@@ -488,11 +476,13 @@ I've carried out the following tests:
 1. [HTML validation](#html-validation)
 2. [CSS validation](#css-validation)
 3. [JavaScript validation](#js-validation)
-4. [Functionality testing](#functionality-testing)
+9. [Automated python testing](#automanted-teting)
+4. [Manual testing](#manual-testing)
 5. [Browsers compatibility](#browser-compatibility)
 6. [Responsiveness testing](#responsiveness-testing)
 7. [Lighthouse testing](#lighthouse-testing)
 8. [User stories testing](#user-stories-testing)
+
 
 ### HTML validation
 
@@ -521,7 +511,11 @@ The Lighthouse best practices test also reports a score of 100/100.
 
 A Lighthouse report is available a few paragraphs below in the testing section.
 
-### Functionality testing
+### Automated testing
+
+
+
+### Manual testing
 
 I've tested that the different functionalities of the website work as intended.
 
