@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .forms import CommentForm, CustomSignupForm, ProjectForm
+from .forms import CommentForm, CustomSignupForm, ProjectForm, ApproverFormSet
 
 
 class TestCommentForm(TestCase):
@@ -92,3 +92,15 @@ class TestProjectForm(TestCase):
         self.assertFalse(form.is_valid())
         self.assertIn('due', form.errors.keys())
         self.assertEqual(form.errors['due'][0], 'This field is required.')
+
+
+# class TestApproverFormSet(TestCase):
+    
+#     # test that approver is required
+#     def test_approver_is_required(self):
+#         form = ApproverFormSet.ProjectApproval({
+#             'approver': 'Janins',
+#             })
+#         self.assertFalse(form.is_valid())
+#         self.assertIn('approver', form.errors.keys())
+#         self.assertEqual(form.errors['approver'][0], 'This field is required.')
