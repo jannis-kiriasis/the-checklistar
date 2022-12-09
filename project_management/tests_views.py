@@ -79,3 +79,11 @@ class TestViews(TestCase):
         self.assertRedirects(response, '/my-approvals')
         approved_project = ProjectApproval.objects.get(project_id=project.id)
         self.assertEqual(approved_project.approved, True)
+
+    # test can delete a project
+    def test_can_delete_project(self):
+        project = self.project
+        response = self.client.get(f'/delete/{project.id}')
+        self.assertRedirects(response, '/my-projects')
+        existing_project = Project.objects.filter(id=project.id)
+        self.assertEqual(len(existing_project), 0)
