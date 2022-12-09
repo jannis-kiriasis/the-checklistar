@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .forms import CommentForm, CustomSignupForm
+from .forms import CommentForm, CustomSignupForm, ProjectForm
 
 
 class TestCommentForm(TestCase):
@@ -61,4 +61,34 @@ class TestSignunForm(TestCase):
         self.assertIn('password2', form.errors.keys())
         self.assertEqual(form.errors['password2'][0], 'This field is required.')
 
-    
+
+class TestProjectForm(TestCase):
+
+    # test that title is required
+    def test_title_is_required(self):
+        form = ProjectForm({'title': ''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('title', form.errors.keys())
+        self.assertEqual(form.errors['title'][0], 'This field is required.')
+
+    # test that owner is required
+    def test_owner_is_required(self):
+        form = ProjectForm({'owner': ''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('owner', form.errors.keys())
+        self.assertEqual(form.errors['owner'][0], 'This field is required.')
+
+    # test that description is required
+    def test_description_is_required(self):
+        form = ProjectForm({'description': ''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('description', form.errors.keys())
+        self.assertEqual(form.errors['description'][0], 'This field is required.')
+
+
+    # test that due is required
+    def test_due_is_required(self):
+        form = ProjectForm({'due': ''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('due', form.errors.keys())
+        self.assertEqual(form.errors['due'][0], 'This field is required.')
