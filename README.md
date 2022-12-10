@@ -516,12 +516,14 @@ I've carried out the following tests:
 ### HTML validation
 
 All the pages passed the HTML validation with no errors or warnings.
-- [index.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fjannis-kiriasis.github.io%2Finsured%2Findex.html)  
-![index.html html test](./README-files/questionnaire-html.png)
-- [life-insurance-calculator.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fjannis-kiriasis.github.io%2Finsured%2Flife-insurance-calculator.html)  
-![life-insurance-calculator.html test](./README-files/calculator-html.png)
-- [application-form.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fjannis-kiriasis.github.io%2Finsured%2Fapplication-form.html)  
-![application-form.html test](./README-files/application-html.png)
+- [account/signup.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Fsignup%2F)  
+- [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
+- [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
+- [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
+- [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
+- [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
+- [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
+
 
 ### CSS validation
 

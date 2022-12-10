@@ -200,7 +200,7 @@ select {
     background-color: var(--liberty-light);
 }
 
-#title {
+.title {
     max-width: inherit;
     word-wrap: break-word;
 }

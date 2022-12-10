@@ -12,7 +12,6 @@
     <meta name="description"
         content="A project management workflow system designed to bring your projects from A to Z.">
     <meta name="robots" content="nondex, nofollow">
-    <link rel="canonical" href="{{ url }}">
 
     <!-- OG tags-->
     <meta property="og:type" content="article">
@@ -66,10 +65,10 @@
                             class="waves-effect waves-light btn text-black"
                             aria-label="Create a project">Create project</a>
                     </li>
-                    <li><a href="{% url 'notifications' %}">Notifications <span
-                                id="notification-count"
+                    <li><a href="{% url 'notifications' %}" aria-label="Open notification centre">Notifications <span
+                                class="notification-count"
                                 class="btn-floating btn-small red"
-                                aria-label="Open notification centre">{{ notifications.count }}</span></a>
+                                >{{ notifications.count }}</span></a>
                     </li>
                     <li><a href="{% url 'dashboard' %}"
                             aria-label="Go to main dahsboard">All projects</a>
@@ -97,10 +96,10 @@
             <li><a href="{% url 'create-project' %}"
                     class="waves-effect waves-light btn text-black"
                     aria-label="Create a project">Create project</a></li>
-            <li><a href="{% url 'notifications' %}">Notifications <span
-                        id="notification-count"
+            <li><a href="{% url 'notifications' %}" aria-label="Open notification centre">Notifications <span
+                        class="notification-count"
                         class="btn-floating btn-small red"
-                        aria-label="Open notification centre">{{ notifications.count }}</span></a>
+                        >{{ notifications.count }}</span></a>
             </li>
             <li><a href="{% url 'dashboard' %}"
                     aria-label="Go to main dahsboard">All projects</a></li>

@@ -2,7 +2,7 @@ const approverForm = document.querySelectorAll(".approver-form");
 const container = document.querySelector("#form-container");
 const addButton = document.querySelector("#add-approver");
 const removeButton = document.querySelector("#remove-approver");
-const notification = document.getElementById("notification-count")
+const notification = document.getElementsByClassName("notification-count")[0]
 
 const deleteButton = document.getElementById("delete");
 const approveButton = document.getElementById("approve");
