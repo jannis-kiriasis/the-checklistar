@@ -21,8 +21,10 @@ class ProjectForm(forms.ModelForm):
     def clean(self):
         cleaned_data = self.cleaned_data
         title = cleaned_data['title']
+        project = self.instance
 
-        if title and Project.objects.get(title=title):
+        # Only check for existing projects with the same title if the title has changed
+        if title and title != project.title and Project.objects.get(title=title):
             raise forms.ValidationError("This title already exists. Try a different title.")
 
         return cleaned_data

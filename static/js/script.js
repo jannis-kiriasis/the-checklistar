@@ -2,7 +2,8 @@ const approverForm = document.querySelectorAll(".approver-form");
 const container = document.querySelector("#form-container");
 const addButton = document.querySelector("#add-approver");
 const removeButton = document.querySelector("#remove-approver");
-const notification = document.getElementsByClassName("notification-count")[0]
+const notification = document.getElementById("notification-count")
+const notificationM = document.getElementById("notification-count-m")
 
 const deleteButton = document.getElementById("delete");
 const approveButton = document.getElementById("approve");
@@ -227,4 +228,8 @@ if (window.location.pathname === "/create-project") {
 
 if (notification.innerText === "0") {
     notification.remove()
+}
+
+if (notificationM.innerText === "0") {
+    notificationM.remove()
 }
