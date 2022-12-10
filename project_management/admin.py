@@ -5,6 +5,8 @@ from .models import Project, ProjectApproval, UserProfile, Comment
 from django_summernote.admin import SummernoteModelAdmin
 from django.contrib.auth.models import User
 
+class UserProfileInline(admin.TabularInline):
+    model = UserProfile
 
 class ApprovalInline(admin.TabularInline):
     model = ProjectApproval
@@ -93,6 +95,8 @@ class CommentAdmin(admin.ModelAdmin):
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('username', 'first_name', 'last_name', 'email_address')
+    inlines = [UserProfileInline]
+
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
