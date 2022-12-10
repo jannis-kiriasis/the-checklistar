@@ -145,7 +145,7 @@ As a project manager, I want to be able to see at what stage a process is and ho
 2. The approvals must be ordered by due date
 3. It should be immediate to notice what approvals have been given and what approvals are missing
 
-### E1 - User story 4 – Edit a workflow
+### E1 - User story 4 – Edit a project
 As a project manager, I want to be able to update a project anytime, so that if the requirements change, I can update the workflow.
 
 **Acceptance criteria:**
@@ -156,95 +156,95 @@ As a project manager, I want to be able to update a project anytime, so that if 
 As a project manager, I want to be able to delete a project, so that if a project is cancelled, I can also delete it from the platform.
 
 **Acceptance criteria:**
-1. Include option to cancel a project and related approvers.
+1. Include the option to cancel a project and related approvers.
 2. Only the project owner can delete a project.
 
 ### E1 - User story 6 – See all the projects open
-As a project manager, I want to be able to see all the projects I’ve started and their approvers, so that I can quickly see where I need to focus on.
+As a project manager, I want to be able to see all the projects I’ve started and their approvers, so that I can quickly see where I need to focus.
 
 **Acceptance criteria:**
-1. Create a page where the PM can see only the projects the logged in PM have started
+1. Create a page where the PM can see only the projects the logged-in PM has started
 2. Make instantly evident what projects are completed and what aren’t
 3. The projects should be ordered by created date
 
 
-### E1 - User story 7  
-As a project manager, I want to be able to message the approvers so that if I need to update them on something, I don’t need to send an email.
+### E1 - User story 7 - Add a comment (Create)  
+As a project manager, I can add a comment to a specific project, so that I can update other people or discuss a specific issue without sending emails.
 
 **Acceptance criteria:**
-
 1. Projects should be comment-able 
 2. Comments should be in a thread and ordered by the newest
 
 
-### E1 - User story 8
+### E1 - User story 8 - Notify PM
 As a PM, I want to be notified when a comment is added to the project, or an approval is given so that I can decide how to proceed next
 
 **Acceptance criteria:**
 1. Send me a notification when a project is approved
 2. Send me a notification when a project is commented
 
+### E1 - User story 9 - Registration and sign in project owner
+As a project owner, I can register and log in to the software, so that I will be the only one able to create, edit, complete and cancel my projects.
+
+**Acceptance criteria:**
+1. Users need to be able to sign up to use the app.
+2. PM must be authenticated to create, edit, cancel or complete a project.
+
 
 ## Epic 2 – The approvers / stages
 The approvers need to be able to find of all the projects they need to approve easily. They’ll have a list of works they need to review so that nothing goes lost and they can make sure deadlines are respected. The approver needs to be able to comment and approve projects.
 
-### E2 - User story 1 
+### E2 - User story 1 - See projects pending approval (Read) 
 As an approver, I want to quickly see what projects are pending my approval so that I can concentrate and to get the work done.
 
 **Acceptance criteria:**
 1. All the approvers’ projects need to be in a page and the deadline should be visible.
-2. The projects needing approval by the logged in approver need to be identifiable easily.
+2. The projects needing approval by the logged in approver need to be identified easily.
 
-### E2 - User story 2
+### E2 - User story 2 - See project by due date
 As an approver, I want to see when all the projects pending my approval are due, so that I can prioritise my work.
 
 **Acceptance criteria**
-1. The due date will be visible in the dashboard for each project
+1. The due date will be visible in the dashboard, my approvals and my projects views for each project.
+2. The My approvals view will be ordered by the due date.
 
-### E2 - User story 3
+### E2 - User story 3 - Approvers feedback
 As an approver, I want to be able to add a comment to the project, so that I can record my feedback and don’t get lost in email threads. 
 
 **Acceptance criteria**
 1. The approver needs to be able to comment the project
 
-### E2 - User story 4
+### E2 - User story 4 - approve a project
 As an approver, I want to be able to approve a project so that it can be sent to the next approver.
 
 **Acceptance criteria**
 1. A feature needs to allow the approver to approve the project
+2. Only the approver specified by the project manager can approve a project
 
-### E2 – user story 5
-As an approver I want to be notified when a flow is assigned to me so that I can take an action.
+### E2 – user story 5 - Notify approvers
+As an approver I want to be notified when a project is assigned to me so that I can take an action.
 
 **Acceptance criteria**
 1. The approver needs to receive a notification when he has been assigned a project.
+
+### E2 – user story 6 - Registration and sign approvers
+As an approver, I can register and login to the software, so that I will be the only one able to approve a project for my department.
+
+**Acceptance criteria**
+1. Users need to be able to sign up to use the app.
+2. Approvers must be authenticated to approve a project.
 
 ## E3 – The risk controllers
 The tool will allow risk controllers to keep track of all the work done and make sure that it has been carried out respecting regulations to lower risk levels. The tool records all the projects/ works done and the evidence should be collectable easily.
 
 ## E3 - User story 1
-As a risk controller, I want to be able to see a list of all the projects completed so that I can easily perform tests on the completed projects.
+As a risk controller, I can download a list of the projects approved, so that I can record risk assessments and evidence.
 
 **Acceptance criteria**
 1. The RC needs to find a list of all the projects approved.
+2. The completed projects need to be accessible easily.
+3. Completed projects and approvals need to be downloadable
 
-## E3 - User story 2 
-As a risk controller, I want to be able to see the approval evidence so that I can assess the risk controls operations.
-
-### User story 3 epic 3
-As a risk controller I want to be able to download a list of the projects completed so that I can record risk assessments and completion.
-
-**Acceptance criteria:**
-1. The completed projects need to be accessible easily
-
-## Epic 4 – 
-A user wants to be able to register and sign in into his dashboard to see the work in progress. Only the project owner can edit a task and only approvers can approve a task. Everyone can comment on a project.
-
-## User story 1 epic 4
-As a project owner, I can register and login to the software so that I will be the only one able to create, edit, cancel a project.
-
-## User story 2 epic 4
-As an approver, I can register and login to the software so that I will be the only one able to approve tasks.
 
 Mapping out the user stories helped me easily identify the problems the application solves:
 
@@ -252,7 +252,6 @@ Mapping out the user stories helped me easily identify the problems the applicat
 1. The RC can find all project completed easily and download all the approvals from the database
 1. There is no need to exchange emails as the projects can be commented.
 1. Everything related to a project is centralised. So comments, approvals, deadlines and other project details can be found in the same place.
-
 
 
 ##Features
