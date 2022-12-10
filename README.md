@@ -4,22 +4,21 @@
 [The Checklistar repository](https://github.com/jannis-kiriasis/the-checklistar)
 
 ## Table of contents
--   [Introduction](#introduction)
+-  [Introduction](#introduction)
 -	[User Experience (UX)](#user-experience-ux---user-stories)
 -	[Features](#features)
 -	[Where user stories meet features](#where-user-stories-meet-features)
 -	[Wireframes](#wireframes)
--   [Features left to implement](#features-left-to-implement)
+-  [Features left to implement](#features-left-to-implement)
 -	[Designs](#design)
--   [Accessibility](#accessibility)
--   [SEO](#seo)
+-  [Accessibility](#accessibility)
+-  [SEO](#seo)
 -	[Technologies and tools used](#technologies-and-tools-used)
 -	[Testing](#testing)
 -	[Issues fixed](#issues-fixed)
+-	[Known bugs](#known-bugs)
 -	[Deployment](#deployment)
--	[Credits](#credits)
--   [Acknowledgements](#acknowledgements)
--   [Disclaimer](#disclaimer)
+-  [Acknowledgements](#acknowledgements)
 
 ## Introduction
 
@@ -655,7 +654,13 @@ I've tested whether the user needs have been satisfied with the features created
 6. Filter a parent model based on child model [Stackoverflow](https://stackoverflow.com/questions/28059987/how-can-filter-parent-based-on-children-in-django)
 7. How to add a date picker in django forms [Stackoverflow](https://stackoverflow.com/questions/36293061/how-to-include-datepicker-in-django-modelform)
 8. Customise the default User model returned field (which is username)[Stackoverflow](https://stackoverflow.com/questions/34214320/django-customize-the-user-models-return-field)
-9. If a project with an existing title is submitted, a 500 error page comes up. Solution: used clean method to handle unique title errors.
+9. If a project with an existing title is submitted, a 500 error page comes up. Solution: used clean method to handle unique title errors [Stackoverflow](https://stackoverflow.com/questions/3473165/django-unique-constraint-form-errors)
+
+
+## Known bugs
+
+Currently there aren't known bugs.
+
 
 ## Deployment
 

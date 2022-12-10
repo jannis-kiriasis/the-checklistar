@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+
+    <h1>Server error</h1>
+    <div class="col s12 m9">
+      <p>The action you tried to perform generated an error. Use the navigation below to go back to the app.</p>
+      <ul class="right hide-on-med-and-down">
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn text-black" aria-label="Create a project">Create project</a></li>
+        <li><a href="{% url 'notifications' %}">Notifications <span id="notification-count" class="btn-floating btn-small red" aria-label="Open notification centre">{{ notifications.count }}</span></a></li>
+        <li><a href="{% url 'dashboard' %}" aria-label="Go to main dahsboard">All projects</a></li>
+        <li><a href="{% url 'my-projects' %}" aria-label="Open my projects">My projects</a></li>
+        <li><a href="{% url 'my-approvals' %}" aria-label="Open my approvals">My approvals</a></li>
+        <li><a href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
+        {% else %} 
+        <li><a href="{% url 'account_signup' %}" aria-label="Sign up">Sign up</a></li>
+        <li><a href="{% url 'account_login' %}" class="waves-effect waves-light btn text-black" aria-label="Login">Login</a></li>
+        {% endif %}
+      </ul>
+
+    </div>
+  </div>
+
+  {%endblock%}

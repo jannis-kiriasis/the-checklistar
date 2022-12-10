@@ -14,3 +14,11 @@ urlpatterns = [
     path('my-approvals', views.MyApprovalsList, name='my-approvals'),
     path('notifications', include('notification.urls')),
 ]
+
+# add a flag for
+# handling the 404 error
+handler404 = 'project_management.views.error_404_view'
+
+# add a flag for
+# handling the 500 error
+handler500 = 'project_management.views.error_500_view'

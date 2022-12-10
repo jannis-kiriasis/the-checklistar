@@ -22,3 +22,6 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('accounts/', include('allauth.urls')),
 ]
+
+handler404 = 'project_management.views.error_404_view'
+handler500 = 'project_management.views.error_500_view'

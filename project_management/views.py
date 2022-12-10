@@ -265,3 +265,11 @@ def MyApprovalsList(request):
     }
 
     return render(request, 'my-approvals.html', context)
+
+# 404 page view
+def error_404_view(request, exception):
+    return render(request, "404.html", {})
+
+# 500 page view 
+def error_500_view(request, exception=None):
+    return render(request, "500.html", {})
