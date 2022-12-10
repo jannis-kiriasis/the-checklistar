@@ -137,7 +137,7 @@
                 <h3>Leave a comment:</h3>
                 <p>Posting as: {{ user.username }}</p>
                 <form method="post">
-                    {{ comment_form }}
+                    {{ comment_form.as_p }}
                     {% csrf_token %}
                     <button type="submit" class="btn text-black">Add
                         comment</button>

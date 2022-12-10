@@ -140,10 +140,10 @@ def CreateProject(request):
 
 def EditProject(request, project_id):
     project = get_object_or_404(Project, id=project_id)
-    form = EditProjectForm(instance=project)
+    form = ProjectForm(instance=project)
     approver_form = EditApproverFormSet(instance=project)
     if request.method == "POST":
-        form = EditProjectForm(request.POST, request.FILES, instance=project)
+        form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
             project = form.save()
             approver_form = EditApproverFormSet(request.POST, instance=project)
