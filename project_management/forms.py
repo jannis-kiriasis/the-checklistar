@@ -27,6 +27,17 @@ class ProjectForm(forms.ModelForm):
 
         return cleaned_data
 
+# Edit a project form
+
+class EditProjectForm(forms.ModelForm):
+
+    class Meta:
+        model = Project
+        fields = ['owner', 'description', 'document', 'due']
+        widgets = {
+            'due': widgets.DateInput(attrs={'type': 'date'})
+        }
+
 
 # Create project approvers form to be assigned to a project
 
