@@ -88,3 +88,10 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('name', 'body', 'project', 'created_on')
     list_filter = ('name', 'created_on')
     search_fields = ('name', 'email', 'body')
+
+
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('username', 'first_name', 'last_name', 'email_address')
+
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
