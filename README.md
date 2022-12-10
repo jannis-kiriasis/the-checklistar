@@ -354,22 +354,22 @@ The admin panel allows a superuser to see all the records saved in the database 
 
 From the admin panel, projects and project approvals can be downloaded as a csv file to be handed to the RC and fulfil their requirements.
 
-![Admin panel](./media/README-files/admin-panel.png)
+![Admin panel](./media/README-files/admin-panel.png)  
 
 ### 11. Feedbacks and popups
 
 The applications let the user know every time they user perform an action whether is has been completed or not.
 
-![Defensive design](./media/README-files/defensive-design.png)
+![Defensive design](./media/README-files/defensive-design.png)  
 
-![Feedback](./media/README-files/feedback.png)
+![Feedback](./media/README-files/feedback.png)  
 
 
 ### 12. 404 and 500 error pages
 
 The 404 and 500 error pages handle errors nicely explaining to the user what is happening and offering a way to exit the error.!
 
-[Custom 404 page]()
+[Custom 404 page](./media/README-files/404.png)  
 
 ## Where user stories meet features
 
@@ -566,7 +566,7 @@ I've tested that the different functionalities of the website work as intended.
 | Create a project – form submit                                          | In “/create-project” complete the form correctly and fully. Click ‘submit project’.                                                                | After the click, you will be redirected to the homepage. Access the admin panel to find records of the project and approvers created in the database.                                                                              | PASS         |
 | Create a project - feedback                                             | In “/create-project” complete the form correctly and fully. Click ‘submit project’.                                                                | After the submission a green feedback message will appear on the bottom left of the screen.                                                                                                                                        | PASS         |
 | Create a project - notification                                         | In “/create-project” complete the form correctly and fully. Click ‘submit project’.                                                                | A notification will appear to the approvers selected in the navigation and in /notifications.                                                                                                                                      | PASS         |
-| Create a project – title test                                           | In “/create-project” create 2 projects with the same title.                                                                                        |                                                                                                                                                                                                                                    | FAIL         |
+| Create a project – title test                                           | In “/create-project” create 2 projects with the same title.                                                                                        |                                                                                                                                                                                                                                    | PASS         |
 | Nav / mobile nav - notification                                         | In the nav click on Notifications.                                                                                                                 | A list of notifications will appear if any.                                                                                                                                                                                        | PASS         |
 | Notification                                                            | In “/notifications” click on a notification and then navigate back to “/notifications”.                                                            | The notification you have clicked on disappeared from the list because you read it already.                                                                                                                                        | PASS         |
 | Nav / mobile nav – all projects                                         | In the nav click on All projects.                                                                                                                  | You are redirected to (“/”).                                                                                                                                                                                                       | PASS         |

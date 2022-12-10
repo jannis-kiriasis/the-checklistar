@@ -8,9 +8,9 @@
     <h1>Page not found</h1>
     <div class="col s12 m9">
       <p>Try to navigate to one of the following pages:</p>
-      <ul class="right hide-on-med-and-down">
+      <ul>
         {% if user.is_authenticated %}
-        <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn text-black" aria-label="Create a project">Create project</a></li>
+        <li><a href="{% url 'create-project' %}" aria-label="Create a project">Create project</a></li>
         <li><a href="{% url 'notifications' %}">Notifications <span id="notification-count" class="btn-floating btn-small red" aria-label="Open notification centre">{{ notifications.count }}</span></a></li>
         <li><a href="{% url 'dashboard' %}" aria-label="Go to main dahsboard">All projects</a></li>
         <li><a href="{% url 'my-projects' %}" aria-label="Open my projects">My projects</a></li>
