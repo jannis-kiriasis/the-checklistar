@@ -626,19 +626,24 @@ Note that the performance score varies also depending on the internet connection
 
 I've tested whether the user needs have been satisfied with the features created.
 
-| **User stories**                                                                                          | **Features** | **Results** |
-|-----------------------------------------------------------------------------------------------------------|--------------|-------------|
-| As a user, I want to easily understand the main purpose of the site                                       | 2, 3, 6      | PASS        |
-| As a user, I want to have a better idea of what cover I need                                              | 7            | PASS        |
-| As a user, I want to get a better understanding of what I need to consider when deciding on a life policy | 6, 7, 8      | PASS        |
-| As a user, I want to see how long the questionnaire takes to complete                                     | 4            | PASS        |
-| As a user, I want to see at what stage of the questionnaire I am and the number of questions left         | 4            | PASS        |
-| As a user, I want to get a personalised result based on my personal needs                                 | 7            | PASS        |
-| As a user, I want to be able to take the questionnaire again                                              | 7, 10        | PASS        |
-| As a user, I want to be able to find out how much cover I need                                            | 8            | PASS        |
-| As a user, I want to be able to apply for a cover easily                                                  | 9            | PASS        |
-| As a user, I want to know if my application had a positive outcome                                        | 10           | PASS        |
-| As a user, I want to know be able to find my way if I get lost                                            | 3, 11        | PASS        |
+|                   User stories                  | Features | Result |
+|:-----------------------------------------------:|:--------:|--------|
+| E1 US1 - Create a project                       | 7, 11    | PASS   |
+| E1 US2 – Set the project workflow               | 7        | PASS   |
+| E1 US3 – Create main dashboard                  | 2, 3     | PASS   |
+| E1 US4 – Edit a project                         | 7, 11    | PASS   |
+| E1 US5 – Delete a workflow                      | 3, 11    | PASS   |
+| E1 US6 – See all the projects open              | 4        | PASS   |
+| E1 US7 - Add a comment (Create)                 | 3, 11    | PASS   |
+| E1 US8 - Notify PM                              | 6        | PASS   |
+| E1 US9 - Registration and sign in project owner | 8, 9     | PASS   |
+| E2 US1 - See projects pending approval (Read)   | 5        | PASS   |
+| E2 US2 - See project by due date                | 5, 3     | PASS   |
+| E2 US3 - Approvers feedback                     | 3        | PASS   |
+| E2 US4 - Approve a project                      | 3, 11    | PASS   |
+| E2 US5 - Notify approvers                       | 6,       | PASS   |
+| E2 US6 - Registration and sign approvers        | 8, 9     | PASS   |
+| E3 US1 - The risk controller                    | 10       | PASS   |
 
 ## Issues fixed
 

@@ -18,6 +18,15 @@ class ProjectForm(forms.ModelForm):
             'due': widgets.DateInput(attrs={'type': 'date'})
         }
 
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        title = cleaned_data['title']
+
+        if title and Project.objects.get(title=title):
+            raise forms.ValidationError("This title already exists. Try a different title.")
+
+        return cleaned_data
+
 
 # Create project approvers form to be assigned to a project
 
