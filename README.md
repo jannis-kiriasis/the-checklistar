@@ -518,7 +518,7 @@ I've carried out the following tests:
 All the pages passed the HTML validation with no errors or warnings.
 - [account/signup.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Fsignup%2F)  
 - [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
-- [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
+- [dashboard.html](./media/README-files/dashboard.pdf)  
 - [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
 - [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
 - [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
