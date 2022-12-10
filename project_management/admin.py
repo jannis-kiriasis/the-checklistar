@@ -94,7 +94,7 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('username', 'first_name', 'last_name', 'email_address')
+    list_display = ('username', 'first_name', 'last_name')
     inlines = [UserProfileInline]
 
 
