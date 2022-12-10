@@ -127,20 +127,20 @@ The PM requires a workflow to get some projects / documents approved. The PM nee
 ### E1 - User story 1 – Create a project
 As a PM, I want to be able to create a project so that I don’t need to submit the project via email.
 
-**Acceptance criteria:**
+Acceptance criteria:
 1. The project needs to include project id, title, description, attachment, due date and an unlimited number of approvers.
 
 ### E1 - User story 2 – Set the project workflow
 As a project manager, I want to be able to assign unlimited approvers to a project so that I can get all the approvals needed for completion.
 
-**Acceptance criteria:**
+Acceptance criteria:
 1. Set unlimited approvers when I’m creating the project
 2. The approvers must be associated to a department and have a deadline
 
 ### E1 - User story 3 – Create main dashboard
 As a project manager, I want to be able to see at what stage a process is and how many steps are missing so that I can make sure we are in line with deadlines.
 
-**Acceptance criteria:**
+Acceptance criteria:
 1. Create a dashboard page with all the projects open and the approvals required for each project
 2. The approvals must be ordered by due date
 3. It should be immediate to notice what approvals have been given and what approvals are missing
@@ -148,21 +148,21 @@ As a project manager, I want to be able to see at what stage a process is and ho
 ### E1 - User story 4 – Edit a project
 As a project manager, I want to be able to update a project anytime, so that if the requirements change, I can update the workflow.
 
-**Acceptance criteria:**
+Acceptance criteria:
 1. Project title, description, due date approvers and approval due dates must be editable.
 2. Only the project owner can edit a project.
 
 ### E1 - User story 5 – Delete a workflow
 As a project manager, I want to be able to delete a project, so that if a project is cancelled, I can also delete it from the platform.
 
-**Acceptance criteria:**
+Acceptance criteria:
 1. Include the option to cancel a project and related approvers.
 2. Only the project owner can delete a project.
 
 ### E1 - User story 6 – See all the projects open
 As a project manager, I want to be able to see all the projects I’ve started and their approvers, so that I can quickly see where I need to focus.
 
-**Acceptance criteria:**
+Acceptance criteria:
 1. Create a page where the PM can see only the projects the logged-in PM has started
 2. Make instantly evident what projects are completed and what aren’t
 3. The projects should be ordered by created date
@@ -171,7 +171,7 @@ As a project manager, I want to be able to see all the projects I’ve started a
 ### E1 - User story 7 - Add a comment (Create)  
 As a project manager, I can add a comment to a specific project, so that I can update other people or discuss a specific issue without sending emails.
 
-**Acceptance criteria:**
+Acceptance criteria:
 1. Projects should be comment-able 
 2. Comments should be in a thread and ordered by the newest
 
@@ -179,14 +179,14 @@ As a project manager, I can add a comment to a specific project, so that I can u
 ### E1 - User story 8 - Notify PM
 As a PM, I want to be notified when a comment is added to the project, or an approval is given so that I can decide how to proceed next
 
-**Acceptance criteria:**
+Acceptance criteria:
 1. Send me a notification when a project is approved
 2. Send me a notification when a project is commented
 
 ### E1 - User story 9 - Registration and sign in project owner
 As a project owner, I can register and log in to the software, so that I will be the only one able to create, edit, complete and cancel my projects.
 
-**Acceptance criteria:**
+Acceptance criteria:
 1. Users need to be able to sign up to use the app.
 2. PM must be authenticated to create, edit, cancel or complete a project.
 
@@ -197,40 +197,40 @@ The approvers need to be able to find of all the projects they need to approve e
 ### E2 - User story 1 - See projects pending approval (Read) 
 As an approver, I want to quickly see what projects are pending my approval so that I can concentrate and to get the work done.
 
-**Acceptance criteria:**
+Acceptance criteria:
 1. All the approvers’ projects need to be in a page and the deadline should be visible.
 2. The projects needing approval by the logged in approver need to be identified easily.
 
 ### E2 - User story 2 - See project by due date
 As an approver, I want to see when all the projects pending my approval are due, so that I can prioritise my work.
 
-**Acceptance criteria**
+Acceptance criteria
 1. The due date will be visible in the dashboard, my approvals and my projects views for each project.
 2. The My approvals view will be ordered by the due date.
 
 ### E2 - User story 3 - Approvers feedback
 As an approver, I want to be able to add a comment to the project, so that I can record my feedback and don’t get lost in email threads. 
 
-**Acceptance criteria**
+Acceptance criteria:
 1. The approver needs to be able to comment the project
 
 ### E2 - User story 4 - Approve a project
 As an approver, I want to be able to approve a project so that it can be sent to the next approver.
 
-**Acceptance criteria**
+Acceptance criteria:
 1. A feature needs to allow the approver to approve the project
 2. Only the approver specified by the project manager can approve a project
 
 ### E2 – user story 5 - Notify approvers
 As an approver I want to be notified when a project is assigned to me so that I can take an action.
 
-**Acceptance criteria**
+Acceptance criteria:
 1. The approver needs to receive a notification when he has been assigned a project.
 
 ### E2 – user story 6 - Registration and sign approvers
 As an approver, I can register and login to the software, so that I will be the only one able to approve a project for my department.
 
-**Acceptance criteria**
+Acceptance criteria:
 1. Users need to be able to sign up to use the app.
 2. Approvers must be authenticated to approve a project.
 
@@ -240,7 +240,7 @@ The tool will allow risk controllers to keep track of all the work done and make
 ### E3 - User story 1 - The risk controller
 As a risk controller, I can download a list of the projects approved, so that I can record risk assessments and evidence.
 
-**Acceptance criteria**
+Acceptance criteria:
 1. The RC needs to find a list of all the projects approved.
 2. The completed projects need to be accessible easily.
 3. Completed projects and approvals need to be downloadable
@@ -248,10 +248,10 @@ As a risk controller, I can download a list of the projects approved, so that I 
 
 Mapping out the user stories helped me easily identify the problems the application solves:
 
-1. There is no need to save / download approval emails as they are all stored in a database
-1. The RC can find all project completed easily and download all the approvals from the database
-1. There is no need to exchange emails as the projects can be commented.
-1. Everything related to a project is centralised. So comments, approvals, deadlines and other project details can be found in the same place.
+- There is no need to save / download approval emails as they are all stored in a database
+- The RC can find all project completed easily and download all the approvals from the database
+- There is no need to exchange emails as the projects can be commented.
+- Everything related to a project is centralised. So comments, approvals, deadlines and other project details can be found in the same place.
 
 
 ## Features
@@ -260,32 +260,32 @@ In the following paragraphs, we are going to see what features appear on the web
 
 ### 1. Main navigation
    The main navigation includes the following pages:
-   1. Create a project
-   1. Dashboard – contains all the projects opened by anyone 
-   1. My projects – the projects the logged in user have started
-   1. My approvals – the approvals the logged in user need to give
-   1. Notification centre – as list of things that happened related to the logged in user
+   - Create a project
+   - Dashboard – contains all the projects opened by anyone 
+   - My projects – the projects the logged in user have started
+   - My approvals – the approvals the logged in user need to give
+   - Notification centre – as list of things that happened related to the logged in user
 
 The navigation allows users to filter the projects to easily find the projects they need to approve; they have opened and the option to create a project. 
 
-[Logged in nav](./media/README-files/logged-in-nav.png)
+![Logged in nav](./media/README-files/logged-in-nav.png)  
 
-Non logged in users can only see sign up and sign in in the navigation.
+Non logged in users can only see sign up and sign in in the navigation.  
 
-[Logged out nav](./media/README-files/logged-out-nav.png)
+![Logged out nav](./media/README-files/logged-out-nav.png)  
 
 ### 2. The projects
 The project includes the project details that the PM outlined. It also includes the approvers that need to approve it and their approval due dates.
 
-[Normal project](./media/README-files/project-blue.png)
+![Normal project](./media/README-files/project-blue.png)  
 
 The content seen is personalised for the signed in user. On the ‘My approvals’ page, if the logged in user have already approved the project, it will have a green background (otherwise light blue)
 
-[Project approved](./media/README-files/project-approved.png)
+![Project approved](./media/README-files/project-approved.png)  
 
 On the ‘my projects’ page, if the logged in user have already completed a project, it will have a green background (otherwise light blue).
 
-[My project completed](./media/README-files/project-green.png)
+![My project completed](./media/README-files/project-green.png)  
 
 ### 3. The project details
 
@@ -297,18 +297,18 @@ Defensive design has been implemented to cancel, approve, complete and delete a 
 
 On page feedbacks have been implemented when a project is approved, completed, deleted or updated.
 
-[Project details](./media/README-files/project-details.png)
+![Project details](./media/README-files/project-details.png)  
 
 ### 4. My projects
 The my projects view filters the projects by projects opened from the logged in user. The projects are also divided between completed and not completed. The projects completed have a light green background whereas the projects not completed have a light blue background.
 
-[My projects](./media/README-files/my-projects.png)
+![My projects](./media/README-files/my-projects.png)  
 
 ### 5. My approvals
 
 The my approvals view filters the projects by projects that the logged in person needs to approve. The projects are also divided by approved and not approved. The projects approved have a light green background and the projects not approved have a light blue background.
 
-[My approvals](./media/README-files/my-approvals.png)
+![My approvals](./media/README-files/my-approvals.png)  
 
 ### 6. Notification centre
 
@@ -318,7 +318,7 @@ The notification centre includes a list of notifications personalised for the lo
 - a project is assigned to an approver
 - a project has been approved
 
-[Notifications](./media/README-files/notification-centre.png)
+![Notifications](./media/README-files/notification-centre.png)  
 
 
 ### 7. Create and edit a project forms
@@ -327,7 +327,7 @@ As the title says, this form allows the user to create or edit a form. Every fie
 
 On page feedbacks have been implemented when a project is created and updated.
 
-[Create and edit project](./media/README-files/create-edit-project.png)
+![Create and edit project](./media/README-files/create-edit-project.png)  
 
 ### 8. Login
 
@@ -335,13 +335,13 @@ A form to authenticate the user to the app. Non authenticated users can see the 
 
 On page feedbacks have been implemented when a user logs in and signs up.
 
-[Login](./media/README-files/sign-in.png)
+![Login](./media/README-files/sign-in.png)  
 
 ### 9. Signup
 
 The signup form allows users to sign up and use the tool. At sign up they need to enter their department so that if they are selected as approvers, their department will show up in the approvers list of each project.
 
-[Sign up](./media/README-files/sign-up.png)
+![Sign up](./media/README-files/sign-up.png)  
 
 ### 10. The admin panel
 
@@ -355,15 +355,15 @@ The admin panel allows a superuser to see all the records saved in the database 
 
 From the admin panel, projects and project approvals can be downloaded as a csv file to be handed to the RC and fulfil their requirements.
 
-[Admin panel](./media/README-files/admin-panel.png)
+![Admin panel](./media/README-files/admin-panel.png)
 
 ### 11. Feedbacks and popups
 
 The applications let the user know every time they user perform an action whether is has been completed or not.
 
-[Defensive design](./media/README-files/defensive-design.png)
+![Defensive design](./media/README-files/defensive-design.png)
 
-[Feedback](./media/README-files/feedback.png)
+![Feedback](./media/README-files/feedback.png)
 
 
 ### 12. 404 and 500 error pages
@@ -404,14 +404,14 @@ Below you can find the initial wireframes created. The main goal when I created
 the wireframes was to fulfill the user story requirements. Later on during development
 I've upgraded the styling getting to the final version that you see live.
 
-**Create a project**
-![Create project page wireframe](./media/README-files/create-project.png)
+**Create a project**  
+![Create project page wireframe](./media/README-files/create-project.png)  
 
-**Dashboard**
-![Dashboard wireframe](./media/README-files/dashboard.png)
+**Dashboard**  
+![Dashboard wireframe](./media/README-files/dashboard.png)  
 
-**View details**
-![View details wireframe](./media/README-files/view-project.png)
+**View details**  
+![View details wireframe](./media/README-files/view-project.png)  
 
 ## Features left to implement 
 
@@ -438,7 +438,7 @@ I've also used a tan color for the 'edit', 'complete' and 'approve'. Those aren'
 Lighter shades of Verdigris and Liberty have been created to highlight complete / non completed and approved / not approved projects in the templates 'dashboard', 'my approvals', 'my projects'.
 
 
-![Color Palette](./media/README-files/colors.png)
+![Color Palette](./media/README-files/colors.png)  
 
 All the text colour combinations have been tested for accessibility and they all achieve WCAG AAA.
 - [Colour contrast test: white on blue](https://webaim.org/resources/contrastchecker/?fcolor=FFFFFF&bcolor=3B4D97)   
