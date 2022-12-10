@@ -47,7 +47,7 @@ You are not alone.
 
 A quick search with Google Keywords Planner can reveal how many monthly search there are to 'workflow management system' and related queries.
 
-![queries about workflow management system](.media/README-files/workflow-management-system-keywords.png)
+![queries about workflow management system](./media/README-files/workflow-management-system-keywords.png)
 
 This is what you can do with The Checklistar:
 1. Start a project, set and follow the stages it needs to go through.
@@ -65,7 +65,7 @@ The checklistar is for those companies that need a desktop app to track progress
 - A form to leave comments under each project.
 - The possibility to edit and delete projects.
 
-![Insured responsive design](./media/README-files/i-am-responsive.png)
+![The Checklistar responsive design](./media/README-files/i-am-responsive.png)
 ## User Experience (UX) – The needs
 Now that we are familiar with The Checklistar target audience and offering, we are looking at the needs the app users may have. 
 
@@ -214,7 +214,7 @@ As an approver, I want to be able to add a comment to the project, so that I can
 **Acceptance criteria**
 1. The approver needs to be able to comment the project
 
-### E2 - User story 4 - approve a project
+### E2 - User story 4 - Approve a project
 As an approver, I want to be able to approve a project so that it can be sent to the next approver.
 
 **Acceptance criteria**
@@ -237,7 +237,7 @@ As an approver, I can register and login to the software, so that I will be the 
 ## E3 – The risk controllers
 The tool will allow risk controllers to keep track of all the work done and make sure that it has been carried out respecting regulations to lower risk levels. The tool records all the projects/ works done and the evidence should be collectable easily.
 
-### E3 - User story 1
+### E3 - User story 1 - The risk controller
 As a risk controller, I can download a list of the projects approved, so that I can record risk assessments and evidence.
 
 **Acceptance criteria**
@@ -268,22 +268,24 @@ In the following paragraphs, we are going to see what features appear on the web
 
 The navigation allows users to filter the projects to easily find the projects they need to approve; they have opened and the option to create a project. 
 
+[Logged in nav](./media/README-files/logged-in-nav.png)
+
 Non logged in users can only see sign up and sign in in the navigation.
 
+[Logged out nav](./media/README-files/logged-out-nav.png)
+
 ### 2. The projects
-   The project includes the project details that the PM outlined. It also includes the approvers that need to approve it and their approval due dates.
+The project includes the project details that the PM outlined. It also includes the approvers that need to approve it and their approval due dates.
 
-The content seen is personalised for the signed in user. On the ‘My approvals’ page:
+[Normal project](./media/README-files/project-blue.png)
 
-- If the logged in user have already approved the project, it will have a green background (otherwise light blue)
+The content seen is personalised for the signed in user. On the ‘My approvals’ page, if the logged in user have already approved the project, it will have a green background (otherwise light blue)
 
-On the ‘my projects’ page:
+[Project approved](./media/README-files/project-approved.png)
 
-- If the logged in user have already completed a project, it will have a green background (otherwise light blue)
+On the ‘my projects’ page, if the logged in user have already completed a project, it will have a green background (otherwise light blue).
 
-Project collapsed
-
-Project expanded
+[My project completed](./media/README-files/project-green.png)
 
 ### 3. The project details
 
@@ -295,12 +297,18 @@ Defensive design has been implemented to cancel, approve, complete and delete a 
 
 On page feedbacks have been implemented when a project is approved, completed, deleted or updated.
 
+[Project details](./media/README-files/project-details.png)
+
 ### 4. My projects
 The my projects view filters the projects by projects opened from the logged in user. The projects are also divided between completed and not completed. The projects completed have a light green background whereas the projects not completed have a light blue background.
+
+[My projects](./media/README-files/my-projects.png)
 
 ### 5. My approvals
 
 The my approvals view filters the projects by projects that the logged in person needs to approve. The projects are also divided by approved and not approved. The projects approved have a light green background and the projects not approved have a light blue background.
+
+[My approvals](./media/README-files/my-approvals.png)
 
 ### 6. Notification centre
 
@@ -310,11 +318,16 @@ The notification centre includes a list of notifications personalised for the lo
 - a project is assigned to an approver
 - a project has been approved
 
+[Notifications](./media/README-files/notification-centre.png)
+
+
 ### 7. Create and edit a project forms
 
 As the title says, this form allows the user to create or edit a form. Every field is editable. Approvers can be added and removed during creation or when editing a project and the records are automatically added or removed from the database.
 
 On page feedbacks have been implemented when a project is created and updated.
+
+[Create and edit project](./media/README-files/create-edit-project.png)
 
 ### 8. Login
 
@@ -322,10 +335,13 @@ A form to authenticate the user to the app. Non authenticated users can see the 
 
 On page feedbacks have been implemented when a user logs in and signs up.
 
+[Login](./media/README-files/sign-in.png)
 
 ### 9. Signup
 
 The signup form allows users to sign up and use the tool. At sign up they need to enter their department so that if they are selected as approvers, their department will show up in the approvers list of each project.
+
+[Sign up](./media/README-files/sign-up.png)
 
 ### 10. The admin panel
 
@@ -339,15 +355,22 @@ The admin panel allows a superuser to see all the records saved in the database 
 
 From the admin panel, projects and project approvals can be downloaded as a csv file to be handed to the RC and fulfil their requirements.
 
+[Admin panel](./media/README-files/admin-panel.png)
+
 ### 11. Feedbacks and popups
 
 The applications let the user know every time they user perform an action whether is has been completed or not.
+
+[Defensive design](./media/README-files/defensive-design.png)
+
+[Feedback](./media/README-files/feedback.png)
+
 
 ### 12. 404 and 500 error pages
 
 The 404 and 500 error pages handle errors nicely explaining to the user what is happening and offering a way to exit the error.!
 
-[Custom 404 page](Aspose.Words.4c96bf5c-2f8f-4cf7-bccf-572631e96517.001.png)
+[Custom 404 page]()
 
 ## Where user stories meet features
 
@@ -355,20 +378,22 @@ In the following table, I’m going to match features with user stories and the 
 
 | User stories | Features |
 |--------------|----------|
-| E1 US1       | 7        |
-| E1 US2       | 7        |
-| E1 US3       | 2, 3     |
-| E1 US4       | 7        |
-| E1 US5       | 3        |
-| E1 US6       | 4        |
-| E1 US7       | 3        |
-| E1 US8       | 6        |
-| E2 US1       | 5        |
-| E2 US2       | 5, 3     |
-| E2 US3       | 3        |
-| E2 US4       | 3        |
-| E2 US5       | 6        |
-| E3 US1       | 10       |
+| E1 US1 - Create a project       | 7, 11        |
+| E1 US2 – Set the project workflow      | 7        |
+| E1 US3 – Create main dashboard      | 2, 3     |
+| E1 US4 – Edit a project      | 7, 11        |
+| E1 US5 – Delete a workflow      | 3, 11        |
+| E1 US6 – See all the projects open      | 4        |
+| E1 US7 - Add a comment (Create)      | 3, 11       |
+| E1 US8 - Notify PM      | 6        |
+| E1 US9 - Registration and sign in project owner      | 8, 9     |
+| E2 US1 - See projects pending approval (Read)      | 5        |
+| E2 US2 - See project by due date      | 5, 3     |
+| E2 US3 - Approvers feedback      | 3        |
+| E2 US4 - Approve a project      | 3, 11        |
+| E2 US5 - Notify approvers      | 6,        |
+| E2 US6 - Registration and sign approvers      | 8, 9     |
+| E3 US1 - The risk controller      | 10       |
 
 
 ## Wireframes
@@ -631,7 +656,7 @@ I've tested whether the user needs have been satisfied with the features created
 
 Below you can find all the steps to take in order to clone and deploy this application. A similar summary to setup a basic Django project and deploy it on Heroku was provided by the [Code Institute](https://codeinstitute.s3.amazonaws.com/fst/Django%20Blog%20Cheat%20Sheet%20v1.pdf).
 
-**1. To clone the website**:
+**1. To clone the website**
 1. Go to the GitHub repository [The Checklistar](https://github.com/jannis-kiriasis/the-checklistar/)
 2. Open the dropdown 'Code'
 3. Select the HTTPs tab
@@ -642,7 +667,7 @@ Below you can find all the steps to take in order to clone and deploy this appli
 8. In settings.py set `DEBUG=True` (Now it is set to False)
 9. To push changes to the repository, type the following commands in the terminal
    - `git add .` to add changes
-   - `git comit -m "Your message"`
+   - `git commit -m "Your message"`
    - `git push`
 
 **2. To create a database with ElephantSQL**
@@ -664,13 +689,13 @@ Below you can find all the steps to take in order to clone and deploy this appli
    - 'DATABASE_URL': 'past the database URL from ElephantSQL you have copied at point 2.7'
    - 'SECRET_KEY': 'come up with a random secret key'
 6. **Back in your code editor** create a file 'env.py'
-7. add 'env.py' to the .gitignore file
-8. in 'env.py' add the following code
-   `import os`
-   `os.environ["DATABASE_URL"] = "your database URL from point 2.7"`
-   `os.environ["SECRET_KEY"] = "your secret key from point 3.5"`
-9. save
-10. In 'settings.py' make sure that DATABASES and SECRET_KEY are equal to"
+7. Add 'env.py' to the .gitignore file
+8. In 'env.py' add the following code:
+   - `import os`
+   - `os.environ["DATABASE_URL"] = "your database URL from point 2.7"`
+   - `os.environ["SECRET_KEY"] = "your secret key from point 3.5"`
+9. Save
+10. In 'settings.py' make sure that DATABASES and SECRET_KEY are equal to:
    - `DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}`
    - `SECRET_KEY = os.environ.get('SECRET_KEY')`
 11. Initialise the database with the command `python3 manage.py migrate`
