@@ -44,7 +44,7 @@ class ProjectDetails(View):
             {
                 "project": project,
                 "approvals": approvals,
-                "comment_form": CommentForm(),
+                "comment_form": CommentForm,
                 "comments": comments,
                 'page_title': 'Project details'
             },

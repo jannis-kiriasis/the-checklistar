@@ -519,8 +519,8 @@ All the pages passed the HTML validation with no errors or warnings.
 - [account/signup.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Fsignup%2F)  
 - [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
 - [dashboard.html](./media/README-files/dashboard.pdf)  
-- [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
-- [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
+- [my-projects.html](./media/README-files/my-projects-w3c.pdf)  
+- [my-approvals.html](./media/README-files/my-approvals-w3c.pdf)  
 - [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
 - [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
 
@@ -661,8 +661,7 @@ I've tested whether the user needs have been satisfied with the features created
 
 ## Known bugs
 
-Currently there aren't known bugs.
-
+- When a project description is added from the Admin panel, it renders with the paragraph tag
 
 ## Deployment
 
