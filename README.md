@@ -237,7 +237,7 @@ As an approver, I can register and login to the software, so that I will be the 
 ## E3 – The risk controllers
 The tool will allow risk controllers to keep track of all the work done and make sure that it has been carried out respecting regulations to lower risk levels. The tool records all the projects/ works done and the evidence should be collectable easily.
 
-## E3 - User story 1
+### E3 - User story 1
 As a risk controller, I can download a list of the projects approved, so that I can record risk assessments and evidence.
 
 **Acceptance criteria**
@@ -254,11 +254,11 @@ Mapping out the user stories helped me easily identify the problems the applicat
 1. Everything related to a project is centralised. So comments, approvals, deadlines and other project details can be found in the same place.
 
 
-##Features
+## Features
 
 In the following paragraphs, we are going to see what features appear on the website and where they meet the users' needs.
 
-1. **Main navigation**
+### 1. Main navigation**
    The main navigation includes the following pages:
    1. Create a project
    1. Dashboard – contains all the projects opened by anyone 
@@ -270,7 +270,7 @@ The navigation allows users to filter the projects to easily find the projects t
 
 Non logged in users can only see sign up and sign in in the navigation.
 
-2. **The projects** 
+### 2. The projects
    The project includes the project details that the PM outlined. It also includes the approvers that need to approve it and their approval due dates.
 
 The content seen is personalised for the signed in user. On the ‘My approvals’ page:
@@ -285,20 +285,24 @@ Project collapsed
 
 Project expanded
 
-3. **The project details**
+### 3. The project details
 
 By clicking on view details on any project, it will open a project details page. There everyone can see more details about a project as well as its comments and the buttons to edit, approve, delete and complete. It also includes the form to submit a comment on the project.
 
 Only the PM can see edit, delete and complete. Only the approvers can see the approve button and only their correspondent button.
 
-4. **My projects**
+Defensive design has been implemented to cancel, approve, complete and delete a project.
+
+On page feedbacks have been implemented when a project is approved, completed, deleted or updated.
+
+### 4. My projects
 The my projects view filters the projects by projects opened from the logged in user. The projects are also divided between completed and not completed. The projects completed have a light green background whereas the projects not completed have a light blue background.
 
-5. **My approvals**
+### 5. My approvals
 
 The my approvals view filters the projects by projects that the logged in person needs to approve. The projects are also divided by approved and not approved. The projects approved have a light green background and the projects not approved have a light blue background.
 
-6. **Notification centre**
+### 6. Notification centre
 
 The notification centre includes a list of notifications personalised for the logged in user. The user is notified when:
 
@@ -306,19 +310,24 @@ The notification centre includes a list of notifications personalised for the lo
 - a project is assigned to an approver
 - a project has been approved
 
-7. **Create and edit a project forms**
+### 7. Create and edit a project forms
 
 As the title says, this form allows the user to create or edit a form. Every field is editable. Approvers can be added and removed during creation or when editing a project and the records are automatically added or removed from the database.
 
-8. **Login** 
+On page feedbacks have been implemented when a project is created and updated.
+
+### 8. Login
 
 A form to authenticate the user to the app. Non authenticated users can see the projects but not interact with them (they can’t comment, approve, edit, open project etc. They can only ‘read’).
 
-9. **Signup**
+On page feedbacks have been implemented when a user logs in and signs up.
+
+
+### 9. Signup
 
 The signup form allows users to sign up and use the tool. At sign up they need to enter their department so that if they are selected as approvers, their department will show up in the approvers list of each project.
 
-10. **The admin panel**
+### 10. The admin panel
 
 The admin panel allows a superuser to see all the records saved in the database including:
 
@@ -330,11 +339,11 @@ The admin panel allows a superuser to see all the records saved in the database 
 
 From the admin panel, projects and project approvals can be downloaded as a csv file to be handed to the RC and fulfil their requirements.
 
-11. **Feedbacks and popups**
+### 11. Feedbacks and popups
 
 The applications let the user know every time they user perform an action whether is has been completed or not.
 
-12. **404 and 500 error pages**
+### 12. 404 and 500 error pages
 
 The 404 and 500 error pages handle errors nicely explaining to the user what is happening and offering a way to exit the error.!
 
@@ -360,8 +369,7 @@ In the following table, I’m going to match features with user stories and the 
 | E2 US4       | 3        |
 | E2 US5       | 6        |
 | E3 US1       | 10       |
-| E3 US2       | 10       |
-| E3 US3       | 10       |
+
 
 ## Wireframes
 
@@ -371,16 +379,20 @@ Below you can find the initial wireframes created. The main goal when I created
 the wireframes was to fulfill the user story requirements. Later on during development
 I've upgraded the styling getting to the final version that you see live.
 
-- **Questionnaire**   
+**Create a project**
 ![Create project page wireframe](./media/README-files/create-project.png)
+
+**Dashboard**
 ![Dashboard wireframe](./media/README-files/dashboard.png)
+
+**View details**
 ![View details wireframe](./media/README-files/view-project.png)
 
 ## Features left to implement 
 
 - Create checklist templates. A set or predefined approvers. Every templates have different predefined approves. Improves UX.
 - Implement email notification. When a notification is created, an email can also be created.
-- Option to upload more than 1 document. Possbly a versioning system.
+- Option to upload more than 1 document. Possibly a versioning system.
 - Approvals to be give in a specific order, so disable the approver button untill the approver's turn comes.
 - Signup with a social media account or Google.
 
@@ -412,6 +424,7 @@ All the text colour combinations have been tested for accessibility and they all
 - [Colour contrast test: blue on light blue](https://webaim.org/resources/contrastchecker/?fcolor=E9ECF7&bcolor=3B4D97)   
 - [Colour contrast test: black on tan](https://webaim.org/resources/contrastchecker/?fcolor=000000&bcolor=D4B483)   
 - [Colour contrast test: dark green on white](https://webaim.org/resources/contrastchecker/?fcolor=296161&bcolor=FFFFFF)   
+
 Tested with [Contrast checker](https://webaim.org/resources/contrastchecker/).
 
 ### Typography
