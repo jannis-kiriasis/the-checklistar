@@ -516,14 +516,17 @@ I've carried out the following tests:
 ### HTML validation
 
 All the pages passed the HTML validation with no errors or warnings.
-- [account/signup.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Fsignup%2F)  
-- [account/login.html](https://validator.w3.org/nu/?doc=https%3A%2F%2Fthe-checklistar.herokuapp.com%2Faccounts%2Flogin%2F)  
+- [account/signup.html](./media/README-files/signup-w3c.pdf)  
+- [account/login.html](./media/README-files/signin-w3c.pdf)  
 - [dashboard.html](./media/README-files/dashboard.pdf)  
 - [my-projects.html](./media/README-files/my-projects-w3c.pdf)  
 - [my-approvals.html](./media/README-files/my-approvals-w3c.pdf)  
 - [project-details.html](./media/README-files/my-projects-w3c.pdf)  
 - [create-project.html](./media/README-files/create-project-w3c.pdf)  
 - [edit-project.html](./media/README-files/edit-project-w3c.pdf)  
+- [400.html](./media/README-files/edit-project-w3c.pdf)  
+- [500.html](./media/README-files/edit-project-w3c.pdf)  
+- [notifications.html](./media/README-files/edit-project-w3c.pdf)  
 
 
 ### CSS validation
@@ -662,7 +665,8 @@ I've tested whether the user needs have been satisfied with the features created
 
 ## Known bugs
 
-- When a project description is added from the Admin panel, it renders with the paragraph tag
+- When a project description is added from the Admin panel, it renders with the paragraph tag.
+- Users created from the admin panel can't login.
 
 ## Deployment
 

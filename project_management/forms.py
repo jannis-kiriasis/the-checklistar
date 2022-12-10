@@ -18,17 +18,23 @@ class ProjectForm(forms.ModelForm):
             'due': widgets.DateInput(attrs={'type': 'date'})
         }
 
-    def clean(self):
+    def clean(self, view=None):
         cleaned_data = self.cleaned_data
         title = cleaned_data['title']
         project = self.instance
 
-        # Only check for existing projects with the same title if the title has changed
-        if title and title != project.title and Project.objects.get(title=title):
-            raise forms.ValidationError("This title already exists. Try a different title.")
+        # Check which view is calling the clean function
+        if view == 'CreateProject':
+            # Check if a project with the same title already exists
+            if title and Project.objects.get(title=title):
+                raise forms.ValidationError("This title already exists. Try a different title.")
+
+        elif view == 'EditProject':
+            # Only check for existing projects with the same title if the title has changed
+            if title and title != project.title and Project.objects.get(title=title):
+                raise forms.ValidationError("This title already exists. Try a different title.")
 
         return cleaned_data
-
 
 
 # Create project approvers form to be assigned to a project
