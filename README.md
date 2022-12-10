@@ -1,4 +1,4 @@
-# Project 2 - Insured
+# Project 4 - The Checklistar
 
 [The Checklistar live demo](https://jannis-kiriasis.github.io/the-checklistar/index.html)\
 [The Checklistar repository](https://github.com/jannis-kiriasis/the-checklistar)
@@ -629,29 +629,81 @@ I've tested whether the user needs have been satisfied with the features created
 
 ## Deployment
 
-I've deployed the website on GitHub Pages. The website was developed on Gitpod and pushed to its GitHub repository using git command lines in the terminal. Every time a commit pushed to the website's repository updates the HTML and CSS files, GitHub Pages automatically updates the live demo.
-To deploy the website:
-1. from the GitHub repository, click on 'settings'
-2. find and click on 'pages' on the setting sidebar menu
-3. select the branch to be used. In this case 'main'
-4. Refresh the page and in a few minutes, the following message will appear if the website was deployed correctly
-![website published](./README-files/published-github-pages.png)
+Below you can find all the steps to take in order to clone and deploy this application. A similar summary to setup a basic Django project and deploy it on Heroku was provided by the [Code Institute](https://codeinstitute.s3.amazonaws.com/fst/Django%20Blog%20Cheat%20Sheet%20v1.pdf).
 
-To clone the website:
-1. Go to the GitHub repository [Insured](https://github.com/jannis-kiriasis/insured)
+**1. To clone the website**:
+1. Go to the GitHub repository [The Checklistar](https://github.com/jannis-kiriasis/the-checklistar/)
 2. Open the dropdown 'Code'
-3. Copy the given url (https://github.com/jannis-kiriasis/insured.git)
-4. Open 'Git Bash' on your favourite code editor and select the location where you want to save the cloned directory
-5. Type `git clone https://github.com/jannis-kiriasis/insured.git` and press enter to create a local copy
+3. Select the HTTPs tab
+4. Copy the given url (https://github.com/jannis-kiriasis/the-checklistar.git)
+5. Open 'Git Bash' on your favourite code editor and select the location where you want to save the cloned directory
+6. Type `git clone https://github.com/jannis-kiriasis/the-checklistar.git` and press enter to create a local copy
+7. Install the required packages by typing `pip install -r requirements.txt` in the terminal
+8. In settings.py set `DEBUG=True` (Now it is set to False)
+9. To push changes to the repository, type the following commands in the terminal
+   - `git add .` to add changes
+   - `git comit -m "Your message"`
+   - `git push`
 
-## Credits
-### Graphics
+**2. To create a database with ElephantSQL**
+1. Sign in with GitHub (or Sign up with GitHub) to [ElephantSQL](https://www.elephantsql.com/)
+2. In the 'Instances' page click on 'Create new instance'
+3. Give a name to your database, select the free 'Tiny Turtle' plan. You can leave 'tags' empty
+4. Proceed to 'select region' and select the closest region to your location
+5. Review and confirm your choices
+6. From the dropdown menu in the navigation select the instance you have just created
+7. In the 'details' view, copy the database URL
 
-- [Calculator icons created by Vitaly Gorbachev - Flaticon](https://www.flaticon.com/free-icons/calculator)
-- [Questionnaire icons created by netscript - Flaticon](https://www.flaticon.com/free-icons/questionnaire)
-- [Submit icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/submit)
-- [Arrow icons created by th studio - Flaticon](https://www.flaticon.com/free-icons/arrow)
-- [Arrow icons created by Handicon - Flaticon](https://www.flaticon.com/free-icons/arrow) 
+**3. Create app on Heroku (deployement environment)**
+1. Sign in (or create an account) on [Heroku](https://heroku.com/)
+2. From the dashboard, click on 'Create a new app'
+3. Enter a unique name and create app
+4. On the application configuration page click on "settings" (in the navigation) and then on "Reveal Config Vars"
+5. Add the following Config vars keys and values:
+   - 'DISABLE_COLLECTSTATIC': '1'
+   - 'DATABASE_URL': 'past the database URL from ElephantSQL you have copied at point 2.7'
+   - 'SECRET_KEY': 'come up with a random secret key'
+6. **Back in your code editor** create a file 'env.py'
+7. add 'env.py' to the .gitignore file
+8. in 'env.py' add the following code
+   `import os`
+   `os.environ["DATABASE_URL"] = "your database URL from point 2.7"`
+   `os.environ["SECRET_KEY"] = "your secret key from point 3.5"`
+9. save
+10. In 'settings.py' make sure that DATABASES and SECRET_KEY are equal to"
+   - `DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}`
+   - `SECRET_KEY = os.environ.get('SECRET_KEY')`
+11. Initialise the database with the command `python3 manage.py migrate`
+12. Update the requirements.txt file with the command `pip3 freeze --local > requirements.txt`
+13. Commit and push changes to GitHub (step 1.9)
+
+**4. Host files on Cloudinary**
+1. Login or create an account on [Cloudinary](https://cloudinary.com/)
+2. From the dashboard, copy the "API Environment variable"
+3. **On Heroku** find the Confing vars (step 3.4)
+4. Add the following key, value set:
+   - `'CLOUDINARY_URL': 'paste your API Environment variable from step 4.2'`
+5. **In your code editor** go to 'env.py' and add:
+   - `os.environ["CLOUDINARY_URL"] = "your Cloudinary API Environment variable from step 4.2"`
+6. Update requirements.txt (step 3.12)
+7. Commit and push changes (step 1.9)
+
+**5. Connect Heroku to GitHub**
+1. **On Heroku** Go to the Application Configuration page of your application and click on the 'Deploy' tab
+2. Under 'deployement method' select GitHub
+3. Enter the name of the repository https://github.com/jannis-kiriasis/the-checklistar
+4. Scroll down and chose automatic deployment or manual deployment then save
+5. On the application configuration page click on 'Open App'.
+6. Run the app https://the-checklistar.herokuapp.com/
+
+**6. Final deployement**
+1. **In 'settings.py'** set `DEBUG=False`
+2. **In 'settings.py'** check if you have (or add) `X_FRAME_OPTIONS = 'SAMEORIGIN'`
+3. Update requirements.txt with the command `pip3 freeze --local > requirements.txt`
+4. Push to GitHub (step 1.9)
+5. **On Heroku** find the Config Vars (step 3.4)
+6. Remove 'DISABLE_COLLECTSTATIC': '1'
+7. Deploy the app (from step 5.4 to 5.6)
 
 ## Acknowledgements
 
