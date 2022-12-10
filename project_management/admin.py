@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.http import HttpResponse
 from .models import Project, ProjectApproval, UserProfile, Comment
 from django_summernote.admin import SummernoteModelAdmin
+from django.contrib.auth.models import User
 
 
 class ApprovalInline(admin.TabularInline):
