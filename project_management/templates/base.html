@@ -9,15 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO metadata -->
-    <meta name="description" content="A project management workflow system designed to bring your projects from A to Z.">
+    <meta name="description"
+        content="A project management workflow system designed to bring your projects from A to Z.">
     <meta name="robots" content="nondex, nofollow">
     <link rel="canonical" href="{{ url }}">
 
     <!-- OG tags-->
     <meta property="og:type" content="article">
-    <meta property="og:title" content="The Checklistar: a project management system">
-    <meta property="og:description" content="A project management workflow system designed to bring your projects from A to Z.">
-    <meta name="image" property="og:image" content="../media/the-cheklistar-logo.svg">
+    <meta property="og:title"
+        content="The Checklistar: a project management system">
+    <meta property="og:description"
+        content="A project management workflow system designed to bring your projects from A to Z.">
+    <meta name="image" property="og:image"
+        content="../media/the-cheklistar-logo.svg">
     <meta property="og:url" content="{{ url }}">
     <meta property="og:site_name" content="The Checklistar">
     <meta name="author" content="Jannis Kiriasis">
@@ -26,10 +30,15 @@
     <link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico">
 
     <!-- External links and styles -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/ee196b5910.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
+    </script>
+    <script src="https://kit.fontawesome.com/ee196b5910.js"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
 
     <!-- Sweet alert script - To use Sweet alerts (Swal.fire in JS files) -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -37,80 +46,121 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <title>{{ page_title }} | The checklistar</title>
-    
+
 </head>
 
 <body>
     <!-- Header -->
     <header>
-            <!-- Navigation -->
+        <!-- Navigation -->
         <nav>
             <div class="nav-wrapper">
-              <a href="{% url 'dashboard' %}" class="left brand-logo" aria-label="Go to homepage">The Checklistar</a>
-              <a href="#" data-target="mobile-demo" class="right sidenav-trigger" aria-label="Open menu"><i class="material-icons">menu</i></a>
-              <ul class="right hide-on-med-and-down">
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn text-black" aria-label="Create a project">Create project</a></li>
-                <li><a href="{% url 'notifications' %}">Notifications <span id="notification-count" class="btn-floating btn-small red" aria-label="Open notification centre">{{ notifications.count }}</span></a></li>
-                <li><a href="{% url 'dashboard' %}" aria-label="Go to main dahsboard">All projects</a></li>
-                <li><a href="{% url 'my-projects' %}" aria-label="Open my projects">My projects</a></li>
-                <li><a href="{% url 'my-approvals' %}" aria-label="Open my approvals">My approvals</a></li>
-                <li><a href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
-                {% else %} 
-                <li><a href="{% url 'account_signup' %}" aria-label="Sign up">Sign up</a></li>
-                <li><a href="{% url 'account_login' %}" class="waves-effect waves-light btn text-black" aria-label="Login">Login</a></li>
-                {% endif %}
-              </ul>
+                <a href="{% url 'dashboard' %}" class="left brand-logo"
+                    aria-label="Go to homepage">The Checklistar</a>
+                <a href="#" data-target="mobile-demo"
+                    class="right sidenav-trigger" aria-label="Open menu"><i
+                        class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'create-project' %}"
+                            class="waves-effect waves-light btn text-black"
+                            aria-label="Create a project">Create project</a>
+                    </li>
+                    <li><a href="{% url 'notifications' %}">Notifications <span
+                                id="notification-count"
+                                class="btn-floating btn-small red"
+                                aria-label="Open notification centre">{{ notifications.count }}</span></a>
+                    </li>
+                    <li><a href="{% url 'dashboard' %}"
+                            aria-label="Go to main dahsboard">All projects</a>
+                    </li>
+                    <li><a href="{% url 'my-projects' %}"
+                            aria-label="Open my projects">My projects</a></li>
+                    <li><a href="{% url 'my-approvals' %}"
+                            aria-label="Open my approvals">My approvals</a></li>
+                    <li><a href="{% url 'account_logout' %}"
+                            aria-label="Logout">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'account_signup' %}"
+                            aria-label="Sign up">Sign up</a></li>
+                    <li><a href="{% url 'account_login' %}"
+                            class="waves-effect waves-light btn text-black"
+                            aria-label="Login">Login</a></li>
+                    {% endif %}
+                </ul>
             </div>
-          </nav>
-        
-          <ul class="sidenav" id="mobile-demo">
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'create-project' %}" class="waves-effect waves-light btn text-black" aria-label="Create a project">Create project</a></li>
-            <li><a href="{% url 'notifications' %}">Notifications <span id="notification-count" class="btn-floating btn-small red" aria-label="Open notification centre">{{ notifications.count }}</span></a></li>
-            <li><a href="{% url 'dashboard' %}" aria-label="Go to main dahsboard">All projects</a></li>
-            <li><a href="{% url 'my-projects' %}" aria-label="Open my projects">My projects</a></li>
-            <li><a href="{% url 'my-approvals' %}" aria-label="Open my approvals">My approvals</a></li>
-            <li><a href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
-            {% else %} 
-            <li><a href="{% url 'account_signup' %}" aria-label="Sign up">Sign up</a></li>
-            <li><a href="{% url 'account_login' %}" class="waves-effect waves-light btn text-black" aria-label="Login">Login</a></li>
-            {% endif %}
-          </ul>
+        </nav>
+        <!-- Mobile nav -->
 
-    <div id="message">
-        {% for message in messages %}
-        <div class="comment-box">
-                <p><i class="material-icons">check_circle</i>{{ message | safe }}</p>
+        <ul class="sidenav" id="mobile-demo">
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'create-project' %}"
+                    class="waves-effect waves-light btn text-black"
+                    aria-label="Create a project">Create project</a></li>
+            <li><a href="{% url 'notifications' %}">Notifications <span
+                        id="notification-count"
+                        class="btn-floating btn-small red"
+                        aria-label="Open notification centre">{{ notifications.count }}</span></a>
+            </li>
+            <li><a href="{% url 'dashboard' %}"
+                    aria-label="Go to main dahsboard">All projects</a></li>
+            <li><a href="{% url 'my-projects' %}"
+                    aria-label="Open my projects">My projects</a></li>
+            <li><a href="{% url 'my-approvals' %}"
+                    aria-label="Open my approvals">My approvals</a></li>
+            <li><a href="{% url 'account_logout' %}"
+                    aria-label="Logout">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'account_signup' %}" aria-label="Sign up">Sign
+                    up</a></li>
+            <li><a href="{% url 'account_login' %}"
+                    class="waves-effect waves-light btn text-black"
+                    aria-label="Login">Login</a></li>
+            {% endif %}
+        </ul>
+
+        <div id="message">
+            {% for message in messages %}
+            <div class="comment-box">
+                <p><i
+                        class="material-icons">check_circle</i>{{ message | safe }}
+                </p>
             </div>
         </div>
         {% endfor %}
-    </div>                  
+        </div>
     </header>
     <main>
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
     </main>
-        <footer class="page-footer">
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">The Checklistar</h5>
+                    <p class="grey-text text-lighten-4">A project management
+                        system designed to bring your projects from A to Z.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
             <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">The Checklistar</h5>
-                        <p class="grey-text text-lighten-4">A project management system designed to bring your projects from A to Z.</p>
-                    </div>
-                </div>
+                © 2022 The Checklistar created by Jannis Kiriasis
+                <a class="grey-text text-lighten-4 right"
+                    href="https://www.linkedin.com/in/janniskiriasis/"
+                    aria-label="Go to Linkedin profile"><i
+                        class="fa-brands fa-linkedin-in"></i></a>
             </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    © 2022 The Checklistar created by Jannis Kiriasis
-                    <a class="grey-text text-lighten-4 right" href="https://www.linkedin.com/in/janniskiriasis/" aria-label="Go to Linkedin profile"><i class="fa-brands fa-linkedin-in"></i></a>
-                </div>
-            </div>
+        </div>
 
-        </footer>
+    </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
+    </script>
     <script src="{% static 'js/script.js' %}"></script>
 </body>
+
 </html>

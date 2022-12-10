@@ -15,21 +15,28 @@
                         <h2>Project Details</h2>
                     </div>
                     <div class="col s6 right view-project">
-                        <a href="{% url 'project-details' project.slug %}" class="waves-effect waves-light btn-small text-black" aria-label="View project details">
+                        <a href="{% url 'project-details' project.slug %}"
+                            class="waves-effect waves-light btn-small text-black"
+                            aria-label="View project details">
                             View details
-                            <i class="material-icons right">more_horiz</i>
+                            <i
+                                class="material-icons right">more_horiz</i>
                         </a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
-                        <p id="title" >
-                            <span class="bold">Id:</span> {{ project.id }}
-                            <span class="bold">Title:</span> {{ project.title }}
+                        <p id="title">
+                            <span class="bold">Id:</span>
+                            {{ project.id }}
+                            <span class="bold">Title:</span>
+                            {{ project.title }}
                         </p>
                         <div>
                             {% if project.document %}
-                            <a href="{{ project.document.url }}" download target="_blank" aria-label="View project document"><i
+                            <a href="{{ project.document.url }}"
+                                download target="_blank"
+                                aria-label="View project document"><i
                                     class="small material-icons">attachment</i></a>
                             {% endif %}
                         </div>
@@ -48,9 +55,10 @@
                     </div>
                     <div class="col s6">
                         <p>
-                            <span class="bold">Owner:</span> 
-                            {{ project.owner.first_name }} {{ project.owner.last_name }}
-                            <span class="bold">Due date:</span> 
+                            <span class="bold">Owner:</span>
+                            {{ project.owner.first_name }}
+                            {{ project.owner.last_name }}
+                            <span class="bold">Due date:</span>
                             {{ project.due|date:'d/m/y' }}
                         </p>
                     </div>
@@ -58,28 +66,34 @@
             </div>
             <ul class="project-approvers collapsible">
                 <li>
-                    <div class="collapsible-header">View approvers</div>
+                    <div class="collapsible-header">View approvers
+                    </div>
                     <div class="row collapsible-body">
                         {% for approval in approvals %}
                         {% if approval.project_id is project.id %}
                         <div class="col xs12 s6 m4 l3">
                             <h2>Approver</h2>
                             <p><span class="bold">{{ approval.approver.user.first_name }}
-                                {{ approval.approver.user.last_name }}
-                            </span><br>
-                                {{ approval.approver.department }} dept<br>
+                                    {{ approval.approver.user.last_name }}
+                                </span><br>
+                                {{ approval.approver.department }}
+                                dept<br>
                             </p>
                             <div class="approval">
                                 {% if approval.approved %}
-                                <i class="material-icons dark-green">check</i>
+                                <i
+                                    class="material-icons dark-green">check</i>
                                 <p class="dark-green bold">
-                                    on {{ approval.approval_date|date:'d/m/y' }}
+                                    on
+                                    {{ approval.approval_date|date:'d/m/y' }}
                                     <br>
                                 </p>
                                 {% else %}
-                                <i class="material-icons not-approved">clear</i>
+                                <i
+                                    class="material-icons not-approved">clear</i>
                                 <p class="not-approved bold">
-                                    due by {{ approval.approval_due_by|date:'d/m/y' }}
+                                    due by
+                                    {{ approval.approval_due_by|date:'d/m/y' }}
                                     <br>
                                 </p>
                                 {% endif %}
@@ -103,30 +117,38 @@
                         <h2>Project {{ project.id }}</h2>
                     </div>
                     <div class="col s6 right view-project">
-                        <a href="{% url 'project-details' project.slug %}" class="waves-effect waves-light btn-small text-black" aria-label="View project details">
+                        <a href="{% url 'project-details' project.slug %}"
+                            class="waves-effect waves-light btn-small text-black"
+                            aria-label="View project details">
                             View details
-                            <i class="material-icons right">more_horiz</i>
+                            <i
+                                class="material-icons right">more_horiz</i>
                         </a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s6">
-                        <p id="title" >
-                            <span class="bold">Title:</span> {{ project.title }}
+                        <p id="title">
+                            <span class="bold">Title:</span>
+                            {{ project.title }}
                         </p>
                         <div>
                             {% if project.document %}
-                            <a href="{{ project.document.url }}" download target="_blank" aria-label="View project document"><i
+                            <a href="{{ project.document.url }}"
+                                download target="_blank"
+                                aria-label="View project document"><i
                                     class="small material-icons">attachment</i></a>
                             {% endif %}
                         </div>
                         <div>
                             {% if project.status == 0 %}
-                            <p title="Project not completed" class="not-approved">
+                            <p title="Project not completed"
+                                class="not-approved">
                                 <i class="material-icons">clear</i>
                             </p>
                             {% else %}
-                            <p title="Project completed" class="dark-green">
+                            <p title="Project completed"
+                                class="dark-green">
                                 <i class="material-icons dark-green">check_circle
                                 </i>
                             </p>
@@ -135,9 +157,10 @@
                     </div>
                     <div class="col s6">
                         <p>
-                            <span class="bold">Owner:</span> 
-                            {{ project.owner.first_name }} {{ project.owner.last_name }}
-                            <span class="bold">Due date:</span> 
+                            <span class="bold">Owner:</span>
+                            {{ project.owner.first_name }}
+                            {{ project.owner.last_name }}
+                            <span class="bold">Due date:</span>
                             {{ project.due|date:'d/m/y' }}
                         </p>
                     </div>
@@ -145,28 +168,34 @@
             </div>
             <ul class="project-approvers collapsible">
                 <li>
-                    <div class="collapsible-header">View approvers</div>
+                    <div class="collapsible-header">View approvers
+                    </div>
                     <div class="row collapsible-body">
                         {% for approval in approvals %}
                         {% if approval.project_id is project.id %}
                         <div class="col xs12 s6 m4 l3">
                             <h2>Approver</h2>
                             <p><span class="bold">{{ approval.approver.user.first_name }}
-                                {{ approval.approver.user.last_name }}
-                            </span><br>
-                                {{ approval.approver.department }} dept<br>
+                                    {{ approval.approver.user.last_name }}
+                                </span><br>
+                                {{ approval.approver.department }}
+                                dept<br>
                             </p>
                             <div class="approval">
                                 {% if approval.approved %}
-                                <i class="material-icons dark-green">check</i>
+                                <i
+                                    class="material-icons dark-green">check</i>
                                 <p class="dark-green bold">
-                                    on {{ approval.approval_date|date:'d/m/y' }}
+                                    on
+                                    {{ approval.approval_date|date:'d/m/y' }}
                                     <br>
                                 </p>
                                 {% else %}
-                                <i class="material-icons not-approved">clear</i>
+                                <i
+                                    class="material-icons not-approved">clear</i>
                                 <p class="not-approved bold">
-                                    due by {{ approval.approval_due_by|date:'d/m/y' }}
+                                    due by
+                                    {{ approval.approval_due_by|date:'d/m/y' }}
                                     <br>
                                 </p>
                                 {% endif %}

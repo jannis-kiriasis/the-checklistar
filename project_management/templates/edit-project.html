@@ -3,36 +3,40 @@
 {% block content %}
 
 <div class="container margin-bottom ">
-  <div class="row">
-    <h1>Edit project</h1>
-    <div class="col s12 m8 project-details project-container">
-        <form enctype="multipart/form-data" method="POST">
-          {% csrf_token %}
-          {{ form.as_p }}
+    <div class="row">
+        <h1>Edit project</h1>
+        <div class="col s12 m8 project-details project-container">
+            <form enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
 
-          {{ approver_form.management_form }}
-          <div class="add-approvers">
-            <h2>Approvers</h2>
-            <div id="form-container">
-              {% for approver in approver_form %}
-              <div class="approver-form">
-                {{ approver.as_p }}
-              </div>
-              {% endfor %}
-            </div>
-            <div class="flex">
-              <div id="add-approver">
-                <button title="Click to add an extra approver to the project"
-                  class="btn-floating btn-large waves-effect waves-light tan btn-small">
-                  <i class="material-icons text-black">add</i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <button class="btn margin-top margin-bottom text-black" type="submit">Create project</button>
-        </form>
+                {{ approver_form.management_form }}
+                <div class="add-approvers">
+                    <h2>Approvers</h2>
+                    <div id="form-container">
+                        {% for approver in approver_form %}
+                        <div class="approver-form">
+                            {{ approver.as_p }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="flex">
+                        <div id="add-approver">
+                            <button
+                                title="Click to add an extra approver to the project"
+                                class="btn-floating btn-large waves-effect waves-light tan btn-small">
+                                <i
+                                    class="material-icons text-black">add</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <button
+                    class="btn margin-top margin-bottom text-black"
+                    type="submit">Create project</button>
+            </form>
+        </div>
     </div>
-  </div>
 </div>
 </div>
 

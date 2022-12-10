@@ -15,7 +15,7 @@
     --fuzzy-wuzzy-light: #f9e7e7;
 }
 
-body, 
+body,
 input {
     font-family: 'Open Sans', Helvetica, sans-serif;
     font-size: 1.2rem;
@@ -117,7 +117,6 @@ nav,
 .collection-item {
     display: flex;
     justify-content: flex-start;
-
 }
 
 select {
@@ -230,7 +229,6 @@ select {
     margin: 20px !important;
     border-radius: 5px;
     background-color: #48a9a605;
-    ;
 }
 
 .comment-box {
@@ -314,7 +312,7 @@ input[type=file] {
 /*  #form-container > div > p:nth-child(3) > label */
 label[for="id_approvals-0-DELETE"] {
     display: hide !important;
-    }
+}
 
 .flex {
     display: flex;
@@ -333,7 +331,7 @@ label[for="id_approvals-0-DELETE"] {
 /* Sign in template */
 
 #id_remember,
-[type="checkbox"]:not(:checked), 
+[type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
     opacity: 100%;
     position: inherit;
