@@ -52,21 +52,8 @@ class Project(models.Model):
         User, on_delete=models.PROTECT, related_name='projects'
     )
 
-    def validate_file(document):
-        """
-        Check document is a pdf.
-        """
-        # Get the uploaded file
-        uploaded_file = document
-
-        # Check the file extension
-        if not uploaded_file.name.endswith('.pdf'):
-            # The uploaded file is not a PDF, raise a validation error
-            raise ValidationError('Only PDF files are allowed.')
-
     document = CloudinaryField(
-        'document', null=True, default=None, blank=True,
-        allowed_formats=['pdf'], validators=[validate_file]
+        'document', null=True, default=None, blank=True
         )
     description = models.TextField(max_length=2000)
     date_created = models.DateTimeField(auto_now_add=True)
