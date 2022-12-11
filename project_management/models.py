@@ -40,16 +40,6 @@ class UserProfile(models.Model):
         return f"{f_name} {l_name} | {dept}"
 
 
-def validate_file_format(value):
-    """
-    Validate that the Cloudinary file is one of the allowed formats.
-    """
-    if value.format not in ['png', 'jpg', 'jpeg', 'svg', 'webp', 'pdf']:
-        raise ValidationError(
-            'Invalid file format. Upload file in another format.'
-            )
-
-
 class Project(models.Model):
     """
     Project model. Contains all the information related to a project,
@@ -61,10 +51,22 @@ class Project(models.Model):
     owner = models.ForeignKey(
         User, on_delete=models.PROTECT, related_name='projects'
     )
+
+    def validate_file(document):
+        """
+        Check document is a pdf.
+        """
+        # Get the uploaded file
+        uploaded_file = document
+
+        # Check the file extension
+        if not uploaded_file.name.endswith('.pdf'):
+            # The uploaded file is not a PDF, raise a validation error
+            raise ValidationError('Only PDF files are allowed.')
+
     document = CloudinaryField(
-        'image', null=True, default=None, blank=True, resource_type='auto',
-        allowed_formats=['png', 'jpg', 'jpeg', 'svg', 'webp', 'pdf'],
-        validators=[validate_file_format]
+        'document', null=True, default=None, blank=True,
+        allowed_formats=['pdf'], validators=[validate_file]
         )
     description = models.TextField(max_length=2000)
     date_created = models.DateTimeField(auto_now_add=True)
@@ -88,10 +90,15 @@ class Project(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Create slug from title.
+        Custom save function.
+
+        If slug is not true, create a slug with slugify.
+
+        Also check that the uploaded file is a pdf. If not raise an error."
         """
         if not self.slug:
             self.slug = slugify(self.title)
+
         super(Project, self).save(*args, **kwargs)
 
 

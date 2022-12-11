@@ -352,7 +352,12 @@ def error_404_view(request, exception):
 
 def error_500_view(request, exception=None):
     """View for 500 error."""
+    def get(self, request):
+        # Get the exception that caused the 500 error
+        exception = request.exception
+
     context = {
-        'page_title': '500'
+        'page_title': '500',
+        'exception': exception
     }
     return render(request, '500.html', context)

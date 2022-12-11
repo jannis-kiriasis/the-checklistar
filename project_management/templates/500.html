@@ -7,8 +7,9 @@
 
         <h1>Server error</h1>
         <div class="col s12 m9">
-            <p>The action you tried to perform generated an error. Use the
-                navigation below to go back to the app.</p>
+            <p>The action you tried to perform generated the following error.</p>
+            <p>{{ exception }}</p>
+            <p>Use the navigation below to go back to the app and try again.</p>
             <ul>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'create-project' %}"
