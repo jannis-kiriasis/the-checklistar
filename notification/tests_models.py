@@ -5,11 +5,12 @@ from django.shortcuts import get_object_or_404
 from django.utils import timezone
 
 
-# Test notification model.
 class TestModels(TestCase):
+    """Test notification model."""
 
     @classmethod
     def setUpTestData(self):
+        """Create user, notification and save."""
 
         self.user = User.objects.create(username='testuser')
         self.user.set_password('CiaoCiao1')
@@ -24,4 +25,5 @@ class TestModels(TestCase):
 
     # project test is_read has default value
     def test_default_notification_values(self):
+        """Assert is_read = False by default"""
         self.assertFalse(self.notification.is_read)

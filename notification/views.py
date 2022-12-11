@@ -9,6 +9,14 @@ from .models import Notification
 
 @login_required
 def notifications(request):
+    """"
+    Get goto parameter, notification_id, extra_id.
+
+    If the goto parameter is different from '',
+    get the notification with pk=notification_id.
+
+    Evaluate the notification type and redirect to the correct page."
+    """
     goto = request.GET.get('goto', '')
     notification_id = request.GET.get('notification', 0)
     extra_id = request.GET.get('extra_id', 0)

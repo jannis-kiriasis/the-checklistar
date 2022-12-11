@@ -10,31 +10,42 @@ PROJECT_STATUS = ((0, 'Not completed'), (1, 'Completed'))
 
 
 def get_first_last_name(self):
+    """
+    Change the __str__ of User model.
+    """
     return f"{self.first_name} {self.last_name}"
 
+
+# Call get_first_last_name
 
 User.add_to_class("__str__", get_first_last_name)
 
 
-# UserProfile model: stores user information that aren't in User model
-
-
 class UserProfile(models.Model):
+    """
+    UserProfile model: stores user information that aren't in User model.
+    A user profile belongs only to one user. One user can only have one
+    user profile.
+    """
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='users'
     )
     department = models.CharField(max_length=80)
 
     def __str__(self):
-        return f"{self.user.first_name} {self.user.last_name} | {self.department}"
-
-
-# Project model. Contains all the information related to a project,
-# including the project's approvers
-#  which are stored in the ProjectApprovers model
+        """Change display value of User profile"""
+        l_name = self.user.last_name
+        f_name = self.user.first_name
+        dept = self.department
+        return f"{f_name} {l_name} | {dept}"
 
 
 class Project(models.Model):
+    """
+    Project model. Contains all the information related to a project,
+    including the project's approvers
+    which are stored in the ProjectApprovers model.
+    """
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True, null=True)
     owner = models.ForeignKey(
@@ -45,6 +56,9 @@ class Project(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
 
     def validate_date(due):
+        """
+        Due date can't be a past date. If it is, raise error.
+        """
         if due < timezone.now().date():
             raise ValidationError("Date cannot be in the past")
 
@@ -59,18 +73,23 @@ class Project(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
+        """
+        Create slug from title.
+        """
         if not self.slug:
             self.slug = slugify(self.title)
         super(Project, self).save(*args, **kwargs)
 
 
-# ProjectApprover Model: contains all the information of the approvers.abs
-# One project can have multiple approvers,
-# One approver can have multiple projects to approve.
-
-
 class ProjectApproval(models.Model):
+    """
+    ProjectApprover Model: contains all the information of the approvals.
+    One project can have multiple approvals,
+    One approval can have only one project.
 
+    NB. Approvals not approvers. This model is for approvers' approvals
+    not for approvers. Approvers are users.
+    """
     project = models.ForeignKey(
         Project, on_delete=models.CASCADE, related_name="approvals"
         )
@@ -83,6 +102,9 @@ class ProjectApproval(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     def validate_date(approval_due_by):
+        """
+        Due date can't be a past date. If it is, raise error.
+        """
         if approval_due_by < timezone.now().date():
             raise ValidationError("Date cannot be in the past")
 
@@ -91,13 +113,17 @@ class ProjectApproval(models.Model):
     approved = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"Project: {self.project} | Approver: {self.approver} | Department: {self.approver.department}"
-    
+        proj = self.project
+        approver = self.approver
+        dept = self.approver.department
+        return f"Project: {proj} | Approver: {approver} | Department: {dept}"
 
-
-# Comments model
 
 class Comment(models.Model):
+    """
+    Comments model. A comment can only have one project. One project
+    Can have many comments.
+    """
     project = models.ForeignKey(
         Project, on_delete=models.CASCADE,
         related_name="comments"

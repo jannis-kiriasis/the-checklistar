@@ -1,18 +1,29 @@
-from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
+from django.shortcuts import (
+    render,
+    get_object_or_404,
+    redirect,
+    get_list_or_404,
+)
+from .forms import (
+    ProjectForm,
+    ApproverForm,
+    CommentForm,
+    ApproverFormSet,
+    EditApproverFormSet,
+)
 from django.views import generic, View
 from django.forms import inlineformset_factory
 from .models import Project, ProjectApproval, UserProfile, User
-from .forms import ProjectForm, ApproverForm, CommentForm, ApproverFormSet, EditApproverFormSet
 from django.utils import timezone
 from notification.utilities import create_notification
 from django.contrib import messages
 
 
-# ProjectList view for dashboard.html. Shows all the projects with related
-# approvers
-
-
 def ProjectList(request):
+    """
+    ProjectList view for dashboard.html.
+    Shows all the projects with related approvers.
+    """
     user = request.user
     projects = Project.objects.order_by('-date_created')
     approvals = ProjectApproval.objects.all()
@@ -32,7 +43,12 @@ def ProjectList(request):
 # Render all the details related to a project and its comments
 
 class ProjectDetails(View):
+    """
+    ProjectDetails view for project-details.html.
+    Render all the details related to a project and its comments.
+    """
     def get(self, request, slug, *args, **kwargs):
+        """Get project, approvals and comments."""
         queryset = Project.objects
         project = get_object_or_404(queryset, slug=slug)
         approvals = project.approvals.order_by("created_on")
@@ -51,6 +67,7 @@ class ProjectDetails(View):
             )
 
     def post(self, request, slug, *args, **kwargs):
+        """Post project, approvals, comments."""
         queryset = Project.objects
         project = get_object_or_404(queryset, slug=slug)
         approvals = project.approvals.order_by("created_on")
@@ -58,6 +75,8 @@ class ProjectDetails(View):
 
         comment_form = CommentForm(data=request.POST)
 
+        # If comment form is valid get user email and username
+        # and save the data.
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
             comment_form.instance.name = request.user.username
@@ -66,21 +85,33 @@ class ProjectDetails(View):
             comment.save()
             messages.success(request, 'You have commented successfully.')
 
-            
-            # get all approvers of this project for if statement
+            # I want to send a notification to the project owner and the
+            # approvers depending on who has commented on the project.
+            # If an approver has commented, the owner gets a notification.
+            # If the owner has commented, all the approvers get a notification.
+            # If someone else commented send a notification to the owner.
             project_approvals = ProjectApproval.objects.all()
-            approver_list = get_list_or_404(project_approvals, project=project)
+            approver_list = get_list_or_404(
+                project_approvals, project=project
+                )
 
-            # get logged in user for elif statement
-            # project_approvals_by_user_id = ProjectApproval.objects.filter(approver_id=request.user.id)
-            # approver = get_object_or_404(project_approvals_by_user_id, project=project)
-    
+            # Check who is logged in. If it is the owner who commented, send a
+            # notification to the approvers. Else send a notification to the
+            # project owner.
             if request.user == project.owner:
                 for approver in approver_list:
-                    create_notification(request, approver.approver.user, 'comment', extra_id=project.slug)
+                    create_notification(
+                        request,
+                        approver.approver.user,
+                        'comment',
+                        extra_id=project.slug
+                        )
             else:
-                create_notification(request, project.owner, 'comment', extra_id=project.slug)
-
+                create_notification(
+                    request, project.owner,
+                    'comment',
+                    extra_id=project.slug
+                    )
         else:
             comment_form = CommentForm()
 
@@ -96,11 +127,16 @@ class ProjectDetails(View):
             )
 
 
-# View to create a project. Takes the form and formset  
-# and save the inputs in the related modeles.
-
-
 def CreateProject(request):
+    """
+    View to create a project. Takes the form and formset check if they
+    are valid and if so save the objects in the related models.
+
+    Send a notification to the approvers to say they have been added to
+    a project.
+
+    If the project is created, send a feedback.
+    """
     form = ProjectForm()
     approver_form = ApproverFormSet(instance=Project())
     if request.method == "POST":
@@ -111,17 +147,24 @@ def CreateProject(request):
             if approver_form.is_valid():
                 form.save()
                 approver_form.save()
-
+                # Feedback
                 messages.success(request, 'You have created a new project!')
 
                 last_project = Project.objects.latest('date_created')
                 approvals = ProjectApproval.objects.all()
 
+                # Send a notification to the approvers. If there are not
+                # approvers for the project, skip this without error.
                 try:
                     approver = get_list_or_404(approvals, project=last_project)
                     if approver:
                         for approver in approver:
-                            create_notification(request, approver.approver.user, 'added_approver', extra_id=project.slug)
+                            create_notification(
+                                request,
+                                approver.approver.user,
+                                'added_approver',
+                                extra_id=project.slug
+                                )
                         return redirect('dashboard')
                 except Exception:
                     return redirect('dashboard')
@@ -136,9 +179,13 @@ def CreateProject(request):
     return render(request, 'create-project.html', context)
 
 
-# view to edit the projcts in the project-details template
-
 def EditProject(request, project_id):
+    """
+    View to edit a project. Takes the form and formset check if they
+    are valid and if so save the objects in the related models.
+
+    If the project is updated, send a feedback.
+    """
     project = get_object_or_404(Project, id=project_id)
     form = ProjectForm(instance=project)
     approver_form = EditApproverFormSet(instance=project)
@@ -147,9 +194,10 @@ def EditProject(request, project_id):
         if form.is_valid():
             project = form.save()
             approver_form = EditApproverFormSet(request.POST, instance=project)
-            
+
             if approver_form.is_valid():
                 approver_form.save()
+                # Feedback
                 messages.success(
                     request, 'Project details have been updated successfully.'
                     )
@@ -168,26 +216,34 @@ def EditProject(request, project_id):
     return render(request, 'edit-project.html', context)
 
 
-
-# view to approve the projcts in the project-details template
-
-
 def ApproveProject(request, projectApproval_id):
+    """
+    View to approve the projcts.
+
+    If approved, send a feedback and a notification.
+    """
     approver = get_object_or_404(ProjectApproval, id=projectApproval_id)
     approver.approved = not approver.approved
     approver.approval_date = timezone.now()
     approver.save()
+    # Feedback
     messages.success(request, 'You have approved the project.')
 
-    create_notification(request, approver.project.owner, 'approval', extra_id=approver.project.slug)
+    create_notification(
+        request,
+        approver.project.owner,
+        'approval',
+        extra_id=approver.project.slug
+        )
 
     return redirect('my-approvals')
 
 
-# view to delete projects the projcts in the project-details template
-
-
 def DeleteProject(request, project_id):
+    """
+    View to delete projects.
+    If project is deleted, send a feedback.
+    """
     project = get_object_or_404(Project, id=project_id)
     project.delete()
     messages.success(request, 'The project has been deleted.')
@@ -195,10 +251,11 @@ def DeleteProject(request, project_id):
     return redirect('my-projects')
 
 
-# view to complete the projcts in the project-details template
-
-
 def CompleteProject(request, project_id):
+    """
+    View to complete the projcts.
+    If project is completed, send a feedback.
+    """
     project = get_object_or_404(Project, id=project_id)
     project.status = not 0
     project.save()
@@ -212,6 +269,12 @@ def CompleteProject(request, project_id):
 
 
 def MyProjectList(request):
+    """
+    View for my-projects page.
+
+    Get all the projects where the owner is the logged in user and related
+    approvals.
+    """
     user = request.user.id
     all_projects = Project.objects.filter(owner=user).order_by('-id', 'due')
     projects = all_projects.filter(status=0)
@@ -228,11 +291,12 @@ def MyProjectList(request):
     return render(request, 'my-projects.html', context)
 
 
-# MyApprovalsList view for my-approvals.html. Shows all the projects that the 
-# logged in user needs to approve
-
-
 def MyApprovalsList(request):
+    """
+    View for my-approvals page.
+
+    Get all the projects where the approver is the logged in user.
+    """
     user = request.user.id
 
     # Get projects where there is an approver matching the requesting user
@@ -240,13 +304,12 @@ def MyApprovalsList(request):
         approvals__approver_id=user
         )
 
-    # In project_approver_is_user get only projects with status=uncompleted and 
+    # In project_approver_is_user get only projects with status=uncompleted and
     # order them
-    projects = project_approver_is_user.filter(status=0).order_by(
-        '-due'
-        )
+    projects = project_approver_is_user.filter(
+        status=0).order_by('-due')
 
-    # In projects get only the projects where the requesting user 
+    # In projects get only the projects where the requesting user
     # hasn't approved yet
     project_to_approve = projects.filter(approvals__approved=False)
 
@@ -266,20 +329,18 @@ def MyApprovalsList(request):
 
     return render(request, 'my-approvals.html', context)
 
-# 404 page view
 
 def error_404_view(request, exception):
+    """View for 404 page."""
     context = {
         'page_title': '404'
     }
-    
     return render(request, "404.html", context)
 
-# 500 page view 
 
 def error_500_view(request, exception=None):
+    """View for 500 page."""
     context = {
         'page_title': '500'
     }
-    
     return render(request, "500.html", context)

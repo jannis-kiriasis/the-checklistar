@@ -6,9 +6,11 @@ from django.utils import timezone
 
 
 class TestModels(TestCase):
+    """Tests for models."""
 
     @classmethod
     def setUpTestData(self):
+        """Setup user, project, project_approval, comments for testing."""
 
         self.user = User.objects.create(username='testuser')
         self.user.set_password('CiaoCiao1')
@@ -27,41 +29,49 @@ class TestModels(TestCase):
         self.project.save()
 
         self.project_approval = ProjectApproval.objects.create(
-            project=get_object_or_404(Project, title="This is a project title"),
-            approver=get_object_or_404(UserProfile, user=self.user),
+            project=get_object_or_404(
+                Project, project=self.project
+                ),
+            approver=get_object_or_404(
+                UserProfile, user=self.user
+                ),
             approval_due_by='2023-12-30',
         )
 
-
         self.comment = Comment.objects.create(
-            project=get_object_or_404(Project, title="This is a project title"),
+            project=get_object_or_404(
+                Project, project=self.project
+                ),
             name=self.user,
             body='This is a test body comment',
             created_on=timezone.now,
         )
 
-    # project __str__ is equal to the project title   
     def test_project_str(self):
+        """Tests that project __str__ is equal to the project title."""
         self.assertEqual(str(self.project), 'This is a project title')
 
-    # project test default values are actually defaulted
     def test_default_project_values(self):
+        """Tests that project default values are actually defaulted."""
         self.assertEqual(self.project.status, 0)
         self.assertEqual(self.project.document, None)
 
-    # project approval test default values are actually defaulted
     def test_project_approval_default_values(self):
+        """
+        Tests that project approval default values are actually defaulted.
+        """
         self.assertFalse(self.project_approval.approved)
 
-    # test project_approval.approver is connected to an existing UserProfile
     def test_project_approval_approver_FK(self):
+        """project_approval.approver is connected to an existing UserProfile"""
         self.assertEqual(self.project_approval.approver, self.user_profile)
 
-    # test project_approval.project is connected to an existing Project
     def test_project_approval_project_FK(self):
+        """
+        Test project_approval.project is connected to an existing Project
+        """
         self.assertEqual(self.project_approval.project, self.project)
-        
-    # test project_approval.project is connected to an existing Project
-    def test_project_commnet_project_is_FK(self):
-        self.assertEqual(self.comment.project, self.project)
 
+    def test_project_commnet_project_is_FK(self):
+        """test comment is connected to an existing Project"""
+        self.assertEqual(self.comment.project, self.project)
