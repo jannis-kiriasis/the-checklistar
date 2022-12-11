@@ -74,7 +74,7 @@ class ApproverForm(forms.ModelForm):
 # Create a formset with Project as parent model and ProjectApproval
 # as child model. This is for the create a project view.
 
-ApproverFormSet = inlineformset_factory(
+approver_formset = inlineformset_factory(
     Project,
     ProjectApproval,
     fields=(
@@ -90,7 +90,7 @@ ApproverFormSet = inlineformset_factory(
 # Create a formset with Project as parent model and ProjectApproval
 # as child model. This is for the edit a project view.
 
-EditApproverFormSet = inlineformset_factory(
+edit_approver_formset = inlineformset_factory(
     Project,
     ProjectApproval,
     fields=(

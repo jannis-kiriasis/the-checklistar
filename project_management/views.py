@@ -8,8 +8,8 @@ from .forms import (
     ProjectForm,
     ApproverForm,
     CommentForm,
-    ApproverFormSet,
-    EditApproverFormSet,
+    approver_formset,
+    edit_approver_formset,
 )
 from django.views import generic, View
 from django.forms import inlineformset_factory
@@ -40,7 +40,10 @@ def project_list(request):
 
 
 def comment_form_is_valid(comment_form, request, project):
-
+    """
+    Check if comment form is valid. If so, add the comment, send a feedback
+    and send a notification.
+    """
     # If comment form is valid get user email and username
     # and save the data.
     if comment_form.is_valid():
@@ -120,6 +123,7 @@ def project_details(request, slug):
 
         comment_form = CommentForm(data=request.POST)
 
+        # Call function to validate comment form
         comment_form_is_valid(comment_form, request, project)
 
         return render(
@@ -145,12 +149,12 @@ def create_project(request):
     If the project is created, send a feedback.
     """
     form = ProjectForm()
-    approver_form = ApproverFormSet(instance=Project())
+    approver_form = approver_formset(instance=Project())
     if request.method == "POST":
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
             project = form.save(commit=False)
-            approver_form = ApproverFormSet(request.POST, instance=project)
+            approver_form = approver_formset(request.POST, instance=project)
             if approver_form.is_valid():
                 form.save()
                 approver_form.save()
@@ -195,13 +199,14 @@ def edit_project(request, project_id):
     """
     project = get_object_or_404(Project, id=project_id)
     form = ProjectForm(instance=project)
-    approver_form = EditApproverFormSet(instance=project)
+    approver_form = edit_approver_formset(instance=project)
     if request.method == "POST":
         form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
             project = form.save()
-            approver_form = EditApproverFormSet(request.POST, instance=project)
-
+            approver_form = edit_approver_formset(
+                request.POST, instance=project
+                )
             if approver_form.is_valid():
                 approver_form.save()
                 # Feedback

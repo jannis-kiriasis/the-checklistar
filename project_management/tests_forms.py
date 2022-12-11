@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .forms import CommentForm, CustomSignupForm, ProjectForm, ApproverFormSet
+from .forms import CommentForm, CustomSignupForm, ProjectForm, approver_formset
 
 
 class TestCommentForm(TestCase):
