@@ -7,7 +7,6 @@ const notificationM = document.getElementById("notification-count-m");
 
 const deleteButton = document.getElementById("delete");
 const approveButton = document.getElementById("approve");
-const editButton = document.getElementById("edit");
 const completeButton = document.getElementById("complete");
 
 // Get delete input field and label by xpath
@@ -54,14 +53,6 @@ if (approveButton) {
 
 if (completeButton) {
     completeButton.addEventListener('click', confirmComplete);
-}
-
-if (editButton) {
-    editButton.addEventListener('click', confirmEdit);
-}
-
-if (editButton) {
-    editButton.addEventListener('click', confirmEdit);
 }
 
 // On DOM content loaded initialize sidenav
