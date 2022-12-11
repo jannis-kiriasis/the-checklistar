@@ -13,6 +13,7 @@
 -	[Designs](#design)
 -  [Accessibility](#accessibility)
 -  [SEO](#seo)
+-  [Planning](#planning)
 -	[Technologies and tools used](#technologies-and-tools-used)
 -	[Testing](#testing)
 -	[Issues fixed](#issues-fixed)
@@ -483,6 +484,18 @@ The pages have been structured using semantic HTML markup.
 
 While the most important SEO meta tags have been used in the base.html template head, this app is for internal use, so it isn't made to be found on search engines. 
 SEO is irrelevant to this project.
+
+
+## Planning
+
+To build this app I've used [Jira](https://kiria.atlassian.net/jira/software/c/projects/TC/boards/2/backlog?view=detail&selectedIssue=TC-154&issueLimit=100) as an agile tool. 
+
+The development took 5 sprints of different lengths in terms of days but with similar total story points (around 25-27 per sprint).
+
+The tasks in each sprint were prioritised using the moscow method and the priority settings in the task details.
+
+You have probably seen the epics and user stories few paragraphs above. They are also available in the Jira board.
+
 
 ## Technologies and tools used
 

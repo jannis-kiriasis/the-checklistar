@@ -58,14 +58,7 @@ class Project(models.Model):
     description = models.TextField(max_length=2000)
     date_created = models.DateTimeField(auto_now_add=True)
 
-    def validate_date(due):
-        """
-        Due date can't be a past date. If it is, raise error.
-        """
-        if due < timezone.now().date():
-            raise ValidationError('Date cannot be in the past')
-
-    due = models.DateField(validators=[validate_date])
+    due = models.DateField()
 
     status = models.IntegerField(choices=PROJECT_STATUS, default=0)
 
@@ -109,14 +102,7 @@ class ProjectApproval(models.Model):
 
     created_on = models.DateTimeField(auto_now_add=True)
 
-    def validate_date(approval_due_by):
-        """
-        Due date can't be a past date. If it is, raise error.
-        """
-        if approval_due_by < timezone.now().date():
-            raise ValidationError('Date cannot be in the past')
-
-    approval_due_by = models.DateField(validators=[validate_date])
+    approval_due_by = models.DateField()
 
     approved = models.BooleanField(default=False)
 
