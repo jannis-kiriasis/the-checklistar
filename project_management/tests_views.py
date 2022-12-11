@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from .models import Project, ProjectApproval, UserProfile, Comment
 from django.shortcuts import get_object_or_404
@@ -10,12 +10,12 @@ class TestViews(TestCase):
     """Tests for views."""
     @classmethod
     def setUpTestData(self):
-        """Setup user, project, project_approval, comment."""
+        """Setup records for tests."""
         self.user = User.objects.create(username='testuser')
         self.user.set_password('CiaoCiao1')
         self.user.save()
         self.user_profile = UserProfile.objects.create(user=self.user)
-        self.user_profile.department = 'marketing'
+        self.user_profile.department = "marketing"
         self.user_profile.save()
 
         self.project = Project.objects.create(
@@ -23,15 +23,13 @@ class TestViews(TestCase):
             slug='this-is-a-project-title',
             description='This is a text description',
             due='2021-12-30',
-            id='1',
             owner=get_object_or_404(User, username='testuser')
-
         )
         self.project.save()
 
         self.project_approval = ProjectApproval.objects.create(
             project=get_object_or_404(
-                Project, title='This is a project title'
+                Project, title="This is a project title"
                 ),
             approver=get_object_or_404(UserProfile, user=self.user),
             approval_due_by='2023-12-30',
@@ -39,7 +37,7 @@ class TestViews(TestCase):
 
         self.comment = Comment.objects.create(
             project=get_object_or_404(
-                Project, title='This is a project title'
+                Project, title="This is a project title"
                 ),
             name=self.user,
             body='This is a test body comment',
@@ -125,3 +123,9 @@ class TestViews(TestCase):
                     reverse('project-details', args=[self.project.slug]))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'project-details.html')
+
+    def test_get_500_error_view(self):
+        """Test project_list get method returns 200 and dashboard.html."""
+        response = self.client.get('/45jhh')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, '404.html')

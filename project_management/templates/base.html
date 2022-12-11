@@ -6,27 +6,17 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <!-- SEO metadata -->
     <meta name="description"
         content="A project management workflow system designed to bring your projects from A to Z.">
     <meta name="robots" content="nondex, nofollow">
 
-    <!-- OG tags-->
-    <meta property="og:type" content="article">
-    <meta property="og:title"
-        content="The Checklistar: a project management system">
-    <meta property="og:description"
-        content="A project management workflow system designed to bring your projects from A to Z.">
-    <meta name="image" property="og:image"
-        content="../media/the-cheklistar-logo.svg">
-    <meta property="og:url" content="{{ url }}">
-    <meta property="og:site_name" content="The Checklistar">
-    <meta name="author" content="Jannis Kiriasis">
-
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="../media/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="{% static 'images/favicon.ico' %}">
 
     <!-- External links and styles -->
     <script
@@ -36,7 +26,8 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet">
 
     <!-- Sweet alert script - To use Sweet alerts (Swal.fire in JS files) -->
@@ -54,28 +45,35 @@
         <!-- Navigation -->
         <nav>
             <div class="nav-wrapper">
-                <a href="{% url 'dashboard' %}" class="left brand-logo"
+                <a href="{% url 'dashboard' %}"
+                    class="left brand-logo"
                     aria-label="Go to homepage">The Checklistar</a>
                 <a href="#" data-target="mobile-demo"
-                    class="right sidenav-trigger" aria-label="Open menu"><i
+                    class="right sidenav-trigger"
+                    aria-label="Open menu"><i
                         class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'create-project' %}"
                             class="waves-effect waves-light btn text-black"
-                            aria-label="Create a project">Create project</a>
+                            aria-label="Create a project">Create
+                            project</a>
                     </li>
-                    <li><a href="{% url 'notifications' %}" aria-label="Open notification centre">Notifications <span
-                                class="btn-floating btn-small red" id="notification-count"
-                                >{{ notifications.count }}</span></a>
+                    <li><a href="{% url 'notifications' %}"
+                            aria-label="Open notification centre">Notifications
+                            <span class="btn-floating btn-small red"
+                                id="notification-count">{{ notifications.count }}</span></a>
                     </li>
                     <li><a href="{% url 'dashboard' %}"
-                            aria-label="Go to main dahsboard">All projects</a>
+                            aria-label="Go to main dahsboard">All
+                            projects</a>
                     </li>
                     <li><a href="{% url 'my-projects' %}"
-                            aria-label="Open my projects">My projects</a></li>
+                            aria-label="Open my projects">My
+                            projects</a></li>
                     <li><a href="{% url 'my-approvals' %}"
-                            aria-label="Open my approvals">My approvals</a></li>
+                            aria-label="Open my approvals">My
+                            approvals</a></li>
                     <li><a href="{% url 'account_logout' %}"
                             aria-label="Logout">Logout</a></li>
                     {% else %}
@@ -94,21 +92,26 @@
             {% if user.is_authenticated %}
             <li><a href="{% url 'create-project' %}"
                     class="waves-effect waves-light btn text-black"
-                    aria-label="Create a project">Create project</a></li>
-            <li><a href="{% url 'notifications' %}" aria-label="Open notification centre">Notifications <span
-                        class="btn-floating btn-small red" id="notification-count-m"
-                        >{{ notifications.count }}</span></a>
+                    aria-label="Create a project">Create project</a>
+            </li>
+            <li><a href="{% url 'notifications' %}"
+                    aria-label="Open notification centre">Notifications
+                    <span class="btn-floating btn-small red"
+                        id="notification-count-m">{{ notifications.count }}</span></a>
             </li>
             <li><a href="{% url 'dashboard' %}"
-                    aria-label="Go to main dahsboard">All projects</a></li>
+                    aria-label="Go to main dahsboard">All projects</a>
+            </li>
             <li><a href="{% url 'my-projects' %}"
                     aria-label="Open my projects">My projects</a></li>
             <li><a href="{% url 'my-approvals' %}"
-                    aria-label="Open my approvals">My approvals</a></li>
+                    aria-label="Open my approvals">My approvals</a>
+            </li>
             <li><a href="{% url 'account_logout' %}"
                     aria-label="Logout">Logout</a></li>
             {% else %}
-            <li><a href="{% url 'account_signup' %}" aria-label="Sign up">Sign
+            <li><a href="{% url 'account_signup' %}"
+                    aria-label="Sign up">Sign
                     up</a></li>
             <li><a href="{% url 'account_login' %}"
                     class="waves-effect waves-light btn text-black"
@@ -137,8 +140,10 @@
             <div class="row">
                 <div class="col l6 s12">
                     <h5 class="white-text">The Checklistar</h5>
-                    <p class="grey-text text-lighten-4">A project management
-                        system designed to bring your projects from A to Z.</p>
+                    <p class="grey-text text-lighten-4">A project
+                        management
+                        system designed to bring your projects from A
+                        to Z.</p>
                 </div>
             </div>
         </div>

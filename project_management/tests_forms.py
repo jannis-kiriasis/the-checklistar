@@ -81,39 +81,3 @@ class TestSignunForm(TestCase):
         self.assertEqual(
             form.errors['password2'][0], 'This field is required.'
             )
-
-
-class TestProjectForm(TestCase):
-    """Tests for project form."""
-
-    def test_title_is_required(self):
-        """Tests that title is required."""
-        form = ProjectForm({'title': ''})
-        self.assertFalse(form.is_valid())
-        self.assertIn('title', form.errors.keys())
-        self.assertEqual(form.errors['title'][0], 'This field is required.')
-
-    def test_owner_is_required(self):
-        """Tests that owner is required."""
-        form = ProjectForm({'owner': ''})
-        self.assertFalse(form.is_valid())
-        self.assertIn('owner', form.errors.keys())
-        self.assertEqual(form.errors['owner'][0], 'This field is required.')
-
-    def test_description_is_required(self):
-        """Tests that description is required."""
-        form = ProjectForm({'description': ''})
-        self.assertFalse(form.is_valid())
-        self.assertIn('description', form.errors.keys())
-        self.assertEqual(
-            form.errors['description'][0], 'This field is required.'
-            )
-
-    def test_due_is_required(self):
-        """Tests that due is required."""
-        form = ProjectForm({'due': ''})
-        self.assertFalse(form.is_valid())
-        self.assertIn('due', form.errors.keys())
-        self.assertEqual(
-            form.errors['due'][0], 'This field is required.'
-            )

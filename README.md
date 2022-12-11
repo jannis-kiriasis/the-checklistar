@@ -471,9 +471,6 @@ As mentioned above, all the colour combinations used for text passed a contrast 
 I've also used alt tags to describe images and aria labels to describe links.  
 The pages have been structured using semantic HTML markup.  
 
-The Lighthouse accessibility test also reports an accessibility score of 100/100. 
-
-A Lighthouse report is available in a few paragraphs below in the testing section.
 
 ## SEO
 
@@ -492,7 +489,6 @@ SEO is irrevelant for this project.
 - Public repository: [GitHub](https://github.com/)
 - Google Font: [Open Sans](https://fonts.google.com/specimen/Open+Sans)
 - Wireframes: [Balsamiq](https://balsamiq.com/)
-- Lighthouse: [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/)
 - Colours accessibility: [Webiam](https://webaim.org/resources/contrastchecker/)
 - Uniform alert on all browsers: [SweetAlert](https://sweetalert2.github.io/)
 - Colors darkener: [Color darkener](https://mdigi.tools/darken-color/)
@@ -509,8 +505,7 @@ I've carried out the following tests:
 4. [Manual testing](#manual-testing)
 5. [Browsers compatibility](#browser-compatibility)
 6. [Responsiveness testing](#responsiveness-testing)
-7. [Lighthouse testing](#lighthouse-testing)
-8. [User stories testing](#user-stories-testing)
+7. [User stories testing](#user-stories-testing)
 
 
 ### HTML validation
@@ -525,29 +520,45 @@ All the pages passed the HTML validation with no errors or warnings.
 - [create-project.html](./media/README-files/create-project-w3c.pdf)  
 - [edit-project.html](./media/README-files/edit-project-w3c.pdf)  
 - [400.html](./media/README-files/edit-project-w3c.pdf)  
-- [500.html](./media/README-files/edit-project-w3c.pdf)  
-- [notifications.html](./media/README-files/edit-project-w3c.pdf)  
+- [notifications.html](./media/README-files/notifications-w3c.pdf)  
 
 
 ### CSS validation
 
 Style.css passed the CSS validation with no errors.
-- [css validation](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fjannis-kiriasis.github.io%2Finsured%2Findex.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)  
-![CSS validation](./README-files/css-test.png)
+- [css validation](./media/README-files/css-valid.pdf)  
 
-There are only 2 warnings related to `-webkit-appearance: none;` and `-moz-appearance: none;` used to style the form submit button. This was used to prevent iPhone / iPad default style. The submit button would otherwise not be styled as declared in the CSS without the webkit extension.
+There are only 2 warnings related to imported style sheets and `-webkit-box-shadow` vendor extension.
+
 
 ### JS validation 
 The JavaScript files have been passed through [Jshint](https://jshint.com/): I have added a few semicolumns and removed unused variables. There are no issues with the code.
 
 There are also no errors in the Console (Google Developer Tools).
 
-The Lighthouse best practices test also reports a score of 100/100. 
-
-A Lighthouse report is available a few paragraphs below in the testing section.
 
 ### Automated testing
 
+I've used [Django testing tools](https://docs.djangoproject.com/en/3.2/topics/testing/tools/) to test the application python code.
+
+The tests were run on SQLite3 local database.
+
+I've tested the following files in project_management:
+
+[forms.py](https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/project_management/forms.py): [test_forms.py](https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/project_management/tests_forms.py)
+[models.py](https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/project_management/models.py): [test_models.py])(https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/project_management/tests_models.py)
+[views.py](https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/project_management/views.py): [test_views.py](https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/project_management/tests_views.py)
+
+I've tested the following files in motification:
+[models.py](models.py): [test_models.py])(https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/notification/tests_models.py)
+
+Over 80% of the python code have been tested with automated tests:
+
+Project management tests coverage  
+![project_management](./media/README-files/project-man-tests.png)  
+
+Notification tests coverege  
+![notification](./media/README-files/notification-tests.png)  
 
 
 ### Manual testing
@@ -619,13 +630,6 @@ The website has also been tested for responsiveness on [ami.responsivedesign.is]
 - [life-insurance-calculator.html](https://ui.dev/amiresponsive?url=https://jannis-kiriasis.github.io/insured/life-insurance-calculator.html)
 - [application-form.html](https://jannis-kiriasis.github.io/insured/application-form.html)
 
-### Lighthouse testing
-Overall, the lighthouse report is very positive. 
-
-![Lighthouse report](./README-files/lighthouse-insured.png) 
-[Lighthouse report](https://googlechrome.github.io/lighthouse/viewer/?psiurl=https%3A%2F%2Fjannis-kiriasis.github.io%2Finsured%2Findex.html&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa&utm_source=lh-chrome-ext)
-
-Note that the performance score varies also depending on the internet connection and device used for testing.
 
 ### User stories testing
 
@@ -749,15 +753,12 @@ Below you can find all the steps to take in order to clone and deploy this appli
 
 ## Acknowledgements
 
-I'm an SEO specialist working for an insurance company in Dublin. So I have some experience with Google tools and marketing life insurance policies to people.
-
 Brian Macharia, my mentor, helped me test the website functionalities and provide excellent recommendations.
 
 I followed this video from [Code with Stein](https://www.youtube.com/watch?v=C8pYT1R8yo4&ab_channel=CodeWithStein) to create the notifications.
 
 I followed this article from [Brennan Tymrak](https://www.brennantymrak.com/articles/django-dynamic-formsets-javascript) to create the dymanic formset with JavaScript to crete and edit a project.
 
-I've used the Unittest on this project from [Elaine Broche](https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/tree/main/hikebooker) to structure my automated testing. 
+I've looked at the tests run on this project from [Elaine Broche](https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/tree/main/hikebooker) to structure my automated python testing. 
 
 To create the README.md file I've used a previously created by me README.md [Insured README.md](https://github.com/jannis-kiriasis/insured/blob/main/README.md) and updated it as needed.
-

@@ -11,6 +11,7 @@
         <div class="project z-depth-1">
             <div>
                 <div class="row">
+                    <!-- Project details -->
                     <div class=" col s6">
                         <h2>Project {{ project.id }}</h2>
                     </div>
@@ -70,6 +71,7 @@
                     <div class="row collapsible-body">
                         {% for approval in approvals %}
                         {% if approval.project_id is project.id %}
+                        <!-- Project approvers -->
                         <div class="col xs12 s6 m4 l3">
                             <h2>Approver</h2>
                             <p><span class="bold">{{ approval.approver.user.first_name }}
@@ -105,6 +107,7 @@
             </ul>
         </div>
         {% endfor %}
+        <!-- Projects completed -->
         {% if projects_completed %}
         <h2 class="margin-bottom">My Completed Projects</h2>
         {% endif %}
@@ -126,6 +129,7 @@
                     </div>
                 </div>
                 <div class="row">
+                    <!-- Project completed details -->
                     <div class="col s6">
                         <p class="title">
                             <span class="bold">Id:</span>
@@ -172,6 +176,7 @@
                     <div class="row collapsible-body">
                         {% for approval in approvals %}
                         {% if approval.project_id is project.id %}
+                        <!-- Project completed approvers -->
                         <div class="col xs12 s6 m4 l3">
                             <h2>Approver</h2>
                             <p><span class="bold">{{ approval.approver.user.first_name }}

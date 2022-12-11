@@ -7,7 +7,8 @@
 
         <h1>Create a project</h1>
         <!-- Project form -->
-        <div class="col s12 m9 project-details margin-bottom project-container">
+        <div
+            class="col s12 m9 project-details margin-bottom project-container">
             <form enctype="multipart/form-data" method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
@@ -28,7 +29,8 @@
                             <button
                                 title="Click to add an extra approver to the project"
                                 class="btn-floating btn-large waves-effect waves-light tan btn-small ">
-                                <i class="material-icons text-black">add</i>
+                                <i
+                                    class="material-icons text-black">add</i>
                             </button>
                         </div>
                         <div id="remove-approver">
@@ -40,10 +42,11 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn margin-top margin-bottom text-black"
+                <button
+                    class="btn margin-top margin-bottom text-black"
                     type="submit">Create project</button>
             </form>
         </div>
     </div>
 </div>
-    {%endblock%}
+{%endblock%}

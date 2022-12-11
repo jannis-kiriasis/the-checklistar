@@ -13,6 +13,7 @@
                 title="This is a project you opened and it isn't completed">
                 {% endif %}
                 <div>
+                    <!-- Project details -->
                     <div class="row">
                         <div class=" col s6">
                             <h2>Project {{ project.id }}</h2>
@@ -76,6 +77,7 @@
                         <div class="row collapsible-body">
                             {% for approval in approvals %}
                             {% if approval.project_id is project.id %}
+                            <!-- Project approvers -->
                             <div class="col xs12 s6 m4 l3">
                                 <h2>Approver</h2>
                                 <p><span class="bold">{{ approval.approver.user.first_name }}
