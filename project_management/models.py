@@ -40,6 +40,16 @@ class UserProfile(models.Model):
         return f"{f_name} {l_name} | {dept}"
 
 
+def validate_file_format(value):
+    """
+    Validate that the Cloudinary file is one of the allowed formats.
+    """
+    if value.format not in ['png', 'jpg', 'jpeg', 'svg', 'webp', 'pdf']:
+        raise ValidationError(
+            'Invalid file format. Upload file in another format.'
+            )
+
+
 class Project(models.Model):
     """
     Project model. Contains all the information related to a project,
@@ -51,7 +61,11 @@ class Project(models.Model):
     owner = models.ForeignKey(
         User, on_delete=models.PROTECT, related_name='projects'
     )
-    document = CloudinaryField('document', null=True, default=None, blank=True)
+    document = CloudinaryField(
+        'image', null=True, default=None, blank=True, resource_type='auto',
+        allowed_formats=['png', 'jpg', 'jpeg', 'svg', 'webp', 'pdf'],
+        validators=[validate_file_format]
+        )
     description = models.TextField(max_length=2000)
     date_created = models.DateTimeField(auto_now_add=True)
 
