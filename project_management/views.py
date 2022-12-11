@@ -19,9 +19,9 @@ from notification.utilities import create_notification
 from django.contrib import messages
 
 
-def ProjectList(request):
+def project_list(request):
     """
-    ProjectList view for dashboard.html.
+    project_list view for dashboard.html.
     Shows all the projects with related approvers.
     """
     user = request.user
@@ -39,21 +39,67 @@ def ProjectList(request):
     return render(request, 'dashboard.html', context)
 
 
-# ProjectDetails view for project-details.html.
+def comment_form_is_valid(comment_form, request, project):
+
+    # If comment form is valid get user email and username
+    # and save the data.
+    if comment_form.is_valid():
+        comment_form.instance.email = request.user.email
+        comment_form.instance.name = request.user.username
+        comment = comment_form.save(commit=False)
+        comment.project = project
+        comment.save()
+        messages.success(request, 'You have commented successfully.')
+
+        # I want to send a notification to the project owner and the
+        # approvers depending on who has commented on the project.
+        # If an approver has commented, the owner gets a notification.
+        # If the owner has commented, all the approvers get a notification.
+        # If someone else commented send a notification to the owner.
+        project_approvals = ProjectApproval.objects.all()
+        approver_list = get_list_or_404(
+            project_approvals, project=project
+            )
+
+        # Check who is logged in. If it is the owner who commented, send a
+        # notification to the approvers. Else send a notification to the
+        # project owner.
+        if request.user == project.owner:
+            for approver in approver_list:
+                create_notification(
+                    request,
+                    approver.approver.user,
+                    'comment',
+                    extra_id=project.slug
+                    )
+        else:
+            create_notification(
+                request, project.owner,
+                'comment',
+                extra_id=project.slug
+                )
+    else:
+        comment_form = CommentForm()
+
+
+# project_details view for project-details.html.
 # Render all the details related to a project and its comments
 
-class ProjectDetails(View):
+def project_details(request, slug):
     """
-    ProjectDetails view for project-details.html.
+    project_details view for project-details.html.
     Render all the details related to a project and its comments.
     """
-    def get(self, request, slug, *args, **kwargs):
-        """Get project, approvals and comments."""
-        queryset = Project.objects
-        project = get_object_or_404(queryset, slug=slug)
-        approvals = project.approvals.order_by("created_on")
-        comments = project.comments.order_by("-created_on")
+    # Get project, approvals and comments.
+    queryset = Project.objects
+    project = get_object_or_404(queryset, slug=slug)
+    approvals = project.approvals.order_by("created_on")
+    comments = project.comments.order_by("-created_on")
 
+    # Check if the request is a GET or a POST request.
+    if request.method == "GET":
+        # If the request is a GET request, render the project-details.html
+        # template with the project, approvals, comment form, and comments.
         return render(
             request,
             "project-details.html",
@@ -64,10 +110,9 @@ class ProjectDetails(View):
                 "comments": comments,
                 'page_title': 'Project details'
             },
-            )
-
-    def post(self, request, slug, *args, **kwargs):
-        """Post project, approvals, comments."""
+        )
+    else:
+        # POST project, approvals, comments.
         queryset = Project.objects
         project = get_object_or_404(queryset, slug=slug)
         approvals = project.approvals.order_by("created_on")
@@ -75,45 +120,7 @@ class ProjectDetails(View):
 
         comment_form = CommentForm(data=request.POST)
 
-        # If comment form is valid get user email and username
-        # and save the data.
-        if comment_form.is_valid():
-            comment_form.instance.email = request.user.email
-            comment_form.instance.name = request.user.username
-            comment = comment_form.save(commit=False)
-            comment.project = project
-            comment.save()
-            messages.success(request, 'You have commented successfully.')
-
-            # I want to send a notification to the project owner and the
-            # approvers depending on who has commented on the project.
-            # If an approver has commented, the owner gets a notification.
-            # If the owner has commented, all the approvers get a notification.
-            # If someone else commented send a notification to the owner.
-            project_approvals = ProjectApproval.objects.all()
-            approver_list = get_list_or_404(
-                project_approvals, project=project
-                )
-
-            # Check who is logged in. If it is the owner who commented, send a
-            # notification to the approvers. Else send a notification to the
-            # project owner.
-            if request.user == project.owner:
-                for approver in approver_list:
-                    create_notification(
-                        request,
-                        approver.approver.user,
-                        'comment',
-                        extra_id=project.slug
-                        )
-            else:
-                create_notification(
-                    request, project.owner,
-                    'comment',
-                    extra_id=project.slug
-                    )
-        else:
-            comment_form = CommentForm()
+        comment_form_is_valid(comment_form, request, project)
 
         return render(
             request,
@@ -127,7 +134,7 @@ class ProjectDetails(View):
             )
 
 
-def CreateProject(request):
+def create_project(request):
     """
     View to create a project. Takes the form and formset check if they
     are valid and if so save the objects in the related models.
@@ -179,7 +186,7 @@ def CreateProject(request):
     return render(request, 'create-project.html', context)
 
 
-def EditProject(request, project_id):
+def edit_project(request, project_id):
     """
     View to edit a project. Takes the form and formset check if they
     are valid and if so save the objects in the related models.
@@ -216,7 +223,7 @@ def EditProject(request, project_id):
     return render(request, 'edit-project.html', context)
 
 
-def ApproveProject(request, projectApproval_id):
+def approve_project(request, projectApproval_id):
     """
     View to approve the projcts.
 
@@ -239,7 +246,7 @@ def ApproveProject(request, projectApproval_id):
     return redirect('my-approvals')
 
 
-def DeleteProject(request, project_id):
+def delete_project(request, project_id):
     """
     View to delete projects.
     If project is deleted, send a feedback.
@@ -251,7 +258,7 @@ def DeleteProject(request, project_id):
     return redirect('my-projects')
 
 
-def CompleteProject(request, project_id):
+def complete_project(request, project_id):
     """
     View to complete the projcts.
     If project is completed, send a feedback.
@@ -264,11 +271,11 @@ def CompleteProject(request, project_id):
     return redirect('my-projects')
 
 
-# ProjectList view for my-projects.html. Shows all the projects opened by the
+# project_list view for my-projects.html. Shows all the projects opened by the
 # signed in user
 
 
-def MyProjectList(request):
+def my_project_list(request):
     """
     View for my-projects page.
 
@@ -291,7 +298,7 @@ def MyProjectList(request):
     return render(request, 'my-projects.html', context)
 
 
-def MyApprovalsList(request):
+def my_approvals_list(request):
     """
     View for my-approvals page.
 
@@ -339,7 +346,7 @@ def error_404_view(request, exception):
 
 
 def error_500_view(request, exception=None):
-    """View for 500 page."""
+    """View for 500 error."""
     context = {
         'page_title': '500'
     }

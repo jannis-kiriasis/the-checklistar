@@ -36,14 +36,14 @@ class ProjectForm(forms.ModelForm):
         project = self.instance
 
         # Check which view is calling the clean function
-        if view == 'CreateProject':
+        if view == 'create_project':
             # Check if a project with the same title already exists
             if title and Project.objects.get(title=title):
                 raise forms.ValidationError(
                     "This title already exists. Try a different title."
                     )
 
-        elif view == 'EditProject':
+        elif view == 'edit_project':
             # Only check for existing projects
             # with the same title if the title has changed
             if title and title != project.title and Project.objects.get(

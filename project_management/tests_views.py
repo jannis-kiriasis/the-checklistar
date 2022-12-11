@@ -47,13 +47,13 @@ class TestViews(TestCase):
         )
 
     def test_get_project_list(self):
-        """Test projectList get method returns 200 and dashboard.html."""
+        """Test project_list get method returns 200 and dashboard.html."""
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'dashboard.html')
 
-    def test_get_MyProjectList(self):
-        """Test MyProjectList get method returns 200 and my-projects.html."""
+    def test_get_my_project_list(self):
+        """Test my_project_list get method returns 200 and my-projects.html."""
         response = self.client.get('/my-projects')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'my-projects.html')

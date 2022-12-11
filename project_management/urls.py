@@ -3,18 +3,22 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path('', views.ProjectList, name='dashboard'),
-    path('create-project', views.CreateProject, name='create-project'),
+    path('', views.project_list, name='dashboard'),
+    path('create-project', views.create_project, name='create-project'),
     path(
         'project-details/<slug:slug>/',
-        views.ProjectDetails.as_view(),
+        views.project_details,
         name='project-details'),
-    path('edit/<project_id>', views.EditProject, name='edit'),
-    path('approve/<projectApproval_id>', views.ApproveProject, name='approve'),
-    path('delete/<project_id>', views.DeleteProject, name='delete'),
-    path('complete/<project_id>', views.CompleteProject, name='complete'),
-    path('my-projects', views.MyProjectList, name='my-projects'),
-    path('my-approvals', views.MyApprovalsList, name='my-approvals'),
+    path('edit/<project_id>', views.edit_project, name='edit'),
+    path(
+        'approve/<projectApproval_id>',
+        views.approve_project,
+        name='approve'
+        ),
+    path('delete/<project_id>', views.delete_project, name='delete'),
+    path('complete/<project_id>', views.complete_project, name='complete'),
+    path('my-projects', views.my_project_list, name='my-projects'),
+    path('my-approvals', views.my_approvals_list, name='my-approvals'),
     path('notifications', include('notification.urls')),
 ]
 
