@@ -1,6 +1,6 @@
 # Project 4 - The Checklistar
 
-[The Checklistar live demo](https://jannis-kiriasis.github.io/the-checklistar/index.html)\
+[The Checklistar live demo](https://the-checklistar.herokuapp.com/)\
 [The Checklistar repository](https://github.com/jannis-kiriasis/the-checklistar)
 
 ## Table of contents
@@ -553,14 +553,14 @@ The tests were run on the SQLite3 local database.
 
 I've tested the following files in project_management:
 
-[forms.py](https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/project_management/forms.py): [test_forms.py](https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/project_management/tests_forms.py)
-[models.py](https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/project_management/models.py): [test_models.py])(https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/project_management/tests_models.py)
-[views.py](https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/project_management/views.py): [test_views.py](https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/project_management/tests_views.py)
+[test_forms.py](https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/project_management/tests_forms.py)
+[test_models.py])(https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/project_management/tests_models.py)
+[test_views.py](https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/project_management/tests_views.py)
 
 I've tested the following files in the notification folder:
-[models.py](models.py): [test_models.py])(https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/notification/tests_models.py)
+[test_models.py])(https://github.com/jannis-kiriasis/the-checklistar/blob/7ba211de1ec5f6ccd62c0eda53cb7d490ebfe32e/notification/tests_models.py)
 
-Over 80% of the python code has been tested with automated tests:
+Over 84% of the python code has been tested with automated tests:
 
 Project management tests coverage  
 ![project_management](./media/README-files/project-man-tests.png)  
