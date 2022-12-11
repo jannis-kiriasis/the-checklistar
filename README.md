@@ -661,12 +661,13 @@ I've tested whether the user needs have been satisfied with the features created
 7. How to add a date picker in django forms [Stackoverflow](https://stackoverflow.com/questions/36293061/how-to-include-datepicker-in-django-modelform)
 8. Customise the default User model returned field (which is username)[Stackoverflow](https://stackoverflow.com/questions/34214320/django-customize-the-user-models-return-field)
 9. If a project with an existing title is submitted, a 500 error page comes up. Solution: used clean method to handle unique title errors [Stackoverflow](https://stackoverflow.com/questions/3473165/django-unique-constraint-form-errors)
+10. When a project description is added from the Admin panel, it renders with the paragraph tag. Solution: In the admin panel text editor for the project description field, the second last button in the text editor is 'Code view'. Select 'Code view' remove the tags and save. The text will render normally, without tags.
+11. - Add first_name and last_name to user model from admin panel [stackoverflow](https://stackoverflow.com/questions/2552516/changing-user-modeladmin-for-django-admin)
+11. - Users created from the admin panel can't login. Solution: hash the password before to save user.
 
 
 ## Known bugs
 
-- When a project description is added from the Admin panel, it renders with the paragraph tag.
-- Users created from the admin panel can't login.
 
 ## Deployment
 

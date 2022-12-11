@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from .models import Project, ProjectApproval, UserProfile, Comment
 from django_summernote.admin import SummernoteModelAdmin
 from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.hashers import make_password
 
 class UserProfileInline(admin.TabularInline):
     model = UserProfile
@@ -18,7 +20,6 @@ class ProjectAdmin(SummernoteModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'date_created', 'owner')
     list_display = ('title', 'owner', 'date_created', 'status')
-    summernote_fields = ('description')
     inlines = [
         ApprovalInline
     ]
@@ -97,6 +98,11 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ('username', 'first_name', 'last_name')
     inlines = [UserProfileInline]
 
+    # Hash the password before to save the User 
+    # or user login will fail
+    def save_model(self, request, obj, form, change):
+        obj.password = make_password(form.cleaned_data['password'])
+        obj.save()
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
