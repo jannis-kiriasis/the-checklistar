@@ -302,7 +302,6 @@ textarea {
 input[type=file] {
 
     color: var(--liberty);
-    border: 1 solid var(--liberty);
     border-radius: 2px;
     display: inline-block;
 
@@ -311,7 +310,7 @@ input[type=file] {
 
 /*  #form-container > div > p:nth-child(3) > label */
 label[for="id_approvals-0-DELETE"] {
-    display: hide !important;
+    display: none !important;
 }
 
 .flex {
