@@ -16,7 +16,7 @@ class TestModels(TestCase):
         self.user.set_password('CiaoCiao1')
         self.user.save()
         self.user_profile = UserProfile.objects.create(user=self.user)
-        self.user_profile.department = "marketing"
+        self.user_profile.department = 'marketing'
         self.user_profile.save()
 
         self.project = Project.objects.create(

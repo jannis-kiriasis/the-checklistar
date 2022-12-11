@@ -15,7 +15,7 @@ import os
 import dj_database_url
 from django.contrib.messages import constants as messages
 
-if os.path.isfile("env.py"):
+if os.path.isfile('env.py'):
     import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -33,7 +33,7 @@ DEBUG = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ["the-checklistar.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = ['the-checklistar.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -109,7 +109,7 @@ WSGI_APPLICATION = 'checklistar.wsgi.application'
 
 DATABASES = {
     'default':
-    dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 

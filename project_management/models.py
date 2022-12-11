@@ -18,7 +18,7 @@ def get_first_last_name(self):
 
 # Call get_first_last_name
 
-User.add_to_class("__str__", get_first_last_name)
+User.add_to_class('__str__', get_first_last_name)
 
 
 class UserProfile(models.Model):
@@ -60,7 +60,7 @@ class Project(models.Model):
         Due date can't be a past date. If it is, raise error.
         """
         if due < timezone.now().date():
-            raise ValidationError("Date cannot be in the past")
+            raise ValidationError('Date cannot be in the past')
 
     due = models.DateField(validators=[validate_date])
 
@@ -91,7 +91,7 @@ class ProjectApproval(models.Model):
     not for approvers. Approvers are users.
     """
     project = models.ForeignKey(
-        Project, on_delete=models.CASCADE, related_name="approvals"
+        Project, on_delete=models.CASCADE, related_name='approvals'
         )
     approver = models.ForeignKey(
         UserProfile, on_delete=models.CASCADE, related_name='approvers'
@@ -106,7 +106,7 @@ class ProjectApproval(models.Model):
         Due date can't be a past date. If it is, raise error.
         """
         if approval_due_by < timezone.now().date():
-            raise ValidationError("Date cannot be in the past")
+            raise ValidationError('Date cannot be in the past')
 
     approval_due_by = models.DateField(validators=[validate_date])
 
@@ -126,7 +126,7 @@ class Comment(models.Model):
     """
     project = models.ForeignKey(
         Project, on_delete=models.CASCADE,
-        related_name="comments"
+        related_name='comments'
         )
     name = models.CharField(max_length=80)
     email = models.EmailField()
@@ -134,7 +134,7 @@ class Comment(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ["created_on"]
+        ordering = ['created_on']
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"

@@ -1,13 +1,13 @@
-const approverForm = document.querySelectorAll(".approver-form");
-const container = document.querySelector("#form-container");
-const addButton = document.querySelector("#add-approver");
-const removeButton = document.querySelector("#remove-approver");
-const notification = document.getElementById("notification-count");
-const notificationM = document.getElementById("notification-count-m");
+const approverForm = document.querySelectorAll('.approver-form');
+const container = document.querySelector('#form-container');
+const addButton = document.querySelector('#add-approver');
+const removeButton = document.querySelector('#remove-approver');
+const notification = document.getElementById('notification-count');
+const notificationM = document.getElementById('notification-count-m');
 
-const deleteButton = document.getElementById("delete");
-const approveButton = document.getElementById("approve");
-const completeButton = document.getElementById("complete");
+const deleteButton = document.getElementById('delete');
+const approveButton = document.getElementById('approve');
+const completeButton = document.getElementById('complete');
 
 // Get delete input field and label by xpath
 let delete_input_xpath = "//input [contains (@id, '-DELETE')]";
@@ -20,15 +20,15 @@ let delete_label = document.evaluate(delete_label_xpath, document,
     .singleNodeValue;
 
 // Get message box
-const message = document.getElementById("message");
+const message = document.getElementById('message');
 
 // Make message box disappear after 5 seconds
 setTimeout(function() {
-    message.style.display = "none";
+    message.style.display = 'none';
 }, 5000);
 
 // Get input with total number of forms
-let totalForms = document.querySelector("#id_approvals-TOTAL_FORMS");
+let totalForms = document.querySelector('#id_approvals-TOTAL_FORMS');
 
 // Get the number of the last form on the page with zero-based indexing
 let formNum = approverForm.length - 1;
@@ -56,14 +56,14 @@ if (completeButton) {
 }
 
 // On DOM content loaded initialize sidenav
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
 
     let collapsible = document.querySelectorAll(
         '.collapsible');
     M.Collapsible.init(collapsible);
 
     // sidenav initialization
-    let sidenav = document.querySelectorAll(".sidenav");
+    let sidenav = document.querySelectorAll('.sidenav');
     M.Sidenav.init(sidenav);
 });
 
@@ -195,7 +195,7 @@ function confirmComplete(event) {
 }
 
 // On /create-project remove delete approver buttons
-if (window.location.pathname === "/create-project") {
+if (window.location.pathname === '/create-project') {
     if (delete_input) {
         delete_input.remove();
         delete_label.remove();
@@ -203,10 +203,10 @@ if (window.location.pathname === "/create-project") {
 }
 
 // Hide notification count if innerText = 0
-if (notification.innerText === "0") {
+if (notification.innerText === '0') {
     notification.remove();
 }
 
-if (notificationM.innerText === "0") {
+if (notificationM.innerText === '0') {
     notificationM.remove();
 }

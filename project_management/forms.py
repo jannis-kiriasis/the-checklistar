@@ -40,7 +40,7 @@ class ProjectForm(forms.ModelForm):
             # Check if a project with the same title already exists
             if title and Project.objects.get(title=title):
                 raise forms.ValidationError(
-                    "This title already exists. Try a different title."
+                    'This title already exists. Try a different title.'
                     )
 
         elif view == 'edit_project':
@@ -50,7 +50,7 @@ class ProjectForm(forms.ModelForm):
                 title=title
             ):
                 raise forms.ValidationError(
-                    "This title already exists. Try a different title."
+                    'This title already exists. Try a different title.'
                     )
 
         return cleaned_data

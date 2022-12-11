@@ -15,7 +15,7 @@ class TestViews(TestCase):
         self.user.set_password('CiaoCiao1')
         self.user.save()
         self.user_profile = UserProfile.objects.create(user=self.user)
-        self.user_profile.department = "marketing"
+        self.user_profile.department = 'marketing'
         self.user_profile.save()
 
         self.project = Project.objects.create(
@@ -31,7 +31,7 @@ class TestViews(TestCase):
 
         self.project_approval = ProjectApproval.objects.create(
             project=get_object_or_404(
-                Project, title="This is a project title"
+                Project, title='This is a project title'
                 ),
             approver=get_object_or_404(UserProfile, user=self.user),
             approval_due_by='2023-12-30',
@@ -39,7 +39,7 @@ class TestViews(TestCase):
 
         self.comment = Comment.objects.create(
             project=get_object_or_404(
-                Project, title="This is a project title"
+                Project, title='This is a project title'
                 ),
             name=self.user,
             body='This is a test body comment',

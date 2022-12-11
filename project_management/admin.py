@@ -33,7 +33,7 @@ class ProjectAdmin(SummernoteModelAdmin):
     inlines = [
         ApprovalInline
     ]
-    actions = ("export_as_csv",)
+    actions = ('export_as_csv',)
 
     # fuction to export list of projects from admin panel
     # from
@@ -70,7 +70,7 @@ class ProjectApprovalAdmin(SummernoteModelAdmin):
     """
     list_filter = ('project', 'approver')
     list_display = ('id', 'project', 'project_id', 'approver', 'approved')
-    actions = ['approve_projects', "export_as_csv"]
+    actions = ['approve_projects', 'export_as_csv']
 
     def approve_projects(self, request, queryset):
         """
@@ -103,7 +103,7 @@ class ProjectApprovalAdmin(SummernoteModelAdmin):
 
         return response
 
-    export_as_csv.short_description = "Export Selected"
+    export_as_csv.short_description = 'Export Selected'
 
 
 @admin.register(UserProfile)

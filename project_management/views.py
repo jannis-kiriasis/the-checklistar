@@ -96,21 +96,21 @@ def project_details(request, slug):
     # Get project, approvals and comments.
     queryset = Project.objects
     project = get_object_or_404(queryset, slug=slug)
-    approvals = project.approvals.order_by("created_on")
-    comments = project.comments.order_by("-created_on")
+    approvals = project.approvals.order_by('created_on')
+    comments = project.comments.order_by('-created_on')
 
     # Check if the request is a GET or a POST request.
-    if request.method == "GET":
+    if request.method == 'GET':
         # If the request is a GET request, render the project-details.html
         # template with the project, approvals, comment form, and comments.
         return render(
             request,
-            "project-details.html",
+            'project-details.html',
             {
-                "project": project,
-                "approvals": approvals,
-                "comment_form": CommentForm,
-                "comments": comments,
+                'project': project,
+                'approvals': approvals,
+                'comment_form': CommentForm,
+                'comments': comments,
                 'page_title': 'Project details'
             },
         )
@@ -118,8 +118,8 @@ def project_details(request, slug):
         # POST project, approvals, comments.
         queryset = Project.objects
         project = get_object_or_404(queryset, slug=slug)
-        approvals = project.approvals.order_by("created_on")
-        comments = project.comments.order_by("-created_on")
+        approvals = project.approvals.order_by('created_on')
+        comments = project.comments.order_by('-created_on')
 
         comment_form = CommentForm(data=request.POST)
 
@@ -128,12 +128,12 @@ def project_details(request, slug):
 
         return render(
             request,
-            "project-details.html",
+            'project-details.html',
             {
-                "project": project,
-                "approvals": approvals,
-                "comment_form": CommentForm(),
-                "comments": comments,
+                'project': project,
+                'approvals': approvals,
+                'comment_form': CommentForm,
+                'comments': comments,
             },
             )
 
@@ -150,7 +150,7 @@ def create_project(request):
     """
     form = ProjectForm()
     approver_form = approver_formset(instance=Project())
-    if request.method == "POST":
+    if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
             project = form.save(commit=False)
@@ -200,7 +200,7 @@ def edit_project(request, project_id):
     project = get_object_or_404(Project, id=project_id)
     form = ProjectForm(instance=project)
     approver_form = edit_approver_formset(instance=project)
-    if request.method == "POST":
+    if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
             project = form.save()
@@ -347,7 +347,7 @@ def error_404_view(request, exception):
     context = {
         'page_title': '404'
     }
-    return render(request, "404.html", context)
+    return render(request, '404.html', context)
 
 
 def error_500_view(request, exception=None):
@@ -355,4 +355,4 @@ def error_500_view(request, exception=None):
     context = {
         'page_title': '500'
     }
-    return render(request, "500.html", context)
+    return render(request, '500.html', context)
