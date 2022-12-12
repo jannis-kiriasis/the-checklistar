@@ -13,7 +13,7 @@
                 <div class="row">
                     <!-- Project details -->
                     <div class=" col s6">
-                        <h2>Project Details</h2>
+                        <h2>Project {{ project.id }}</h2>
                     </div>
                     <div class="col s6 right view-project">
                         <a href="{% url 'project-details' project.slug %}"
