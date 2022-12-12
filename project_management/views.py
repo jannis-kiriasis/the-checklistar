@@ -17,8 +17,10 @@ from .models import Project, ProjectApproval, UserProfile, User
 from django.utils import timezone
 from notification.utilities import create_notification
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def project_list(request):
     """
     project_list view for dashboard.html.
@@ -88,6 +90,7 @@ def comment_form_is_valid(comment_form, request, project):
 # project_details view for project-details.html.
 # Render all the details related to a project and its comments
 
+@login_required
 def project_details(request, slug):
     """
     project_details view for project-details.html.
@@ -138,6 +141,7 @@ def project_details(request, slug):
             )
 
 
+@login_required
 def create_project(request):
     """
     View to create a project. Takes the form and formset check if they
@@ -190,6 +194,7 @@ def create_project(request):
     return render(request, 'create-project.html', context)
 
 
+@login_required
 def edit_project(request, project_id):
     """
     View to edit a project. Takes the form and formset check if they
@@ -228,6 +233,7 @@ def edit_project(request, project_id):
     return render(request, 'edit-project.html', context)
 
 
+@login_required
 def approve_project(request, projectApproval_id):
     """
     View to approve the projcts.
@@ -251,6 +257,7 @@ def approve_project(request, projectApproval_id):
     return redirect('my-approvals')
 
 
+@login_required
 def delete_project(request, project_id):
     """
     View to delete projects.
@@ -263,6 +270,7 @@ def delete_project(request, project_id):
     return redirect('my-projects')
 
 
+@login_required
 def complete_project(request, project_id):
     """
     View to complete the projcts.
@@ -279,7 +287,7 @@ def complete_project(request, project_id):
 # project_list view for my-projects.html. Shows all the projects opened by the
 # signed in user
 
-
+@login_required
 def my_project_list(request):
     """
     View for my-projects page.
@@ -303,6 +311,7 @@ def my_project_list(request):
     return render(request, 'my-projects.html', context)
 
 
+@login_required
 def my_approvals_list(request):
     """
     View for my-approvals page.
@@ -342,6 +351,7 @@ def my_approvals_list(request):
     return render(request, 'my-approvals.html', context)
 
 
+@login_required
 def error_404_view(request, exception):
     """View for 404 page."""
     context = {
@@ -350,6 +360,7 @@ def error_404_view(request, exception):
     return render(request, '404.html', context)
 
 
+@login_required
 def error_500_view(request, exception=None):
     """View for 500 error."""
     def get(self, request):

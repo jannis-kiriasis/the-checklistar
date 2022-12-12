@@ -1,52 +1,53 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<div class="container">
-    <div class="row">
-
-        <h1>Create a project</h1>
-        <!-- Project form -->
-        <div
-            class="col s12 m9 project-details margin-bottom project-container">
-            <form enctype="multipart/form-data" method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-
-                {{ formset.management_form }}
-                <!-- Approver formset -->
-                <div class="add-approvers">
-                    <h2>Approvers</h2>
-                    <div id="form-container">
-                        {% for approver in formset %}
-                        <div class="approver-form">
-                            {{ approver.as_p }}
+<section>
+    <div class="container">
+        <div class="row">
+    
+            <h1>Create a project</h1>
+            <!-- Project form -->
+            <div
+                class="col s12 m9 project-details margin-bottom project-container">
+                <form enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+    
+                    {{ formset.management_form }}
+                    <!-- Approver formset -->
+                    <div class="add-approvers">
+                        <h2>Approvers</h2>
+                        <div id="form-container">
+                            {% for approver in formset %}
+                            <div class="approver-form">
+                                {{ approver.as_p }}
+                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
+                        <div class="flex">
+                            <div id="add-approver">
+                                <button
+                                    title="Click to add an extra approver to the project"
+                                    class="btn-floating btn-large waves-effect waves-light tan btn-small ">
+                                    <i
+                                        class="material-icons text-black">add</i>
+                                </button>
+                            </div>
+                            <div id="remove-approver">
+                                <button
+                                    title="Click to remove the last approver from the project"
+                                    class="btn-floating btn-large waves-effect waves-light red btn-small">
+                                    <i class="material-icons">remove</i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex">
-                        <div id="add-approver">
-                            <button
-                                title="Click to add an extra approver to the project"
-                                class="btn-floating btn-large waves-effect waves-light tan btn-small ">
-                                <i
-                                    class="material-icons text-black">add</i>
-                            </button>
-                        </div>
-                        <div id="remove-approver">
-                            <button
-                                title="Click to remove the last approver from the project"
-                                class="btn-floating btn-large waves-effect waves-light red btn-small">
-                                <i class="material-icons">remove</i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <button
-                    class="btn margin-top margin-bottom text-black"
-                    type="submit">Create project</button>
-            </form>
+                    <button
+                        class="btn margin-top margin-bottom text-black"
+                        type="submit">Create project</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</section>
 {%endblock%}

@@ -127,7 +127,6 @@ select {
     position: fixed;
     left: 5%;
     bottom: 5%;
-    /* transform: translate(-50%, -50%); */
     width: auto;
     padding: 15px 20px;
     z-index: 1000;
