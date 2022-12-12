@@ -145,8 +145,7 @@ As a project manager, I want to be able to see at what stage a process is and ho
 
 Acceptance criteria:
 1. Create a dashboard page with all the projects open and the approvals required for each project
-2. The approvals must be ordered by the due date
-3. It should be immediate to notice what approvals have been given and what approvals are missing
+2. It should be immediate to notice what approvals have been given and what approvals are missing
 
 ### E1 - User story 4 – Edit a project
 As a project manager, I want to be able to update a project anytime, so that if the requirements change, I can update the workflow.
@@ -168,7 +167,7 @@ As a project manager, I want to be able to see all the projects I’ve started a
 Acceptance criteria:
 1. Create a page where the PM can see only the projects the logged-in PM has started
 2. Make instantly evident what projects are completed and what aren’t
-3. The projects should be ordered by created date
+3. The projects should be ordered by descending created date
 
 ### E1 - User story 7 - Add a comment (Create)  
 As a project manager, I can add a comment to a specific project, so that I can update other people or discuss a specific issue without sending emails.
@@ -208,7 +207,6 @@ As an approver, I want to see when all the projects pending my approval are due 
 
 Acceptance criteria
 1. The due date will be visible in the dashboard, my approvals and my projects views for each project.
-2. The My approvals view will be ordered by the due date.
 
 ### E2 - User story 3 - Approvers feedback
 As an approver, I want to be able to add a comment to the project, so that I can record my feedback and don’t get lost in email threads. 
@@ -707,7 +705,7 @@ I've tested that the different functionalities of the website work as intended.
 | Project details – edit 2                                                | Change any field you want and click on ‘create a project’                                                                                          | If you have removed a required field, you’ll get an error. If you have added or removed an approver, the database is updated.                                                                                                      | PASS         |
 | Project details – edit 3                                                | Update a project you own.                                                                                                                          | A feedback message on the bottom left will say you have updated the project after the form submission.                                                                                                                             | PASS         |
 | Project details – comment form                                          | On any project you want, go to the project details page, fill in and submit a comment form.                                                           | The comment submitted will appear below the comment form in chronological order from the newest to the oldest.                                                                                                                     | PASS         |
-| My approvals page                                                       | Go to my approvals page                                                                                                                            | Projects are ordered by the due date. You see only projects where you are an approver. Approved projects have a green background.                                                                                                        | PASS         |
+| My approvals page                                                       | Go to my approvals page                                                                                                                            | You see only projects where you are an approver. Approved projects have a green background.                                                                                                        | PASS         |
 | My projects page                                                        | Go to my projects page                                                                                                                             | Projects are ordered by the last created. You see only projects where you are the owner. Completed projects have a green background.                                                                                                     | PASS         |
 | Approve a project                                                       | Click on ‘view details on a project where you aren’t an approver.                                                                                 | You can’t approve.                                                                                                                                                                                                                 | PASS         |
 | Approve a project 2                                                     | Click on ‘view details on a project where you are an approver. Click on ‘approve project’                                                         | Defensive design will ask you to confirm the approval.                                                                                                                                                                             | PASS         |
