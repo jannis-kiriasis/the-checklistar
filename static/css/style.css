@@ -278,6 +278,8 @@ label {
 
 input[type=text]:not(.browser-default),
 input[type=date]:not(.browser-default),
+input[type=password]:not(.browser-default),
+input[type=email]:not(.browser-default),
 select,
 textarea {
     border-radius: 0.5rem;

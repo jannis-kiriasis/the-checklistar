@@ -11,7 +11,7 @@
           <h1>{% trans "Sign Up" %}</h1>
 
           <p>{% blocktrans %}Already have an account? Then please <a
-                  href="{{ login_url }}">sign
+                  href="{{ login_url }}" class="a-notification">sign
                   in</a>.{% endblocktrans %}</p>
 
           <form class="signup margin-bottom" id="signup_form"
@@ -23,7 +23,7 @@
               <input type="hidden" name="{{ redirect_field_name }}"
                   value="{{ redirect_field_value }}" />
               {% endif %}
-              <button class="btn"
+              <button class="btn text-black"
                   type="submit">{% trans "Sign Up" %}
                   &raquo;</button>
           </form>
