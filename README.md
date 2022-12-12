@@ -14,6 +14,7 @@
 -  [Accessibility](#accessibility)
 -  [SEO](#seo)
 -  [Planning](#planning)
+-  [Data model](#data-model)
 -	[Technologies and tools used](#technologies-and-tools-used)
 -	[Testing](#testing)
 -	[Issues fixed](#issues-fixed)
@@ -498,6 +499,85 @@ In every sprint, about 60% of the user stories had a priority level of Must do o
 Many of the tasks and user stories that were marked as won't do in a sprint, were marked as should do or must do in the following sprint.
 
 You have probably seen the epics and user stories few paragraphs above. They are also available in the Jira board.
+
+
+## Data model
+For this app, I've created 5 data models and inherited others from Django Allauth.
+
+In this paragraph I'm going to focus on the data models I've created and the most important inherited ones.
+
+For more details on all the fields and models available and their relations, you can view this [database schema](/media/README-files/data-schema.svg).
+
+**User model**
+The User model contains all the generalities of the app users, including:
+- username
+- first name
+- last name
+- email address
+- password
+
+**UserProfile model**
+The UserProfile model extends the User model. Any extra fields related to a user are in the UserProfile.
+Between a User and a UserProfile, there is a one-to-one relationship where the user is the connection.
+
+The UserProfile includes:
+- user (1to1 relation with User)
+- department
+
+**Project model**
+The Project model includes all the information related to a project.
+Between a project owner and a User, there is a one-to-many relationship because a user can have many projects but a project owner belongs to one project.
+
+The Project model includes:
+- title
+- slug
+- description
+- document
+- owner (FK to User)
+- date created (when the project was created)
+- status (the project is completed or not)
+- due (project due date)
+
+**ProjectApproval model**
+The ProjectApproval model includes all the information related to the approval required for a project.
+One project can require many approvals, however, one approval belongs only to one project.
+One user can give many approvals, however one project approval belongs only to one user.
+
+The ProjectApproval model includes:
+- project (FK to Project)
+- Approver (FK to UserProfile)
+- Approval due by (Approval deadline)
+- Approved date (When the approval was given)
+- Created on (when the approval request was created)
+- Approved (True if approved, false if not)
+
+**Comment model**
+The Comment model includes all the information related to a comment left on a project.
+One comment belongs to a project only, however, a project can have many comments.
+
+The Comment model includes:
+- Project (FK to Project)
+- Body (Comment body)
+- Created on (When the comment was created)
+- Email 
+- Name (Name of the user)
+
+**Notification model**
+The Notification model includes all the information related to a notification send after an action has been taken.
+These actions can be comments, approvals given and approval requests sent. 
+One notification belongs to one user, however, one user can send many notifications.
+One notification is received by one user, however, one user can receive many notifications.
+
+The Notification model includes:
+- Created by (FK to User)
+- To user (FK to User)
+- Created at (When the comment was created)
+- extra id 
+- is read (The notification is read or not)
+- notification type (the type of notification, comment or approval or approval request)
+
+
+For more information on the field types and the relations between models, view this [database schema](/media/README-files/data-schema.svg).
 
 
 ## Technologies and tools used

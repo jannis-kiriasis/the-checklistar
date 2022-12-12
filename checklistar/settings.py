@@ -54,8 +54,8 @@ INSTALLED_APPS = [
     'django_summernote',
     'project_management',
     'notification',
+    "django_extensions",
 ]
-
 
 SITE_ID = 1
 
