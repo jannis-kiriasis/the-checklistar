@@ -298,7 +298,7 @@ By clicking on view details on any project, it will open a project details page.
 
 Only the PM can see edit, delete and complete. Only the approvers can see the approve button and only their correspondent button.
 
-The defensive design has been implemented to cancel, approve, complete and delete a project.
+The defensive design has been implemented to approve, complete and delete a project. The user will need to confirm twice before to complete those actions.
 
 Page feedback has been implemented when a project is approved, completed, deleted or updated.
 
@@ -337,7 +337,7 @@ Page feedback has been implemented when a project is created and updated.
 
 ### 8. Login
 
-A form to authenticate the user to the app. Non-authenticated users can see the projects but not interact with them (they can’t comment, approve, edit, open projects etc. They can only ‘read’).
+A form to authenticate the user to the app. A non authenticated user who tries to navigate the site will always be redirected to the sign in page.
 
 Page feedback has been implemented when a user logs in and signs up.
 
