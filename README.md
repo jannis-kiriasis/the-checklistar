@@ -492,7 +492,10 @@ To build this app I've used [Jira](https://kiria.atlassian.net/jira/software/c/p
 
 The development took 5 sprints of different lengths in terms of days but with similar total story points (around 25-27 per sprint).
 
-The tasks in each sprint were prioritised using the moscow method and the priority settings in the task details.
+The tasks in each sprint were prioritised using the moscow method and the priority settings in the task details. With the moscow method, user stories and tasks are categorised in: Must do, Should do, Could do, Won't do.
+
+In every sprint, about 60% of the user stories had a priority level of Must do or Should do. The remaining 40% was Could do or Won't do.
+Many of the tasks and user stories that were marked as won't do in a sprint, were marked as should do or must do in the following sprint.
 
 You have probably seen the epics and user stories few paragraphs above. They are also available in the Jira board.
 
