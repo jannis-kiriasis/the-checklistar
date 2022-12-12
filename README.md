@@ -615,14 +615,14 @@ All the pages passed the HTML validation with no errors or warnings.
 - [account/signup.html](./media/README-files/signup-w3c.pdf)  
 - [account/login.html](./media/README-files/signin-w3c.pdf)  
 - [account/signout.html](./media/README-files/signout-w3c.pdf) 
-- [dashboard.html](./media/README-files/dashboard.pdf)  
+- [dashboard.html](./media/README-files/dashboard-w3c.pdf)  
 - [my-projects.html](./media/README-files/my-projects-w3c.pdf)  
 - [my-approvals.html](./media/README-files/my-approvals-w3c.pdf)  
-- [project-details.html](./media/README-files/my-projects-w3c.pdf)  
+- [project-details.html](./media/README-files/project-details-w3c.pdf)  
 - [create-project.html](./media/README-files/create-project-w3c.pdf)  
 - [edit-project.html](./media/README-files/edit-project-w3c.pdf)  
-- [400.html](./media/README-files/edit-project-w3c.pdf)  
-- [notifications.html](./media/README-files/notifications-w3c.pdf)  
+- [400.html](./media/README-files/404-w3c.pdf)  
+- [notifications.html](./media/README-files/notification-w3c.pdf)  
 
 
 ### CSS validation
