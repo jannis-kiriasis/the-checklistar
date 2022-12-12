@@ -501,14 +501,14 @@ Many of the tasks and user stories that were marked as won't do in a sprint, wer
 You have probably seen the epics and user stories few paragraphs above. They are also available in the Jira board.
 
 
-## Data model
+## Data model  
 For this app, I've created 5 data models and inherited others from Django Allauth.
 
 In this paragraph I'm going to focus on the data models I've created and the most important inherited ones.
 
 For more details on all the fields and models available and their relations, you can view this [database schema](/media/README-files/data-schema.svg).
 
-**User model**
+**User model**  
 The User model contains all the generalities of the app users, including:
 - username
 - first name
@@ -516,7 +516,7 @@ The User model contains all the generalities of the app users, including:
 - email address
 - password
 
-**UserProfile model**
+**UserProfile model**  
 The UserProfile model extends the User model. Any extra fields related to a user are in the UserProfile.
 Between a User and a UserProfile, there is a one-to-one relationship where the user is the connection.
 
@@ -524,7 +524,7 @@ The UserProfile includes:
 - user (1to1 relation with User)
 - department
 
-**Project model**
+**Project model**  
 The Project model includes all the information related to a project.
 Between a project owner and a User, there is a one-to-many relationship because a user can have many projects but a project owner belongs to one project.
 
@@ -538,7 +538,7 @@ The Project model includes:
 - status (the project is completed or not)
 - due (project due date)
 
-**ProjectApproval model**
+**ProjectApproval model**  
 The ProjectApproval model includes all the information related to the approval required for a project.
 One project can require many approvals, however, one approval belongs only to one project.
 One user can give many approvals, however one project approval belongs only to one user.
@@ -551,7 +551,7 @@ The ProjectApproval model includes:
 - Created on (when the approval request was created)
 - Approved (True if approved, false if not)
 
-**Comment model**
+**Comment model**  
 The Comment model includes all the information related to a comment left on a project.
 One comment belongs to a project only, however, a project can have many comments.
 
@@ -562,7 +562,7 @@ The Comment model includes:
 - Email 
 - Name (Name of the user)
 
-**Notification model**
+**Notification model**  
 The Notification model includes all the information related to a notification send after an action has been taken.
 These actions can be comments, approvals given and approval requests sent. 
 One notification belongs to one user, however, one user can send many notifications.
