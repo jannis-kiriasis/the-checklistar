@@ -186,7 +186,7 @@ function confirmComplete(event) {
         showCancelButton: true,
         confirmButtonColor: 'var(--verdigris)',
         cancelButtonColor: 'var(--fuzzy-wuzzy)',
-        confirmButtonText: 'Yes, approve it!'
+        confirmButtonText: 'Yes, complete it!'
     }).then((result) => {
         if (result.isConfirmed) {
             goToCompleteUrl();
