@@ -13,10 +13,7 @@
                             {% if user.is_authenticated %}
                             <li><a href="{% url 'create-project' %}"
                                     aria-label="Create a project">Create project</a></li>
-                            <li><a href="{% url 'notifications' %}">Notifications <span
-                                        id="notification-count"
-                                        class="btn-floating btn-small red"
-                                        aria-label="Open notification centre">{{ notifications.count }}</span></a>
+                            <li><a href="{% url 'notifications' %}">Notifications</a>
                             </li>
                             <li><a href="{% url 'dashboard' %}"
                                     aria-label="Go to main dahsboard">All projects</a></li>
