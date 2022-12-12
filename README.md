@@ -865,3 +865,5 @@ I followed this article from [Brennan Tymrak](https://www.brennantymrak.com/arti
 I've looked at the tests run on this project from [Elaine Broche](https://github.com/elainebroche-dev/pf4-wayfarers-guided-hikes/tree/main/hikebooker) to structure my automated python testing. 
 
 To create the README.md file I've used a previously created by me README.md [Insured README.md](https://github.com/jannis-kiriasis/insured/blob/main/README.md) and updated it as needed.
+
+This app has been thought for companies internal use. It is possible to sign up and in but ideally it is something that needs to be cloned and connected to existing databases to register all the employees. 
